@@ -1,6 +1,6 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import RootLayout from '@/layouts/RootLayout';
-import Welcome from '@/pages/Welcome';
+import { RootLayout } from '@/layouts/RootLayout/RootLayout';
+import { Welcome } from '@/pages/Welcome';
 
 export const routes = (
   <Route path="/" element={<RootLayout />}>
@@ -8,6 +8,4 @@ export const routes = (
   </Route>
 );
 
-const router = createBrowserRouter(createRoutesFromElements(routes));
-
-export default router;
+export const router = createBrowserRouter(createRoutesFromElements(routes));

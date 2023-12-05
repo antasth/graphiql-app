@@ -1,13 +1,20 @@
+import { Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
+
+import { Footer } from '@/components/Footer';
+
+const { Header: HeaderLayout, Content, Footer: FooterLayout } = Layout;
 
 export function RootLayout() {
   return (
     <>
-      <div>Header</div>
-      <main>
+      <HeaderLayout>Header</HeaderLayout>
+      <Content style={{ flex: '1 0 auto' }}>
         <Outlet />
-      </main>
-      <div>Footer</div>
+      </Content>
+      <FooterLayout>
+        <Footer />
+      </FooterLayout>
     </>
   );
 }

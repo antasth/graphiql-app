@@ -1,0 +1,12 @@
+.header {
+  padding: 0 2rem;
+  transition: all 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.menuStyle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}

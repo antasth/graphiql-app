@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
-import styles from './RootLayout.module.css';
+import styles from './RootLayout.module.scss';
 
 export function RootLayout() {
   return (

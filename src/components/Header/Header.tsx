@@ -3,7 +3,7 @@ import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { Header as AntdHeader } from 'antd/es/layout/layout';
 import { useNavigate } from 'react-router-dom';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 
 const menuItems: MenuProps['items'] = [
   {

@@ -16,10 +16,10 @@ export const loadLanguages = async (languages: Language[]) => {
 
 export const translate = (language: Language) => (key: string, defaultValue?: string) => {
   if (!translations[language]) {
-    return defaultValue ? defaultValue : key;
+    return defaultValue ?? key;
   }
   if (!translations[language][key]) {
-    return defaultValue ? defaultValue : key;
+    return defaultValue ?? key;
   }
   return translations[language][key];
 };

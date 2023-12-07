@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useMemo, useState } from 'react';
 import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/languages';
 import { translate } from '@/utils/translate';
 import type { Language } from '@/types';
@@ -22,13 +22,16 @@ const TranslateContext = createContext<ITranslateContext>(initialValue);
 export const TranslateProvider = ({ children }: PropsWithChildren) => {
   const [language, setLanguage] = useState<Language>(DEFAULT_LANGUAGE);
   const t = translate(language);
-  return (
-    <TranslateContext.Provider
-      value={{ language, availableLanguages: AVAILABLE_LANGUAGES, setLanguage, t }}
-    >
-      {children}
-    </TranslateContext.Provider>
+  const context = useMemo(
+    () => ({
+      language,
+      availableLanguages: AVAILABLE_LANGUAGES,
+      setLanguage,
+      t,
+    }),
+    [language, t]
   );
+  return <TranslateContext.Provider value={context}>{children}</TranslateContext.Provider>;
 };
 
 export const useTranslate = () => useContext(TranslateContext);

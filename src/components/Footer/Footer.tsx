@@ -11,7 +11,7 @@ import RssLogo from '@/assets/svg/rss.svg?react';
 import { useTranslate } from '@/context/TranslateContext';
 
 export function Footer() {
-  const { t, setLanguage } = useTranslate();
+  const { t } = useTranslate();
   return (
     <Layout.Footer>
       <Flex vertical gap="small">
@@ -37,8 +37,6 @@ export function Footer() {
           <Link to="https://rs.school/js/">
             <RssLogo style={{ width: '80px', height: '30px' }} />
           </Link>
-          <Button onClick={() => setLanguage('ru')}>RU</Button>
-          <Button onClick={() => setLanguage('en')}>EN</Button>
         </Flex>
       </Flex>
     </Layout.Footer>

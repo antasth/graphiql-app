@@ -6,11 +6,23 @@
   justify-content: end;
   padding: 0 3rem;
   background-color: #ffffff;
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 20%);
+  transition: all 0.5s ease-in-out;
 }
 
-.menuStyle {
+.menu {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-width: 350px;
+  min-width: 550px;
+  background-color: transparent;
+  border-bottom: none;
+}
+
+.affixed {
+  background: #d1eefc;
+}
+
+.lang {
+  background-color: transparent;
 }

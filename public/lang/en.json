@@ -1,0 +1,8 @@
+{
+  "Application.Main": "Main",
+  "Application.SignIn": "Sign in",
+  "Application.SignUp": "Sign up",
+  "Application.SignOut": "Sign out",
+  "Application.Welcome": "Welcome",
+  "Footer.About": "© 2023 Setun-70"
+}

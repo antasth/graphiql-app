@@ -1,11 +1,7 @@
+import { ISignInValues } from '@/types';
 import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 import styles from './SignIn.module.scss';
-
-interface ISignInValues {
-  password: string;
-  username: string;
-}
 
 export function SignIn() {
   const onFinish = (values: ISignInValues) => {

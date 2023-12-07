@@ -1,17 +1,17 @@
 import {
   CodeOutlined,
-  GlobalOutlined,
   HomeOutlined,
   LoginOutlined,
   LogoutOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Affix, Button, Menu } from 'antd';
+import { Affix, Menu } from 'antd';
 import { Header as AntdHeader } from 'antd/es/layout/layout';
-import { useTranslate } from '@/context/TranslateContext';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslate } from '@/context/TranslateContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 import styles from './Header.module.scss';
 
@@ -65,9 +65,7 @@ export const Header = () => {
       </Affix>
       <AntdHeader className={`${styles.header} ${isAffixed ? styles.affixed : ''}`}>
         <Menu onClick={onClick} mode="horizontal" items={menuItems} className={styles.menu} />
-        <Button className={styles.lang}>
-          <GlobalOutlined /> ru
-        </Button>
+        <LanguageSwitcher />
       </AntdHeader>
     </>
   );

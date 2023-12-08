@@ -1,3 +1,5 @@
+import flagEn from '@/assets/svg/EN.svg?react';
+import flagRu from '@/assets/svg/RU.svg?react';
 import type { Language, Translations } from '@/types';
 
 const translations: Translations = {};
@@ -20,4 +22,15 @@ export const translate = (language: Language) => (key: string, defaultValue?: st
     return defaultValue ?? key;
   }
   return translations[language][key];
+};
+
+export const getFlag = (language: Language) => {
+  switch (language) {
+    case 'en':
+      return flagEn;
+    case 'ru':
+      return flagRu;
+    default:
+      return null;
+  }
 };

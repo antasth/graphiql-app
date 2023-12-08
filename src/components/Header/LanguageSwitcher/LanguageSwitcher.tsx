@@ -2,20 +2,8 @@ import Icon from '@ant-design/icons';
 import { Flex, Select } from 'antd';
 import type { SelectProps } from 'antd';
 import { useTranslate } from '@/context/TranslateContext';
-import flagEn from '@/assets/svg/EN.svg?react';
-import flagRu from '@/assets/svg/RU.svg?react';
 import { Language } from '@/types';
-
-const getFlag = (language: Language) => {
-  switch (language) {
-    case 'en':
-      return flagEn;
-    case 'ru':
-      return flagRu;
-    default:
-      return null;
-  }
-};
+import { getFlag } from '@/utils/translate';
 
 export function LanguageSwitcher() {
   const { language, availableLanguages, setLanguage } = useTranslate();

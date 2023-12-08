@@ -2,7 +2,7 @@ import flagEn from '@/assets/svg/EN.svg?react';
 import flagRu from '@/assets/svg/RU.svg?react';
 import type { Language, Translations } from '@/types';
 
-const translations: Translations = {};
+export const translations: Translations = {};
 
 export const loadLanguage = async (language: Language) => {
   if (translations[language]) {

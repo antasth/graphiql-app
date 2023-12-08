@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { LanguageSwitcher } from './LanguageSwitcher';
 import { AVAILABLE_LANGUAGES } from '@/constants/languages';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 describe('LanguageSwitcher', () => {
   test('renders correctly', () => {

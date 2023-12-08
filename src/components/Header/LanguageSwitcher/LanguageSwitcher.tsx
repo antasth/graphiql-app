@@ -6,14 +6,15 @@ import flagEn from '@/assets/svg/EN.svg?react';
 import flagRu from '@/assets/svg/RU.svg?react';
 import { Language } from '@/types';
 
-const getFlag = (lang: Language) => {
-  if (lang === 'en') {
-    return flagEn;
+const getFlag = (language: Language) => {
+  switch (language) {
+    case 'en':
+      return flagEn;
+    case 'ru':
+      return flagRu;
+    default:
+      return null;
   }
-  if (lang === 'ru') {
-    return flagRu;
-  }
-  return null;
 };
 
 export function LanguageSwitcher() {

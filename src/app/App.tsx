@@ -1,31 +1,14 @@
-import { useEffect, useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { TranslateProvider } from '@/context/TranslateContext';
 import { Loader } from '@/components/Loader';
-import { loadLanguages } from '@/utils/translate';
+import { useTranslate } from '@/context/TranslateContext';
 import { router } from '@/router';
-import { AVAILABLE_LANGUAGES } from '@/constants/languages';
 
 export function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading } = useTranslate();
 
-  useEffect(() => {
-    const initApp = async () => {
-      await loadLanguages(AVAILABLE_LANGUAGES);
-      setIsLoading(false);
-    };
-    initApp();
-  }, []);
+  if (isLoading) {
+    return <Loader />;
+  }
 
-  return (
-    <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <TranslateProvider>
-          <RouterProvider router={router} />
-        </TranslateProvider>
-      )}
-    </>
-  );
+  return <RouterProvider router={router} />;
 }

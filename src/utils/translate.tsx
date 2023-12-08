@@ -2,16 +2,14 @@ import type { Language, Translations } from '@/types';
 
 const translations: Translations = {};
 
-export const loadLanguages = async (languages: Language[]) => {
-  for (const language of languages) {
-    try {
-      const res = await fetch(`./lang/${language}.json`);
-      const data = await res.json();
-      translations[language] = data;
-    } catch (error) {
-      console.error(`Failed to load '${language}' language`);
-    }
+export const loadLanguage = async (language: Language) => {
+  if (translations[language]) {
+    return;
   }
+
+  const res = await fetch(`./lang/${language}.json`);
+  const data = await res.json();
+  translations[language] = data;
 };
 
 export const translate = (language: Language) => (key: string, defaultValue?: string) => {

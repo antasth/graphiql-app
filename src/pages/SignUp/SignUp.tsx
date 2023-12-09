@@ -1,3 +1,4 @@
+import { useTranslate } from '@/context/TranslateContext';
 import { ISignInValues } from '@/types';
 import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
@@ -5,6 +6,8 @@ import { Link } from 'react-router-dom';
 import styles from './SignUp.module.scss';
 
 export function SignUp() {
+  const { t } = useTranslate();
+
   const onFinish = (values: ISignInValues) => {
     console.log('Success:', values);
   };
@@ -27,64 +30,74 @@ export function SignUp() {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
+          label={t('Form.UserName', 'Username')}
           name="username"
           rules={[
             {
               required: true,
-              message: 'Please input your username!',
+              message: t('Form.UserNameMessage', 'Please input your username!'),
             },
           ]}
         >
-          <Input autoComplete="on" placeholder="Please enter username" />
+          <Input autoComplete="on" placeholder={t('Form.UserNamePlaceholder', 'Username')} />
         </Form.Item>
 
         <Form.Item
-          label="Email"
+          label={t('Form.Email', 'Emai')}
           name="email"
           rules={[
             {
               required: true,
-              message: 'Please input your email!',
+              message: t('Form.EmailMessage', 'Please input your email!'),
             },
           ]}
         >
-          <Input autoComplete="on" placeholder="Please enter email" />
+          <Input
+            autoComplete="on"
+            placeholder={t('Form.EmailPlaceholder', 'Please input your email!')}
+          />
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label={t('Form.Password', 'Password')}
           name="password"
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: t('Form.PasswordMessage', 'Please input your password!'),
             },
           ]}
         >
-          <Input.Password autoComplete="on" placeholder="8+ characters" />
+          <Input.Password
+            autoComplete="on"
+            placeholder={t('Form.PasswordPlaceholder', '8+ characters')}
+          />
         </Form.Item>
 
         <Form.Item
-          label="Confirm password"
+          label={t('Form.ConfirmPassword', 'Confirm password')}
           name="confirmPassword"
           rules={[
             {
               required: true,
-              message: 'Please confirm your password!',
+              message: t('Form.ConfirmPasswordMessage', 'Please confirm your password!'),
             },
           ]}
         >
-          <Input.Password autoComplete="on" placeholder="Confirm your password" />
+          <Input.Password
+            autoComplete="on"
+            placeholder={t('Form.ConfirmPasswordPlaceholder', 'Confirm your password')}
+          />
         </Form.Item>
 
         <Form.Item className={styles.submit}>
           <Button type="primary" htmlType="submit" block>
-            Sign up
+            {t('Form.SignUp', 'Sign up')}
           </Button>
 
           <p>
-            Already have an account?<Link to={'/signin'}> Sign in</Link>
+            {t('Form.accountMessage', 'Already have an account?')}{' '}
+            <Link to={'/signin'}> {t('Form.SignIn', 'Sign in')}</Link>
           </p>
         </Form.Item>
       </Form>

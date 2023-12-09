@@ -4,5 +4,20 @@
   "Application.SignUp": "Sign up",
   "Application.SignOut": "Sign out",
   "Application.Welcome": "Welcome",
-  "Footer.About": "© 2023 Setun-70"
+  "Footer.About": "© 2023 Setun-70",
+  "Form.UserName": "Username",
+  "Form.UserNamePlaceholder": "Please enter username",
+  "Form.UserNameMessage": "Please enter your username!",
+  "Form.Email": "Email",
+  "Form.EmailPlaceholder": "Please enter email",
+  "Form.EmailMessage": "Please enter your email!",
+  "Form.Password": "Pasword",
+  "Form.PasswordPlaceholder": "8+ characters",
+  "Form.PasswordMessage": "Please enter your password!",
+  "Form.ConfirmPassword": "Confirm password",
+  "Form.ConfirmPasswordPlaceholder": "Confirm your password",
+  "Form.ConfirmPasswordMessage": "Please confirm your password!",
+  "Form.accountMessage": "Already have an account?",
+  "Form.SignUp": "Sign up",
+  "Form.SignIn": "Sign in"
 }

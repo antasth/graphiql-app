@@ -10,10 +10,10 @@ describe('Header tests', () => {
     const signInLink = getByText('Sign in');
     const signUpLink = getByText('Sign up');
     const welcomeLink = getByText('Welcome');
-    const langChangeButton = getByRole('button');
+    const langSwitcher = getByRole('combobox');
     expect(signInLink).toBeInTheDocument();
     expect(signUpLink).toBeInTheDocument();
     expect(welcomeLink).toBeInTheDocument();
-    expect(langChangeButton).toBeInTheDocument();
+    expect(langSwitcher).toBeInTheDocument();
   });
 });

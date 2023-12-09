@@ -2,6 +2,7 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/languages';
 import { loadLanguage, translate } from '@/utils/translate';
 import type { Language } from '@/types';
+import { App } from 'antd';
 
 interface ITranslateContext {
   language: Language;
@@ -14,6 +15,7 @@ interface ITranslateContext {
 const TranslateContext = createContext<ITranslateContext>({} as ITranslateContext);
 
 export const TranslateProvider = ({ children }: PropsWithChildren) => {
+  const { notification } = App.useApp();
   const [language, setLanguage] = useState<Language>(DEFAULT_LANGUAGE);
   const [isLoading, setIsLoading] = useState(false);
   const t = translate(language);
@@ -32,13 +34,16 @@ export const TranslateProvider = ({ children }: PropsWithChildren) => {
       try {
         await loadLanguage(language);
       } catch (error) {
-        console.error(`Failed to load '${language}' language`);
+        notification.error({
+          message: 'Unexpected error',
+          description: `Failed to load '${language.toUpperCase()}' language`,
+        });
       } finally {
         setIsLoading(false);
       }
     };
     loadNewLanguage();
-  }, [language]);
+  }, [language, notification]);
 
   return <TranslateContext.Provider value={context}>{children}</TranslateContext.Provider>;
 };

@@ -1,0 +1,8 @@
+{
+  "Application.Main": "Главная",
+  "Application.SignIn": "Вход",
+  "Application.SignUp": "Регистрация",
+  "Application.SignOut": "Выход",
+  "Application.Welcome": "Добро пожаловать",
+  "Footer.About": "© 2023 Сетунь-70"
+}

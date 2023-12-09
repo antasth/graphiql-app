@@ -5,3 +5,8 @@ export type Translations = {
     [key: string]: string;
   };
 };
+
+export interface ISignInValues {
+  password: string;
+  username: string;
+}

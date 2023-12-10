@@ -17,15 +17,8 @@ export function SignIn() {
     <section className={styles.signIn}>
       <Form
         name="signInForm"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        style={{
-          maxWidth: 600,
-        }}
+        layout="vertical"
+        className={styles.form}
         initialValues={{
           remember: true,
         }}
@@ -43,7 +36,7 @@ export function SignIn() {
             },
           ]}
         >
-          <Input autoComplete="on" />
+          <Input autoComplete="on" placeholder="Please enter username" />
         </Form.Item>
 
         <Form.Item
@@ -56,22 +49,17 @@ export function SignIn() {
             },
           ]}
         >
-          <Input.Password autoComplete="on" />
+          <Input.Password autoComplete="on" placeholder="Please enter password" />
         </Form.Item>
 
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Button type="primary" htmlType="submit">
+        <Form.Item className={styles.submit}>
+          <Button type="primary" htmlType="submit" block>
             Sign in
           </Button>
 
           <p>
             Don&apos;t have an account?
-            <Link to={'/signup'}>Sign up</Link>
+            <Link to={'/signup'}> Sign up</Link>
           </p>
         </Form.Item>
       </Form>

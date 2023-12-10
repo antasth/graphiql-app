@@ -1,0 +1,32 @@
+@import '_WelcomeConstants';
+
+.welcome__section {
+  text-align: left;
+  background-color: #4e98ff;
+  background-image: $background-svg-blue;
+}
+
+.top__wrapper {
+  padding: 2rem;
+}
+
+.welcome__heading.main__heading {
+  color: white;
+  margin-bottom: 0;
+}
+
+.welcome__heading.main__heading {
+  text-align: left;
+  font-size: 75px;
+}
+
+.img__wrapper {
+  padding: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome__section__img {
+  width: 100%;
+  height: auto;
+}

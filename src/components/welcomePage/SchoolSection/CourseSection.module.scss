@@ -1,0 +1,28 @@
+@import './../../../pages/Welcome/_WelcomeConstants';
+
+.course__wrapper {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  background-image: $background-svg-white;
+}
+
+.course__heading.main__heading {
+  color: black;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 48px;
+}
+
+.course__heading.sub__heading {
+  color: black;
+  text-align: center;
+  font-size: 24px;
+}
+
+.link {
+  transition: 0.3s all;
+}
+
+.link:hover {
+  opacity: 0.5;
+}

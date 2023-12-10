@@ -1,6 +1,7 @@
 import { ISignInValues } from '@/types';
 import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
+import { Link } from 'react-router-dom';
 import styles from './SignIn.module.scss';
 
 export function SignIn() {
@@ -67,6 +68,11 @@ export function SignIn() {
           <Button type="primary" htmlType="submit">
             Sign in
           </Button>
+
+          <p>
+            Don&apos;t have an account?
+            <Link to={'/signup'}>Sign up</Link>
+          </p>
         </Form.Item>
       </Form>
     </section>

@@ -30,16 +30,19 @@ export function SignIn() {
         autoComplete="off"
       >
         <Form.Item
-          label={t('Form.UserName', 'Username')}
-          name="username"
+          label={t('Form.Email', 'Emai')}
+          name="email"
           rules={[
             {
               required: true,
-              message: t('Form.UserNameMessage', 'Please input your username!'),
+              message: t('Form.EmailMessage', 'Please input your email!'),
             },
           ]}
         >
-          <Input autoComplete="on" placeholder={t('Form.UserNamePlaceholder', 'Username')} />
+          <Input
+            autoComplete="on"
+            placeholder={t('Form.EmailPlaceholder', 'Please input your email!')}
+          />
         </Form.Item>
 
         <Form.Item

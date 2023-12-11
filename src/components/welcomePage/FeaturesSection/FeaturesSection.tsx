@@ -7,6 +7,7 @@ function FeaturesSection() {
   const { Title, Text } = Typography;
   return (
     <section>
+      <div>aaa</div>
       <Row className={styles.cards__wrapper} gutter={35}>
         {DATA_FEATURES.map((item, i) => (
           <Col key={i} span={8}>

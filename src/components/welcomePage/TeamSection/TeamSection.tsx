@@ -7,10 +7,10 @@ function TeamSection() {
   const { Title, Text } = Typography;
   return (
     <section className={styles.team__wrapper}>
-      <Title level={2} className={styles.team__heading + ' ' + styles.main__heading}>
+      <Title level={2} className={styles.teamHeading + ' ' + styles.mainHeading}>
         Meet Setun-70 GraphQL Playground team
       </Title>
-      <Flex vertical gap={'2rem'} className={styles.team__wrapper}>
+      <Flex vertical gap={'2rem'} className={styles.teamWrapper}>
         {DEVELOPERS_INFO.map((item, i) => (
           <Card key={i} bordered={false} style={teamCardStyle}>
             <Title style={{ fontSize: '28px' }} level={4}>

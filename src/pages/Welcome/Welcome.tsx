@@ -12,14 +12,14 @@ export function Welcome() {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.welcome__section}>
-      <section className={styles.top__wrapper}>
-        <Title className={styles.welcome__heading + ' ' + styles.main__heading}>
+    <div className={styles.welcomeSection}>
+      <section className={styles.topWrapper}>
+        <Title className={styles.welcomeHeading + ' ' + styles.mainHeading}>
           Welcome to Setun-70<br></br>
         </Title>
 
         <Title
-          className={styles.welcome__heading + ' ' + styles.main__heading}
+          className={styles.welcomeHeading + ' ' + styles.mainHeading}
           style={{ color: '#0046b8', marginTop: '0', marginBottom: '3rem' }}
         >
           GraphQL Playround!
@@ -31,12 +31,12 @@ export function Welcome() {
           {HEADINGS_TEXT.second}
         </Text>
 
-        <Flex gap="large" className={styles.button__wrapper}>
+        <Flex gap="large" className={styles.buttonWrapper}>
           <Button
             onClick={() => {
               navigate(BUTTONS_PROPS[0].link);
             }}
-            className={styles.welcome__btn + ' ' + styles.login__btn}
+            className={styles.welcomeBtn + ' ' + styles.loginBtn}
             type="primary"
           >
             {BUTTONS_PROPS[0].text}
@@ -46,7 +46,7 @@ export function Welcome() {
             onClick={() => {
               navigate(BUTTONS_PROPS[1].link);
             }}
-            className={styles.welcome__btn + ' ' + styles.signup__btn}
+            className={styles.welcomeBtn + ' ' + styles.signupBtn}
             type="default"
           >
             {BUTTONS_PROPS[1].text}
@@ -58,17 +58,17 @@ export function Welcome() {
             onClick={() => {
               navigate(BUTTONS_PROPS[2].link);
             }}
-            className={styles.welcome__btn + ' ' + styles.link__btn}
+            className={styles.welcomeBtn + ' ' + styles.linkBtn}
             type="link"
           >
             {BUTTONS_PROPS[2].text}
           </Button>
         </Flex>
 
-        <div className={styles.img__wrapper}>
+        <div className={styles.imgWrapper}>
           {/* TO DO: REPLACE WITH OUR PROJECT SCREENSHOT  */}
           <img
-            className={styles.welcome__section__img}
+            className={styles.welcomeSectionImg}
             src={PlaygroundScreenshot}
             alt="playground-screenshot"
           />

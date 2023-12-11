@@ -8,7 +8,7 @@ function FeaturesSection() {
   return (
     <section>
       <div>aaa</div>
-      <Row className={styles.cards__wrapper} gutter={35}>
+      <Row className={styles.cardsWrapper} gutter={35}>
         {DATA_FEATURES.map((item, i) => (
           <Col key={i} span={8}>
             <Card bordered={false} style={featureCardStyle}>

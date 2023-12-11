@@ -1,60 +1,57 @@
 @import '_WelcomeConstants';
 
-.welcome__section {
+.welcomeSection {
   text-align: left;
   background-color: #4e98ff;
   background-image: $background-svg-blue;
 }
 
-.top__wrapper {
+.topWrapper {
   padding: 2rem;
 }
 
-.welcome__heading.main__heading {
+.welcomeHeading.mainHeading {
   color: white;
   margin-bottom: 0;
-}
-
-.welcome__heading.main__heading {
   text-align: left;
   font-size: 75px;
 }
 
-.button__wrapper {
+.buttonWrapper {
   margin-top: 2rem;
 }
 
-.welcome__btn.login__btn,
-.welcome__btn.signup__btn,
-.welcome__btn.link__btn {
+.welcomeBtn.loginBtn,
+.welcomeBtn.signupBtn,
+.welcomeBtn.linkBtn {
   text-align: center;
   height: 5rem;
 }
 
-.welcome__btn.login__btn,
-.welcome__btn.signup__btn {
+.welcomeBtn.loginBtn,
+.welcomeBtn.signupBtn {
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
 }
 
-.welcome__btn.link__btn {
+.welcomeBtn.linkBtn {
   color: white;
   font-size: 3rem;
   padding: 0;
   margin-top: 3rem;
 }
 
-.welcome__btn.link__btn:hover {
+.welcomeBtn.linkBtn:hover {
   color: rgb(220, 238, 254) !important;
 }
 
-.img__wrapper {
+.imgWrapper {
   padding: 5rem;
   display: flex;
   justify-content: center;
 }
 
-.welcome__section__img {
+.welcomeSectionImg {
   width: 100%;
   height: auto;
 }

@@ -19,5 +19,16 @@
   "Form.ConfirmPasswordMessage": "Please confirm your password!",
   "Form.accountMessage": "Already have an account?",
   "Form.SignUp": "Sign up",
-  "Form.SignIn": "Sign in"
+  "Form.SignIn": "Sign in",
+  "GraphQL.SendButton": "Send Request",
+  "GraphQL.Documentation": "Documentation",
+  "GraphQL.ShowDocumentation": "Show documentation",
+  "GraphQL.Prettify": "Prettify",
+  "GraphQL.EnterURL": "Enter URL",
+  "GraphQL.RequestEditor.Placeholder": "# Write your query here",
+  "GraphQL.ResponseViewer.Placeholder": "# The result will be displayed here",
+  "GraphQL.Variables": "Variables",
+  "GraphQL.Variables.Placeholder": "# Write your variables here",
+  "GraphQL.Headers": "Headers",
+  "GraphQL.Headers.Placeholder": "# Write your variables here"
 }

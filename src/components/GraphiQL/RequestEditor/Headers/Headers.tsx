@@ -1,5 +1,8 @@
 import { ChangeEvent } from 'react';
 import { TextArea } from '@/components/GraphiQL/TextArea';
+import { useTranslate } from '@/context/TranslateContext';
+
+import styles from './Headers.module.scss';
 
 interface IProps {
   readonly value: string;
@@ -7,10 +10,12 @@ interface IProps {
 }
 
 export function Headers({ value, onChange }: IProps) {
+  const { t } = useTranslate();
+
   return (
     <TextArea
-      style={{ height: '100%', resize: 'none', border: 'none', marginBottom: '8px' }}
-      placeholder="# Write your headers here"
+      id={styles.headers}
+      placeholder={t('GraphQL.Headers.Placeholder', '')}
       value={value}
       onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChange(event.target.value)}
     />

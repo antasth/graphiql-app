@@ -1,5 +1,8 @@
 import { ChangeEvent } from 'react';
 import { TextArea } from '@/components/GraphiQL/TextArea';
+import { useTranslate } from '@/context/TranslateContext';
+
+import styles from './Variables.module.scss';
 
 interface IProps {
   readonly value: string;
@@ -7,10 +10,12 @@ interface IProps {
 }
 
 export function Variables({ value, onChange }: IProps) {
+  const { t } = useTranslate();
+
   return (
     <TextArea
-      style={{ height: '100%', resize: 'none', border: 'none', marginBottom: '8px' }}
-      placeholder="# Write your variables here"
+      id={styles.variables}
+      placeholder={t('GraphQL.Variables.Placeholder', '')}
       value={value}
       onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChange(event.target.value)}
     />

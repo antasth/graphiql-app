@@ -2,6 +2,7 @@ import { Button, Flex, Tabs } from 'antd';
 import { UpOutlined } from '@ant-design/icons';
 import { ChangeEvent, useState } from 'react';
 import { TextArea } from '@/components/GraphiQL/TextArea';
+import { useTranslate } from '@/context/TranslateContext';
 import { Headers } from './Headers';
 import { Variables } from './Variables';
 
@@ -26,6 +27,8 @@ export function RequestEditor({
 }: IProps) {
   const [isOpenPanel, setIsOpenPanel] = useState(false);
 
+  const { t } = useTranslate();
+
   const showPanel = () => {
     setIsOpenPanel((prevState) => !prevState);
   };
@@ -33,14 +36,8 @@ export function RequestEditor({
   return (
     <Flex vertical className={styles.container}>
       <TextArea
-        style={{
-          height: '100%',
-          resize: 'none',
-          border: 'none',
-          marginBottom: '8px',
-          paddingRight: '56px',
-        }}
-        placeholder="# Write your query here"
+        id={styles.editor}
+        placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
         value={query}
         onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChangeQuery(event.target.value)}
       />
@@ -64,13 +61,13 @@ export function RequestEditor({
         }
         items={[
           {
-            label: 'Variables',
+            label: t('GraphQL.Variables', 'Variables'),
             key: 'variables',
             children: <Variables value={variables} onChange={onChangeVariables} />,
             style: { display: isOpenPanel ? '' : 'none', height: '140px' },
           },
           {
-            label: 'Headers',
+            label: t('GraphQL.Headers', 'Headers'),
             key: 'headers',
             children: <Headers value={headers} onChange={onChangeHeaders} />,
             style: { display: isOpenPanel ? '' : 'none', height: '140px' },

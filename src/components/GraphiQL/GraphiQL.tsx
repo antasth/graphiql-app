@@ -1,6 +1,7 @@
 import { Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { ChangeEvent, useState } from 'react';
 import { SiGraphql } from 'react-icons/si';
+import { useTranslate } from '@/context/TranslateContext';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
@@ -14,6 +15,8 @@ export function GraphiQL() {
   const [headers, setHeaders] = useState('');
   const [response, setResponse] = useState('');
   const [isOpenDocs, setIsOpenDocs] = useState(false);
+
+  const { t } = useTranslate();
 
   const showDocumentation = () => {
     setIsOpenDocs((prevState) => !prevState);
@@ -34,13 +37,13 @@ export function GraphiQL() {
       <Flex>
         <Input
           size="large"
-          placeholder="Enter URL"
+          placeholder={t('GraphQL.EnterURL', 'Enter URL')}
           className={styles.input}
           value={url}
           onChange={(event: ChangeEvent<HTMLInputElement>) => setUrl(event.target.value)}
         />
         <Button size="large" icon={<SiGraphql />} onClick={executeQuery}>
-          Send Request
+          {t('GraphQL.SendButton', 'Send Request')}
         </Button>
       </Flex>
 
@@ -63,7 +66,12 @@ export function GraphiQL() {
         </Col>
       </Row>
 
-      <Drawer title="Documentation" placement="right" onClose={showDocumentation} open={isOpenDocs}>
+      <Drawer
+        title={t('GraphQL.Documentation', 'Documentation')}
+        placement="right"
+        onClose={showDocumentation}
+        open={isOpenDocs}
+      >
         All Schema Types...
       </Drawer>
     </Flex>

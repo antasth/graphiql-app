@@ -1,5 +1,6 @@
 import { Flex } from 'antd';
 import { TextArea } from '@/components/GraphiQL/TextArea';
+import { useTranslate } from '@/context/TranslateContext';
 
 import styles from './ResponseViewer.module.scss';
 
@@ -8,11 +9,13 @@ interface IProps {
 }
 
 export function ResponseViewer({ value }: IProps) {
+  const { t } = useTranslate();
+
   return (
     <Flex vertical className={styles.container}>
       <TextArea
-        style={{ height: '100%', resize: 'none', border: 'none' }}
-        placeholder="# The result will be displayed here"
+        id={styles.viewer}
+        placeholder={t('GraphQL.ResponseViewer.Placeholder', '')}
         value={value}
       />
     </Flex>

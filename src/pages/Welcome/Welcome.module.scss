@@ -1,4 +1,4 @@
-@import '_WelcomeConstants';
+@import './../../assets/svg/WelcomeConstants';
 
 .welcomeSection {
   text-align: left;
@@ -12,9 +12,20 @@
 
 .welcomeHeading.mainHeading {
   color: white;
-  margin-bottom: 0;
+  margin: 0;
   text-align: left;
-  font-size: 75px;
+  font-size: 4.75rem;
+}
+
+.welcomeHeading.secondMainHeading {
+  font-size: 4.75rem;
+  margin-bottom: 3rem;
+  color: #0046b8;
+}
+
+.welcomeHeading.subHeading {
+  font-size: 1.625rem;
+  color: white;
 }
 
 .buttonWrapper {
@@ -23,7 +34,7 @@
 
 .welcomeBtn.loginBtn,
 .welcomeBtn.signupBtn,
-.welcomeBtn.linkBtn {
+#linkBtn {
   text-align: center;
   height: 5rem;
 }
@@ -34,15 +45,15 @@
   padding: 1rem 1.5rem;
 }
 
-.welcomeBtn.linkBtn {
+#linkBtn {
   color: white;
   font-size: 3rem;
   padding: 0;
   margin-top: 3rem;
 }
 
-.welcomeBtn.linkBtn:hover {
-  color: rgb(220, 238, 254) !important;
+#linkBtn:hover {
+  color: rgb(220, 238, 254);
 }
 
 .imgWrapper {

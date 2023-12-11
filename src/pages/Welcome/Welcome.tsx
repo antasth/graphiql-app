@@ -1,10 +1,10 @@
 import styles from './Welcome.module.scss';
 import PlaygroundScreenshot from '@/assets/img/screenshot.png';
 import { Typography, Flex, Button } from 'antd';
-import TeamSection from '@/components/welcomePage/TeamSection/TeamSection';
-import FeaturesSection from '@/components/welcomePage/FeaturesSection/FeaturesSection';
-import CourseSection from '@/components/welcomePage/CourseSection/CourseSection';
-import { subHeadingStyles, HEADINGS_TEXT, BUTTONS_PROPS } from './WelcomePageConstants';
+import { TeamSection } from '@/components/welcomePage/TeamSection/TeamSection';
+import { FeaturesSection } from '@/components/welcomePage/FeaturesSection/FeaturesSection';
+import { CourseSection } from '@/components/welcomePage/CourseSection/CourseSection';
+import { HEADINGS_TEXT, BUTTONS_PROPS } from './WelcomePageConstants';
 import { useNavigate } from 'react-router-dom';
 
 export function Welcome() {
@@ -19,13 +19,13 @@ export function Welcome() {
         </Title>
 
         <Title
-          className={styles.welcomeHeading + ' ' + styles.mainHeading}
-          style={{ color: '#0046b8', marginTop: '0', marginBottom: '3rem' }}
+          className={styles.welcomeHeading + ' ' + styles.secondMainHeading}
+          style={{ marginTop: '0' }}
         >
           GraphQL Playround!
         </Title>
 
-        <Text style={subHeadingStyles}>
+        <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
           {HEADINGS_TEXT.first}
           <br></br>
           {HEADINGS_TEXT.second}
@@ -39,7 +39,7 @@ export function Welcome() {
             className={styles.welcomeBtn + ' ' + styles.loginBtn}
             type="primary"
           >
-            {BUTTONS_PROPS[0].text}
+            Have an account? Log In
           </Button>
 
           <Button
@@ -49,7 +49,7 @@ export function Welcome() {
             className={styles.welcomeBtn + ' ' + styles.signupBtn}
             type="default"
           >
-            {BUTTONS_PROPS[1].text}
+            Register now
           </Button>
         </Flex>
 
@@ -58,10 +58,10 @@ export function Welcome() {
             onClick={() => {
               navigate(BUTTONS_PROPS[2].link);
             }}
-            className={styles.welcomeBtn + ' ' + styles.linkBtn}
+            id={styles.linkBtn}
             type="link"
           >
-            {BUTTONS_PROPS[2].text}
+            Explore GraphQL Playground
           </Button>
         </Flex>
 

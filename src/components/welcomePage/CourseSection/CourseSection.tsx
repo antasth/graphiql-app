@@ -5,7 +5,7 @@ import ReactLogo from '@/assets/svg/react.svg?react';
 import styles from './CourseSection.module.scss';
 import { COURSE_HEADINGS_TEXT } from './CourseSectionConstants';
 
-function CourseSection() {
+export function CourseSection() {
   const { Title } = Typography;
   return (
     <section className={styles.courseWrapper}>
@@ -17,14 +17,12 @@ function CourseSection() {
       </Title>
       <Flex justify={'space-evenly'}>
         <Link to="https://rs.school/js/">
-          <RssLogo style={{ width: '200px', height: '130px' }} />
+          <RssLogo style={{ width: '12.5rem', height: '8,125rem' }} />
         </Link>
         <Link className={styles.link} to="https://rs.school/react/">
-          <ReactLogo style={{ width: '200px', height: '130px' }} />
+          <ReactLogo style={{ width: '12.5rem', height: '8,125rem' }} />
         </Link>
       </Flex>
     </section>
   );
 }
-
-export default CourseSection;

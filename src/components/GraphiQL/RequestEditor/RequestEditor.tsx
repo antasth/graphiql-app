@@ -48,11 +48,7 @@ export function RequestEditor({
         tabBarExtraContent={
           <Button
             icon={<UpOutlined />}
-            style={{
-              transform: isOpenPanel ? 'rotate(-180deg)' : '',
-              transitionDuration: '0.5s',
-              color: '#808080',
-            }}
+            style={{ transform: isOpenPanel ? 'rotate(-180deg)' : '' }}
             shape="circle"
             size="small"
             type="text"
@@ -64,13 +60,13 @@ export function RequestEditor({
             label: t('GraphQL.Variables', 'Variables'),
             key: 'variables',
             children: <Variables value={variables} onChange={onChangeVariables} />,
-            style: { display: isOpenPanel ? '' : 'none', height: '140px' },
+            style: { display: isOpenPanel ? '' : 'none', height: '10rem' },
           },
           {
             label: t('GraphQL.Headers', 'Headers'),
             key: 'headers',
             children: <Headers value={headers} onChange={onChangeHeaders} />,
-            style: { display: isOpenPanel ? '' : 'none', height: '140px' },
+            style: { display: isOpenPanel ? '' : 'none', height: '10rem' },
           },
         ]}
       />

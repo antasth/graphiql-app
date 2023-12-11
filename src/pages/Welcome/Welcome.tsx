@@ -1,9 +1,9 @@
 import styles from './Welcome.module.scss';
 import PlaygroundScreenshot from '@/assets/img/screenshot.png';
 import { Typography, Flex, Button } from 'antd';
-import { TeamSection } from '@/components/welcomePage/TeamSection/TeamSection';
-import { FeaturesSection } from '@/components/welcomePage/FeaturesSection/FeaturesSection';
-import { CourseSection } from '@/components/welcomePage/CourseSection/CourseSection';
+import { TeamSection } from '@/pages/Welcome/TeamSection/TeamSection';
+import { FeaturesSection } from '@/pages/Welcome/FeaturesSection/FeaturesSection';
+import { CourseSection } from '@/pages/Welcome/CourseSection/CourseSection';
 import { HEADINGS_TEXT, BUTTONS_PROPS } from './WelcomePageConstants';
 import { useNavigate } from 'react-router-dom';
 

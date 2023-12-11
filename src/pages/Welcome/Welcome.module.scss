@@ -37,6 +37,7 @@
 #linkBtn {
   text-align: center;
   height: 5rem;
+  display: flex;
 }
 
 .welcomeBtn.loginBtn,
@@ -65,4 +66,8 @@
 .welcomeSectionImg {
   width: 100%;
   height: auto;
+}
+
+.amd {
+  display: flex;
 }

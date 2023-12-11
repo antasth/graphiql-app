@@ -17,10 +17,10 @@ export function CourseSection() {
       </Title>
       <Flex justify={'space-evenly'}>
         <Link to="https://rs.school/js/">
-          <RssLogo style={{ width: '12.5rem', height: '8,125rem' }} />
+          <RssLogo style={{ width: '12.5rem', height: '8.125rem' }} />
         </Link>
         <Link className={styles.link} to="https://rs.school/react/">
-          <ReactLogo style={{ width: '12.5rem', height: '8,125rem' }} />
+          <ReactLogo style={{ width: '12.5rem', height: '8.125rem' }} />
         </Link>
       </Flex>
     </section>

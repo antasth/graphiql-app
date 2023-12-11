@@ -19,7 +19,7 @@ export function Footer() {
           <Button type="link" icon={<HomeOutlined />} href="/">
             {t('Application.Welcome', 'Welcome')}
           </Button>
-          <Button type="link" icon={<CodeOutlined />} href="/">
+          <Button type="link" icon={<CodeOutlined />} href="/main">
             {t('Application.Main', 'Main')}
           </Button>
           <Button type="link" icon={<LoginOutlined />} href="/">

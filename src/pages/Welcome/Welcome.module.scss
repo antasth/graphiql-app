@@ -1,9 +1,8 @@
-@import './../../assets/svg/WelcomeConstants';
-
+/* stylelint-disable selector-id-pattern */
 .welcomeSection {
   text-align: left;
   background-color: #4e98ff;
-  background-image: $background-svg-blue;
+  background-image: url('../../assets/svg/blue-background.svg');
 }
 
 .topWrapper {
@@ -11,15 +10,15 @@
 }
 
 .welcomeHeading.mainHeading {
-  color: white;
   margin: 0;
-  text-align: left;
   font-size: 4.75rem;
+  color: white;
+  text-align: left;
 }
 
 .welcomeHeading.secondMainHeading {
-  font-size: 4.75rem;
   margin-bottom: 3rem;
+  font-size: 4.75rem;
   color: #0046b8;
 }
 
@@ -35,39 +34,35 @@
 .welcomeBtn.loginBtn,
 .welcomeBtn.signupBtn,
 #linkBtn {
-  text-align: center;
-  height: 5rem;
   display: flex;
+  height: 5rem;
+  text-align: center;
 }
 
 .welcomeBtn.loginBtn,
 .welcomeBtn.signupBtn {
-  font-size: 1.5rem;
   padding: 1rem 1.5rem;
+  font-size: 1.5rem;
 }
 
 #linkBtn {
-  color: white;
-  font-size: 3rem;
   padding: 0;
   margin-top: 3rem;
+  font-size: 3rem;
+  color: white;
 }
 
 #linkBtn:hover {
-  color: rgb(220, 238, 254);
+  color: #dceefe;
 }
 
 .imgWrapper {
-  padding: 5rem;
   display: flex;
   justify-content: center;
+  padding: 5rem;
 }
 
 .welcomeSectionImg {
   width: 100%;
   height: auto;
-}
-
-.amd {
-  display: flex;
 }

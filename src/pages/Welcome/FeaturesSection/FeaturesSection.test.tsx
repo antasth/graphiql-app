@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import FeaturesSection from './FeaturesSection';
+import { FeaturesSection } from './FeaturesSection';
 
 describe('Features Section tests', () => {
   test('Must contain correct cards titles', () => {

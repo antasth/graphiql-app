@@ -1,6 +1,8 @@
 import { useTranslate } from '@/context/TranslateContext';
+import { useActions } from '@/hooks/useActions';
 import { ISignInValues } from '@/types';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, notification } from 'antd';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 import { Link } from 'react-router-dom';
 import styles from './SignUp.module.scss';
@@ -8,8 +10,24 @@ import styles from './SignUp.module.scss';
 export function SignUp() {
   const { t } = useTranslate();
 
+  const auth = getAuth();
+
+  const { setUser } = useActions();
+
   const onFinish = (values: ISignInValues) => {
     console.log('Success:', values);
+    const { email, password } = values;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        user.getIdToken().then((accessToken) => {
+          setUser({ id: user.uid, email: user.email, token: accessToken });
+        });
+      })
+      .catch((error: Error) => {
+        notification.error({ message: error.message });
+      });
   };
 
   const onFinishFailed = (errorInfo: ValidateErrorEntity<ISignInValues>) => {

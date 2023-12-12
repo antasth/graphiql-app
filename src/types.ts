@@ -8,7 +8,7 @@ export type Translations = {
 
 export interface ISignInValues {
   password: string;
-  username: string;
+  email: string;
 }
 
 export interface IUser {

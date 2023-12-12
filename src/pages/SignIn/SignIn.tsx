@@ -1,3 +1,4 @@
+import { useTranslate } from '@/context/TranslateContext';
 import { ISignInValues } from '@/types';
 import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
@@ -5,6 +6,8 @@ import { Link } from 'react-router-dom';
 import styles from './SignIn.module.scss';
 
 export function SignIn() {
+  const { t } = useTranslate();
+
   const onFinish = (values: ISignInValues) => {
     console.log('Success:', values);
   };
@@ -27,39 +30,45 @@ export function SignIn() {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label={t('Form.Email', 'Emai')}
+          name="email"
           rules={[
             {
               required: true,
-              message: 'Please input your username!',
+              message: t('Form.EmailMessage', 'Please input your email!'),
             },
           ]}
         >
-          <Input autoComplete="on" placeholder="Please enter username" />
+          <Input
+            autoComplete="on"
+            placeholder={t('Form.EmailPlaceholder', 'Please input your email!')}
+          />
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label={t('Form.Password', 'Password')}
           name="password"
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: t('Form.PasswordMessage', 'Please input your password!'),
             },
           ]}
         >
-          <Input.Password autoComplete="on" placeholder="Please enter password" />
+          <Input.Password
+            autoComplete="on"
+            placeholder={t('Form.PasswordPlaceholderSignIn', 'Please enter password')}
+          />
         </Form.Item>
 
         <Form.Item className={styles.submit}>
           <Button type="primary" htmlType="submit" block>
-            Sign in
+            {t('Form.SignIn', 'Sign in')}
           </Button>
 
           <p>
-            Don&apos;t have an account?
-            <Link to={'/signup'}> Sign up</Link>
+            {t('Form.accountMessageSignIn', "Don't have an account?")}
+            <Link to={'/signup'}> {t('Form.SignUp', 'Sign up')}</Link>
           </p>
         </Form.Item>
       </Form>

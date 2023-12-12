@@ -1,31 +1,23 @@
+import { Loader } from '@/components/Loader';
 import { useTranslate } from '@/context/TranslateContext';
 import { auth } from '@/firebase';
-import { useActions } from '@/hooks/useActions';
+import { useFirebase } from '@/hooks/useFirebase';
 import { ISignInValues } from '@/types';
-import { App, Button, Form, Input } from 'antd';
-import { FirebaseError } from 'firebase/app';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './SignIn.module.scss';
 
 export function SignIn() {
   const { t } = useTranslate();
-  const { setUser } = useActions();
-  const { notification } = App.useApp();
+  const navigate = useNavigate();
+  const { isLoading, signInWithEmailAndPassword } = useFirebase(auth);
 
-  const onFinish = (values: ISignInValues) => {
-    const { email, password } = values;
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        user.getIdToken().then((accessToken) => {
-          setUser({ id: user.uid, email: user.email, token: accessToken });
-        });
-      })
-      .catch((error: FirebaseError) => {
-        notification.error({ message: error.message });
-      });
+  const onFinish = async (values: ISignInValues) => {
+    const user = await signInWithEmailAndPassword(values.email, values.password);
+    if (user) {
+      navigate('/');
+    }
   };
 
   const onFinishFailed = (errorInfo: ValidateErrorEntity<ISignInValues>) => {
@@ -34,6 +26,7 @@ export function SignIn() {
 
   return (
     <section className={styles.signIn}>
+      {isLoading && <Loader />}
       <Form
         name="signInForm"
         layout="vertical"

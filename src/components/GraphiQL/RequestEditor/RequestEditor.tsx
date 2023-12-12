@@ -53,6 +53,7 @@ export function RequestEditor({
             size="small"
             type="text"
             onClick={showPanel}
+            data-testid="btn-show-panel"
           />
         }
         items={[

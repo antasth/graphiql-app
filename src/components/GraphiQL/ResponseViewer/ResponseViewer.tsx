@@ -5,7 +5,7 @@ import { useTranslate } from '@/context/TranslateContext';
 import styles from './ResponseViewer.module.scss';
 
 interface IProps {
-  readonly value: string;
+  readonly value?: string;
 }
 
 export function ResponseViewer({ value }: IProps) {

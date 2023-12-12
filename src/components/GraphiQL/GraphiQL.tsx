@@ -33,7 +33,7 @@ export function GraphiQL() {
   };
 
   return (
-    <Flex vertical className={styles.container}>
+    <Flex vertical className={styles.container} data-testid="graphql-editor">
       <Flex>
         <Input
           size="large"
@@ -41,6 +41,7 @@ export function GraphiQL() {
           className={styles.input}
           value={url}
           onChange={(event: ChangeEvent<HTMLInputElement>) => setUrl(event.target.value)}
+          data-testid="url-input"
         />
         <Button size="large" icon={<SiGraphql />} onClick={executeQuery}>
           {t('GraphQL.SendButton', 'Send Request')}

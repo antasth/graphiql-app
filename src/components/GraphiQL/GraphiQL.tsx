@@ -54,7 +54,7 @@ export function GraphiQL() {
     }
     try {
       setIsLoading(true);
-      const data = await getData(url, query);
+      const data = await getData(url, { query, variables, headers });
       setResponse(data);
     } catch (error) {
       notification.error({

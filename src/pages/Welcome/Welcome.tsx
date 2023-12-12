@@ -6,6 +6,7 @@ import { FeaturesSection } from '@/pages/Welcome/FeaturesSection/FeaturesSection
 import { CourseSection } from '@/pages/Welcome/CourseSection/CourseSection';
 import { HEADINGS_TEXT, BUTTONS_PROPS } from './WelcomePageConstants';
 import { useNavigate } from 'react-router-dom';
+// import { ArrowRightOutlined } from '@ant-design/icons';
 
 export function Welcome() {
   const { Title, Text } = Typography;
@@ -14,43 +15,57 @@ export function Welcome() {
   return (
     <div className={styles.welcomeSection}>
       <section className={styles.topWrapper}>
-        <Title className={styles.welcomeHeading + ' ' + styles.mainHeading}>
-          Welcome to Setun-70<br></br>
-        </Title>
+        <Flex justify="space-between">
+          <div className={styles.titleWrapper}>
+            <Title className={styles.welcomeHeading + ' ' + styles.mainHeading}>
+              Welcome to Setun-70<br></br>
+            </Title>
 
-        <Title
-          className={styles.welcomeHeading + ' ' + styles.secondMainHeading}
-          style={{ marginTop: '0' }}
-        >
-          GraphiQL Playround!
-        </Title>
+            <Title
+              className={styles.welcomeHeading + ' ' + styles.secondMainHeading}
+              style={{ marginTop: '0' }}
+            >
+              GraphiQL Playround!
+            </Title>
 
-        <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
-          {HEADINGS_TEXT.first}
-          <br></br>
-          {HEADINGS_TEXT.second}
-        </Text>
+            <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
+              {HEADINGS_TEXT.first}
+              <br></br>
+              {HEADINGS_TEXT.second}
+            </Text>
+          </div>
+          <Flex gap="large" className={styles.buttonWrapper}>
+            <Button
+              onClick={() => {
+                navigate(BUTTONS_PROPS[0].link);
+              }}
+              className={styles.welcomeBtn + ' ' + styles.loginBtn}
+              type="primary"
+            >
+              Sign In
+            </Button>
 
-        <Flex gap="large" className={styles.buttonWrapper}>
-          <Button
-            onClick={() => {
-              navigate(BUTTONS_PROPS[0].link);
-            }}
-            className={styles.welcomeBtn + ' ' + styles.loginBtn}
-            type="primary"
-          >
-            Sign In
-          </Button>
+            <Button
+              onClick={() => {
+                navigate(BUTTONS_PROPS[1].link);
+              }}
+              className={styles.welcomeBtn + ' ' + styles.signupBtn}
+              type="default"
+            >
+              Sign Up
+            </Button>
 
-          <Button
-            onClick={() => {
-              navigate(BUTTONS_PROPS[1].link);
-            }}
-            className={styles.welcomeBtn + ' ' + styles.signupBtn}
-            type="default"
-          >
-            Sign Up
-          </Button>
+            {/* <Button
+              onClick={() => {
+                navigate(BUTTONS_PROPS[2].link);
+              }}
+              className={styles.welcomeBtn + ' ' + styles.signupBtn}
+              type="default"
+            >
+              Main page
+              <ArrowRightOutlined />
+            </Button> */}
+          </Flex>
         </Flex>
 
         <Flex justify="center">

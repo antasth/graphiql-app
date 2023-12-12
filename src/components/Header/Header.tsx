@@ -4,7 +4,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useFirebase } from '@/hooks/useFirebase';
 import { CodeOutlined, HomeOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Affix, Menu } from 'antd';
+import { Affix, Button, Menu } from 'antd';
 import { Header as AntdHeader } from 'antd/es/layout/layout';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -28,18 +28,11 @@ export const Header = () => {
   ];
 
   if (isAuth) {
-    menuItems.push(
-      {
-        label: t('Application.Main', 'Main'),
-        key: 'main',
-        icon: <CodeOutlined />,
-      },
-      {
-        label: t('Application.SignOut', 'SignOut'),
-        key: 'signout',
-        icon: <CodeOutlined />,
-      }
-    );
+    menuItems.push({
+      label: t('Application.Main', 'Main'),
+      key: 'main',
+      icon: <CodeOutlined />,
+    });
   } else {
     menuItems.push(
       {
@@ -55,8 +48,13 @@ export const Header = () => {
     );
   }
 
+  const handleLogOut = async () => {
+    await signOutFromUserAccount();
+    navigate('/');
+  };
+
   const onClick: MenuProps['onClick'] = async (e) => {
-    e.key === 'signout' ? await signOutFromUserAccount() : navigate(e.key);
+    navigate(e.key);
   };
 
   const handleAffixChange = (affixed?: boolean) => {
@@ -72,14 +70,8 @@ export const Header = () => {
         <div></div>
       </Affix>
       <AntdHeader className={`${styles.header} ${isAffixed ? styles.affixed : ''}`}>
-        <Menu
-          onClick={onClick}
-          mode="horizontal"
-          items={menuItems}
-          className={styles.menu}
-          defaultSelectedKeys={['main']}
-        />
-        {/* <Button>Sign out</Button> */}
+        <Menu onClick={onClick} mode="horizontal" items={menuItems} className={styles.menu} />
+        {isAuth && <Button onClick={handleLogOut}>Sign out</Button>}
         <LanguageSwitcher />
       </AntdHeader>
     </>

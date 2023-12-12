@@ -77,7 +77,13 @@ export function GraphiQL() {
           onChange={(event: ChangeEvent<HTMLInputElement>) => setUrl(event.target.value)}
           data-testid="url-input"
         />
-        <Button size="large" icon={<SiGraphql />} onClick={executeQuery} loading={isLoading}>
+        <Button
+          size="large"
+          icon={<SiGraphql />}
+          onClick={executeQuery}
+          loading={isLoading}
+          data-testid="btn-send-request"
+        >
           {t('GraphQL.SendButton', 'Send Request')}
         </Button>
       </Flex>

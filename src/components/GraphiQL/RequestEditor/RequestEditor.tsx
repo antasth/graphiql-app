@@ -40,6 +40,7 @@ export function RequestEditor({
         placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
         value={query}
         onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChangeQuery(event.target.value)}
+        data-testid="request-editor"
       />
 
       <Tabs

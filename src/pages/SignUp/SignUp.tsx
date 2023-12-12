@@ -1,21 +1,20 @@
 import { useTranslate } from '@/context/TranslateContext';
+import { auth } from '@/firebase';
 import { useActions } from '@/hooks/useActions';
 import { ISignInValues } from '@/types';
-import { Button, Form, Input, notification } from 'antd';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { App, Button, Form, Input } from 'antd';
+import { FirebaseError } from 'firebase/app';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 import { Link } from 'react-router-dom';
 import styles from './SignUp.module.scss';
 
 export function SignUp() {
   const { t } = useTranslate();
-
-  const auth = getAuth();
-
   const { setUser } = useActions();
+  const { notification } = App.useApp();
 
   const onFinish = (values: ISignInValues) => {
-    console.log('Success:', values);
     const { email, password } = values;
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -25,7 +24,7 @@ export function SignUp() {
           setUser({ id: user.uid, email: user.email, token: accessToken });
         });
       })
-      .catch((error: Error) => {
+      .catch((error: FirebaseError) => {
         notification.error({ message: error.message });
       });
   };

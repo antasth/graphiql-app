@@ -1,7 +1,8 @@
-import { Button, Col, Drawer, Flex, Input, Row } from 'antd';
+import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { ChangeEvent, useState } from 'react';
 import { SiGraphql } from 'react-icons/si';
 import { useTranslate } from '@/context/TranslateContext';
+import { getData } from '@/services/graphqlApi';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
@@ -15,8 +16,10 @@ export function GraphiQL() {
   const [headers, setHeaders] = useState('');
   const [response, setResponse] = useState('');
   const [isOpenDocs, setIsOpenDocs] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { t } = useTranslate();
+  const { notification } = App.useApp();
 
   const showDocumentation = () => {
     setIsOpenDocs((prevState) => !prevState);
@@ -27,9 +30,40 @@ export function GraphiQL() {
     setQuery('');
   };
 
-  const executeQuery = () => {
-    console.log('Execute query...', url);
-    setResponse('');
+  const isQueryValid = () => {
+    if (!url) {
+      notification.error({
+        message: t('Errors.RequestIsNotAvailable', 'Request is not available'),
+        description: t('Errors.UrlIsEmpty', 'The URL cannot be empty'),
+      });
+      return false;
+    }
+    if (!query) {
+      notification.error({
+        message: t('Errors.RequestIsNotAvailable', 'Request is not available'),
+        description: t('Errors.QueryIsEmpty', 'The query cannot be empty'),
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const executeQuery = async () => {
+    if (!isQueryValid()) {
+      return;
+    }
+    try {
+      setIsLoading(true);
+      const data = await getData(url, query);
+      setResponse(data);
+    } catch (error) {
+      notification.error({
+        message: t('Errors.UnexpectedError', 'Unexpected error'),
+        description: t('Errors.FailedGetData', 'Failed to get data from the selected API'),
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -43,7 +77,7 @@ export function GraphiQL() {
           onChange={(event: ChangeEvent<HTMLInputElement>) => setUrl(event.target.value)}
           data-testid="url-input"
         />
-        <Button size="large" icon={<SiGraphql />} onClick={executeQuery}>
+        <Button size="large" icon={<SiGraphql />} onClick={executeQuery} loading={isLoading}>
           {t('GraphQL.SendButton', 'Send Request')}
         </Button>
       </Flex>

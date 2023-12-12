@@ -30,5 +30,5 @@
   "GraphQL.Variables": "Variables",
   "GraphQL.Variables.Placeholder": "# Write your variables here",
   "GraphQL.Headers": "Headers",
-  "GraphQL.Headers.Placeholder": "# Write your variables here"
+  "GraphQL.Headers.Placeholder": "# Write your headers here"
 }

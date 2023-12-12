@@ -48,19 +48,6 @@ export function SignUp() {
         autoComplete="off"
       >
         <Form.Item
-          label={t('Form.UserName', 'Username')}
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: t('Form.UserNameMessage', 'Please input your username!'),
-            },
-          ]}
-        >
-          <Input autoComplete="on" placeholder={t('Form.UserNamePlaceholder', 'Username')} />
-        </Form.Item>
-
-        <Form.Item
           label={t('Form.Email', 'Emai')}
           name="email"
           rules={[

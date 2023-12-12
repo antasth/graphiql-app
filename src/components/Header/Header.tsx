@@ -1,17 +1,14 @@
 import { useTranslate } from '@/context/TranslateContext';
+import { auth } from '@/firebase';
 import { useAuth } from '@/hooks/useAuth';
-import {
-  CodeOutlined,
-  HomeOutlined,
-  LoginOutlined,
-  LogoutOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import { useFirebase } from '@/hooks/useFirebase';
+import { CodeOutlined, HomeOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Affix, Menu } from 'antd';
 import { Header as AntdHeader } from 'antd/es/layout/layout';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from '../Loader';
 import styles from './Header.module.scss';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -20,6 +17,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const { t } = useTranslate();
   const { isAuth } = useAuth();
+  const { isLoading, signOutFromUserAccount } = useFirebase(auth);
 
   const menuItems: MenuProps['items'] = [
     {
@@ -37,9 +35,9 @@ export const Header = () => {
         icon: <CodeOutlined />,
       },
       {
-        label: t('Application.SignOut', 'Sign out'),
+        label: t('Application.SignOut', 'SignOut'),
         key: 'signout',
-        icon: <LogoutOutlined />,
+        icon: <CodeOutlined />,
       }
     );
   } else {
@@ -57,8 +55,8 @@ export const Header = () => {
     );
   }
 
-  const onClick: MenuProps['onClick'] = (e) => {
-    navigate(e.key);
+  const onClick: MenuProps['onClick'] = async (e) => {
+    e.key === 'signout' ? await signOutFromUserAccount() : navigate(e.key);
   };
 
   const handleAffixChange = (affixed?: boolean) => {
@@ -69,11 +67,19 @@ export const Header = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <Affix target={() => window} onChange={(affixed?: boolean) => handleAffixChange(affixed)}>
         <div></div>
       </Affix>
       <AntdHeader className={`${styles.header} ${isAffixed ? styles.affixed : ''}`}>
-        <Menu onClick={onClick} mode="horizontal" items={menuItems} className={styles.menu} />
+        <Menu
+          onClick={onClick}
+          mode="horizontal"
+          items={menuItems}
+          className={styles.menu}
+          defaultSelectedKeys={['main']}
+        />
+        {/* <Button>Sign out</Button> */}
         <LanguageSwitcher />
       </AntdHeader>
     </>

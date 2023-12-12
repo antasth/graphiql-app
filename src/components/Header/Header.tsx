@@ -1,3 +1,5 @@
+import { useTranslate } from '@/context/TranslateContext';
+import { useAuth } from '@/hooks/useAuth';
 import {
   CodeOutlined,
   HomeOutlined,
@@ -10,15 +12,14 @@ import { Affix, Menu } from 'antd';
 import { Header as AntdHeader } from 'antd/es/layout/layout';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslate } from '@/context/TranslateContext';
-import { LanguageSwitcher } from './LanguageSwitcher';
-
 import styles from './Header.module.scss';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Header = () => {
   const [isAffixed, setIsAffixed] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslate();
+  const { isAuth } = useAuth();
 
   const menuItems: MenuProps['items'] = [
     {
@@ -26,27 +27,35 @@ export const Header = () => {
       key: 'welcome',
       icon: <HomeOutlined />,
     },
-    {
-      label: t('Application.Main', 'Main'),
-      key: 'main',
-      icon: <CodeOutlined />,
-    },
-    {
-      label: t('Application.SignIn', 'Sign in'),
-      key: 'signin',
-      icon: <LoginOutlined />,
-    },
-    {
-      label: t('Application.SignUp', 'Sign up'),
-      key: 'signup',
-      icon: <UserOutlined />,
-    },
-    {
-      label: t('Application.SignOut', 'Sign out'),
-      key: 'signout',
-      icon: <LogoutOutlined />,
-    },
   ];
+
+  if (isAuth) {
+    menuItems.push(
+      {
+        label: t('Application.Main', 'Main'),
+        key: 'main',
+        icon: <CodeOutlined />,
+      },
+      {
+        label: t('Application.SignOut', 'Sign out'),
+        key: 'signout',
+        icon: <LogoutOutlined />,
+      }
+    );
+  } else {
+    menuItems.push(
+      {
+        label: t('Application.SignIn', 'Sign in'),
+        key: 'signin',
+        icon: <LoginOutlined />,
+      },
+      {
+        label: t('Application.SignUp', 'Sign up'),
+        key: 'signup',
+        icon: <UserOutlined />,
+      }
+    );
+  }
 
   const onClick: MenuProps['onClick'] = (e) => {
     navigate(e.key);

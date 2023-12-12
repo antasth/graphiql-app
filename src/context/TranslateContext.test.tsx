@@ -1,9 +1,18 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import { TranslateProvider, useTranslate } from './TranslateContext';
 import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/languages';
+import * as utils from '@/utils/translate';
 
 vi.mock('@/context/TranslateContext', async () => {
   return vi.importActual('@/context/TranslateContext');
+});
+
+vi.mock('@/utils/translate', async () => {
+  const actual: typeof utils = await vi.importActual('@/utils/translate');
+  return {
+    ...actual,
+    loadLanguage: () => vi.fn(),
+  };
 });
 
 const TestComponent = () => {
@@ -21,22 +30,26 @@ const TestComponent = () => {
 };
 
 describe('TranslateProvider', () => {
-  test('renders children without crashing', () => {
-    const { getByText } = render(
-      <TranslateProvider>
-        <div>Test Child</div>
-      </TranslateProvider>
+  test('renders children without crashing', async () => {
+    const { getByText } = await act(async () =>
+      render(
+        <TranslateProvider>
+          <div>Test Child</div>
+        </TranslateProvider>
+      )
     );
 
     const component = getByText('Test Child');
     expect(component).toBeInTheDocument();
   });
 
-  test('provides default values to the context', () => {
-    const { getByTestId } = render(
-      <TranslateProvider>
-        <TestComponent />
-      </TranslateProvider>
+  test('provides default values to the context', async () => {
+    const { getByTestId } = await act(async () =>
+      render(
+        <TranslateProvider>
+          <TestComponent />
+        </TranslateProvider>
+      )
     );
 
     const language = getByTestId('language');
@@ -45,14 +58,16 @@ describe('TranslateProvider', () => {
     expect(allLanguages.textContent).toBe(AVAILABLE_LANGUAGES.join(','));
   });
 
-  test('updates the language when setLanguage is called', () => {
-    const { getByTestId } = render(
-      <TranslateProvider>
-        <TestComponent />
-      </TranslateProvider>
+  test('updates the language when setLanguage is called', async () => {
+    const { getByTestId } = await act(async () =>
+      render(
+        <TranslateProvider>
+          <TestComponent />
+        </TranslateProvider>
+      )
     );
 
-    fireEvent.click(getByTestId('set-language-ru'));
+    await act(async () => fireEvent.click(getByTestId('set-language-ru')));
     const language = getByTestId('language');
     expect(language.textContent).toBe('ru');
   });

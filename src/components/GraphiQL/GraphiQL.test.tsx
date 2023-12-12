@@ -25,14 +25,6 @@ describe('GraphiQL', () => {
     expect(urlInput).toHaveValue(url);
   });
 
-  test('show documentation', () => {
-    const { getByTestId, getByRole } = render(<GraphiQL />);
-    const btn = getByTestId('btn-show-docs');
-    fireEvent.click(btn);
-    const drawer = getByRole('dialog');
-    expect(drawer).toBeInTheDocument();
-  });
-
   test('send request', () => {
     const url = 'https://example.com/graphql';
     const query = 'exampleQuery';

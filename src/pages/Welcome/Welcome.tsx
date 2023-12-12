@@ -22,7 +22,7 @@ export function Welcome() {
           className={styles.welcomeHeading + ' ' + styles.secondMainHeading}
           style={{ marginTop: '0' }}
         >
-          GraphQL Playround!
+          GraphiQL Playround!
         </Title>
 
         <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
@@ -39,7 +39,7 @@ export function Welcome() {
             className={styles.welcomeBtn + ' ' + styles.loginBtn}
             type="primary"
           >
-            Have an account? Log In
+            Sign In
           </Button>
 
           <Button
@@ -49,7 +49,7 @@ export function Welcome() {
             className={styles.welcomeBtn + ' ' + styles.signupBtn}
             type="default"
           >
-            Register now
+            Sign Up
           </Button>
         </Flex>
 
@@ -61,7 +61,7 @@ export function Welcome() {
             id={styles.linkBtn}
             type="link"
           >
-            Explore GraphQL Playground
+            Explore GraphiQL Playground
           </Button>
         </Flex>
 

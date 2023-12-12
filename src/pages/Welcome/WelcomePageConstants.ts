@@ -1,6 +1,6 @@
 export const HEADINGS_TEXT = {
-  first: 'GraphQL Playground is a graphical, interactive, in-browser GraphQL IDE.',
-  second: ' This tool allows developers and clients to explore and interact with GraphQL APIs.',
+  first: 'GraphiQL Playground is a graphical, interactive, in-browser GraphiQL IDE.',
+  second: ' This tool allows developers and clients to explore and interact with GraphiQL APIs.',
 };
 
 export const BUTTONS_PROPS = [

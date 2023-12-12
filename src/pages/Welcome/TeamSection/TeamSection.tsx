@@ -8,7 +8,7 @@ export function TeamSection() {
   return (
     <section className={styles.teamWrapper}>
       <Title level={2} className={styles.teamHeading + ' ' + styles.mainHeading}>
-        Meet Setun-70 GraphQL Playground team
+        Meet Setun-70 GraphiQL Playground team
       </Title>
       <Flex vertical gap={'2rem'} className={styles.teamWrapper}>
         {DEVELOPERS_INFO.map((item, i) => (

@@ -13,32 +13,32 @@ export function TeamSection() {
       <Flex vertical gap={'2rem'} className={styles.teamWrapper}>
         {DEVELOPERS_INFO.map((item, i) => (
           <Card key={i} bordered={false}>
-            <Title style={{ fontSize: '1.75rem' }} level={4}>
+            <Title className={styles.teamCardTitle + ' ' + styles.cardTitle} level={4}>
               {item.name}
             </Title>
-            <Divider></Divider>
+            <Divider className={styles.divider}></Divider>
             <div>
               <UserOutlined />
-              <Text style={{ fontSize: '1.125rem', marginLeft: '1rem' }}>
+              <Text className={styles.cardText}>
                 <strong>Role:</strong>
                 {item.role}
               </Text>
             </div>
             <div>
               <BankOutlined />
-              <Text style={{ fontSize: '1.125rem', marginLeft: '1rem' }}>
+              <Text className={styles.cardText}>
                 <strong>Education:</strong> {item.education}
               </Text>
             </div>
             <div>
               <EnvironmentOutlined />
-              <Text style={{ fontSize: '1.125rem', marginLeft: '1rem' }}>
+              <Text className={styles.cardText}>
                 <strong>Location:</strong> {item.location}
               </Text>
             </div>
             <div>
               <EditOutlined />
-              <Text style={{ fontSize: '1.125rem', marginLeft: '1rem' }}>
+              <Text className={styles.cardText}>
                 <strong>Bio:</strong> {item.bio}
               </Text>
             </div>

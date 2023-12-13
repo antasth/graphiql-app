@@ -6,7 +6,7 @@ import { FeaturesSection } from '@/pages/Welcome/FeaturesSection/FeaturesSection
 import { CourseSection } from '@/pages/Welcome/CourseSection/CourseSection';
 import { HEADINGS_TEXT, BUTTONS_PROPS } from './WelcomePageConstants';
 import { useNavigate } from 'react-router-dom';
-// import { ArrowRightOutlined } from '@ant-design/icons';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 export function Welcome() {
   const { Title, Text } = Typography;
@@ -15,7 +15,7 @@ export function Welcome() {
   return (
     <div className={styles.welcomeSection}>
       <section className={styles.topWrapper}>
-        <Flex justify="space-between">
+        <Flex className={styles.topWrapperFlex} justify="space-between" gap="1.2rem">
           <div className={styles.titleWrapper}>
             <Title className={styles.welcomeHeading + ' ' + styles.mainHeading}>
               Welcome to Setun-70<br></br>
@@ -27,12 +27,6 @@ export function Welcome() {
             >
               GraphiQL Playround!
             </Title>
-
-            <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
-              {HEADINGS_TEXT.first}
-              <br></br>
-              {HEADINGS_TEXT.second}
-            </Text>
           </div>
           <Flex gap="large" className={styles.buttonWrapper}>
             <Button
@@ -55,7 +49,7 @@ export function Welcome() {
               Sign Up
             </Button>
 
-            {/* <Button
+            <Button
               onClick={() => {
                 navigate(BUTTONS_PROPS[2].link);
               }}
@@ -64,9 +58,17 @@ export function Welcome() {
             >
               Main page
               <ArrowRightOutlined />
-            </Button> */}
+            </Button>
           </Flex>
         </Flex>
+
+        <div className={styles.subHeadingWrapper}>
+          <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
+            {HEADINGS_TEXT.first}
+            <br></br>
+            {HEADINGS_TEXT.second}
+          </Text>
+        </div>
 
         <Flex justify="center">
           <Button

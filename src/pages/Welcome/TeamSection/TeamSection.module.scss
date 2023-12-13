@@ -1,5 +1,8 @@
+@import '../../../styles/constants';
+
 .teamWrapper {
   padding: 0 2rem 2rem;
+  text-align: justify;
 }
 
 .teamHeading.mainHeading {
@@ -7,4 +10,62 @@
   font-size: 3rem;
   color: white;
   text-align: center;
+}
+
+.teamCardTitle.cardTitle {
+  font-size: 1.75rem;
+}
+
+.cardText {
+  margin-left: 1rem;
+  font-size: 1.125rem;
+}
+
+@media (max-width: $laptop) {
+  .teamHeading.mainHeading {
+    font-size: calc(3vw + 14px);
+  }
+
+  .teamWrapper {
+    padding: 0 1rem 2rem;
+  }
+
+  .teamCardTitle.cardTitle {
+    font-size: calc(2vw + 8px);
+  }
+}
+
+@media (max-width: $tablet) {
+  .cardText {
+    font-size: 1rem;
+  }
+
+  .divider {
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: $tablet-540-width) {
+  .teamWrapper {
+    padding: 0 0.5rem 2rem;
+  }
+
+  .teamCardTitle.cardTitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: $mobile) {
+  .teamHeading.mainHeading {
+    margin: 1.5rem 0;
+    font-size: 1.5rem;
+  }
+
+  .divider {
+    margin: 0.5rem 0;
+  }
+
+  .cardText {
+    font-size: 0.875rem;
+  }
 }

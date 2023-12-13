@@ -15,7 +15,7 @@ export function CourseSection() {
       <Title level={4} className={styles.courseHeading + ' ' + styles.subHeading}>
         {COURSE_HEADINGS_TEXT.subheading}
       </Title>
-      <Flex justify={'space-evenly'}>
+      <Flex className={styles.logoWrapper} justify={'space-evenly'}>
         <Link to="https://rs.school/js/">
           <RssLogo style={{ width: '12.5rem', height: '8.125rem' }} />
         </Link>

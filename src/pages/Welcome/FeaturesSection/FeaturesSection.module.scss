@@ -1,5 +1,40 @@
+@import '../../../styles/constants';
+
 .cardsWrapper {
+  gap: 1.5rem;
   padding: 4rem 2rem;
   background-color: #ffffff;
   background-image: url('../../../assets/svg/white-background.svg');
+}
+
+.featureCardHeading.featureHeading {
+  font-size: 1.75rem;
+}
+
+.featureCard.card {
+  border: 2px solid #4e98ff;
+  box-shadow: 15px 17px #4e98ff;
+}
+
+@media (max-width: $laptop) {
+  .featureCardHeading.featureHeading {
+    font-size: calc(2vw + 7px);
+  }
+
+  .ant-card-body {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: $tablet) {
+  .cardsWrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: $tablet-540-width) {
+  .featureCardHeading.featureHeading {
+    font-size: 1.125rem;
+  }
 }

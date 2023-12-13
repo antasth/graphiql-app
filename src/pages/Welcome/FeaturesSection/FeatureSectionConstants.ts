@@ -22,9 +22,3 @@ export const DATA_FEATURES = [
     ],
   },
 ];
-
-export const featureCardStyle = {
-  border: '2px solid #4e98ff',
-  boxShadow: '15px 17px #4e98ff',
-  height: '100%',
-};

@@ -1,3 +1,3 @@
 # graphiql-app
 
-RSS GraphiQLQL Application
+RSS GraphiQL Application

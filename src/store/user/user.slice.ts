@@ -1,11 +1,14 @@
 import { IUser } from '@/types';
+import { getUserFromLocalStorage, isUserExists } from '@/utils/localStorage';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-const initialState: IUser = {
-  id: null,
-  email: null,
-  token: null,
-};
+const initialState: IUser = isUserExists()
+  ? getUserFromLocalStorage()
+  : {
+      id: null,
+      email: null,
+      token: null,
+    };
 
 export const userSlice = createSlice({
   name: 'user',

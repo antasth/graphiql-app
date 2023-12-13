@@ -1,4 +1,5 @@
 import { useTranslate } from '@/context/TranslateContext';
+import { removeUserFromLocalStorage, saveUserToLocalStorage } from '@/utils/localStorage';
 import { App } from 'antd';
 import { FirebaseError } from 'firebase/app';
 import {
@@ -22,7 +23,9 @@ export const useFirebase = (auth: Auth) => {
       try {
         const { user } = await firebaseSignInWithEmailAndPassword(auth, email, password);
         user.getIdToken().then((accessToken) => {
-          setUser({ id: user.uid, email: user.email, token: accessToken });
+          const userData = { id: user.uid, email: user.email, token: accessToken };
+          setUser(userData);
+          saveUserToLocalStorage(userData);
         });
         notification.success({
           message: t('Auth.Signin', 'Something went wrong, try again later'),
@@ -46,7 +49,9 @@ export const useFirebase = (auth: Auth) => {
       try {
         const { user } = await firebaseCreateUserWithEmailAndPassword(auth, email, password);
         user.getIdToken().then((accessToken) => {
-          setUser({ id: user.uid, email: user.email, token: accessToken });
+          const userData = { id: user.uid, email: user.email, token: accessToken };
+          setUser(userData);
+          saveUserToLocalStorage(userData);
         });
         notification.success({
           message: t('Auth.Signup', 'Something went wrong, try again later'),
@@ -71,6 +76,7 @@ export const useFirebase = (auth: Auth) => {
       await signOut(auth);
       notification.success({ message: t('Auth.Signout', 'Something went wrong, try again later') });
       removeUser();
+      removeUserFromLocalStorage();
     } catch (error) {
       if (error instanceof FirebaseError) {
         notification.error({ message: error.message });

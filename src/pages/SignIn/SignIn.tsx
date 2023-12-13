@@ -39,7 +39,7 @@ export function SignIn() {
         autoComplete="off"
       >
         <Form.Item
-          label={t('Form.Email', 'Emai')}
+          label={t('Form.Email', 'Email')}
           name="email"
           rules={[
             {

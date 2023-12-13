@@ -1,3 +1,4 @@
+import { useTranslate } from '@/context/TranslateContext';
 import { App } from 'antd';
 import { FirebaseError } from 'firebase/app';
 import {
@@ -13,6 +14,7 @@ export const useFirebase = (auth: Auth) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setUser, removeUser } = useActions();
   const { notification } = App.useApp();
+  const { t } = useTranslate();
 
   const signInWithEmailAndPassword = useCallback(
     async (email: string, password: string) => {
@@ -22,18 +24,20 @@ export const useFirebase = (auth: Auth) => {
         user.getIdToken().then((accessToken) => {
           setUser({ id: user.uid, email: user.email, token: accessToken });
         });
-        notification.success({ message: 'Sign in success!' });
+        notification.success({
+          message: t('Auth.Signin', 'Something went wrong, try again later'),
+        });
 
         return user;
       } catch (error) {
         if (error instanceof FirebaseError) {
-          notification.error({ message: error.message });
+          notification.error({ message: t(error.code, 'Something went wrong, try again later') });
         }
       } finally {
         setIsLoading(false);
       }
     },
-    [auth, setUser, notification]
+    [t, auth, setUser, notification]
   );
 
   const createUserWithEmailAndPassword = useCallback(
@@ -44,24 +48,28 @@ export const useFirebase = (auth: Auth) => {
         user.getIdToken().then((accessToken) => {
           setUser({ id: user.uid, email: user.email, token: accessToken });
         });
-        notification.success({ message: 'Create user success!' });
+        notification.success({
+          message: t('Auth.Signup', 'Something went wrong, try again later'),
+        });
         return user;
       } catch (error) {
         if (error instanceof FirebaseError) {
-          notification.error({ message: error.message });
+          console.log(error.code);
+
+          notification.error({ message: t(error.code, 'Something went wrong, try again later') });
         }
       } finally {
         setIsLoading(false);
       }
     },
-    [auth, setUser, notification]
+    [t, auth, setUser, notification]
   );
 
   const signOutFromUserAccount = useCallback(async () => {
     setIsLoading(true);
     try {
       await signOut(auth);
-      notification.success({ message: 'Sign out success!' });
+      notification.success({ message: t('Auth.Signout', 'Something went wrong, try again later') });
       removeUser();
     } catch (error) {
       if (error instanceof FirebaseError) {
@@ -70,7 +78,7 @@ export const useFirebase = (auth: Auth) => {
     } finally {
       setIsLoading(false);
     }
-  }, [auth, notification, removeUser]);
+  }, [t, auth, notification, removeUser]);
 
   return {
     signInWithEmailAndPassword,

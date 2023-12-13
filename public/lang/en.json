@@ -18,5 +18,15 @@
   "Form.accountMessageSignUp": "Already have an account?",
   "Form.accountMessageSignIn": "Don't have an account?",
   "Form.SignUp": "Sign up",
-  "Form.SignIn": "Sign in"
+  "Form.SignIn": "Sign in",
+  "Auth.Signout": "You have successfully logged out of your account!",
+  "Auth.Signin": "You have successfully logged into your account!",
+  "Auth.Signup": "You have successfully created an account!",
+  "auth/email-already-exists": "An account with email address already exists",
+  "auth/wrong-password": "You have entered an wrong email or password",
+  "auth/weak-password": "Зassword is too weak",
+  "auth/user-not-found": "You have entered an wrong email or password",
+  "auth/too-many-requests": "Too many failed login attempts for this email. Please try again later",
+  "auth/invalid-email": "You have entered an invalid email",
+  "auth/email-already-in-use": "This email address is already in use"
 }

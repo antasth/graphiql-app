@@ -71,7 +71,7 @@ export const Header = () => {
       </Affix>
       <AntdHeader className={`${styles.header} ${isAffixed ? styles.affixed : ''}`}>
         <Menu onClick={onClick} mode="horizontal" items={menuItems} className={styles.menu} />
-        {isAuth && <Button onClick={handleLogOut}>Sign out</Button>}
+        {isAuth && <Button onClick={handleLogOut}>{t('Application.SignOut', 'Sign out')}</Button>}
         <LanguageSwitcher />
       </AntdHeader>
     </>

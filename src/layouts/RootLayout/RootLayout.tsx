@@ -2,7 +2,7 @@ import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Layout } from 'antd';
 
-import { SignUp } from '@/pages/SignUp';
+import { SignIn } from '@/pages/SignIn';
 import styles from './RootLayout.module.scss';
 
 export function RootLayout() {
@@ -11,8 +11,8 @@ export function RootLayout() {
       <Header />
       <Layout.Content className={styles.main}>
         {/* <Outlet /> */}
-        {/* <SignIn /> */}
-        <SignUp />
+        <SignIn />
+        {/* <SignUp /> */}
       </Layout.Content>
       <Footer />
     </Layout>

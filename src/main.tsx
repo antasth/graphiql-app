@@ -1,10 +1,12 @@
+import { setupStore } from '@/store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { App } from './app';
 import './firebase';
 import './index.scss';
-import { store } from './store';
+
+const store = setupStore();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

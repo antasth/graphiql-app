@@ -1,11 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { userReducer } from './user/user.slice';
 
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+export const rootReducer = combineReducers({
+  user: userReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export function setupStore(preloadedState?: Partial<RootState>) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  });
+}
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;

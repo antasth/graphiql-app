@@ -1,2 +1,2 @@
-export { store } from './store';
-export type { RootState } from './store';
+export { setupStore } from './store';
+export type { AppStore, RootState } from './store';

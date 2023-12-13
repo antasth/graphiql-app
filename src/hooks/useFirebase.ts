@@ -59,8 +59,6 @@ export const useFirebase = (auth: Auth) => {
         return user;
       } catch (error) {
         if (error instanceof FirebaseError) {
-          console.log(error.code);
-
           notification.error({ message: t(error.code, 'Something went wrong, try again later') });
         }
       } finally {

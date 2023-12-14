@@ -1,5 +1,4 @@
 import styles from './Welcome.module.scss';
-
 import { TopSection } from './TopSection';
 import { FeaturesSection } from './FeaturesSection';
 import { TeamSection } from './TeamSection';

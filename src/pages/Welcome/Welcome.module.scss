@@ -1,9 +1,9 @@
-@import '../../styles/constants';
+@import '@/styles/constants';
 
 .welcomeSection {
   text-align: left;
   background-color: #4e98ff;
-  background-image: url('/src/assets/svg/blue-background.svg');
+  background-image: url('@/assets/svg/blue-background.svg');
 }
 
 .topWrapper {

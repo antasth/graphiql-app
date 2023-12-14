@@ -11,8 +11,8 @@ export function TeamSection() {
         Meet Setun-70 GraphiQL Playground team
       </Title>
       <Flex vertical gap={'2rem'} className={styles.teamWrapper}>
-        {DEVELOPERS_INFO.map((item, i) => (
-          <Card key={i} bordered={false}>
+        {DEVELOPERS_INFO.map((item) => (
+          <Card key={item.name} bordered={false}>
             <Title className={styles.teamCardTitle + ' ' + styles.cardTitle} level={4}>
               {item.name}
             </Title>

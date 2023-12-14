@@ -1,9 +1,9 @@
-@import '/src/styles/constants';
+@import '@/styles/constants';
 
 .courseWrapper {
   padding: 4rem 2rem;
   background-color: #ffffff;
-  background-image: url('/src/assets/svg/white-background.svg');
+  background-image: url('@/assets/svg/white-background.svg');
 }
 
 .courseHeading.mainHeading {

@@ -1,3 +1,5 @@
+import { TAB_WIDTH } from '@/constants/formatting';
+
 interface IRequestOptions {
   query: string;
   variables: string;
@@ -36,5 +38,5 @@ export const getData = async (url: string, options: IRequestOptions): Promise<st
 
   const responseData = await fetchData(url, requestBody, headers);
 
-  return JSON.stringify(responseData, null, 2);
+  return JSON.stringify(responseData, null, TAB_WIDTH);
 };

@@ -6,7 +6,7 @@ import styles from './FeaturesSection.module.scss';
 export function FeaturesSection() {
   const { Title, Text } = Typography;
   return (
-    <section>
+    <section className={styles.featuresSection}>
       <Flex className={styles.cardsWrapper}>
         {DATA_FEATURES.map((item) => (
           <Card

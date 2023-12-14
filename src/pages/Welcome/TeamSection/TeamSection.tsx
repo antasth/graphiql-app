@@ -6,7 +6,7 @@ import styles from './TeamSection.module.scss';
 export function TeamSection() {
   const { Title, Text } = Typography;
   return (
-    <section className={styles.teamWrapper}>
+    <section className={styles.teamSection}>
       <Title level={2} className={styles.teamHeading + ' ' + styles.mainHeading}>
         Meet Setun-70 GraphiQL Playground team
       </Title>

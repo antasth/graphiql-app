@@ -19,7 +19,7 @@ export function GraphiQL() {
   const { t } = useTranslate();
 
   const showDocumentation = () => {
-    setIsOpenDocs((prevState) => !prevState);
+    setIsOpenDocs(!isOpenDocs);
   };
 
   const prettifying = () => {

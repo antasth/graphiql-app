@@ -30,7 +30,7 @@ export function RequestEditor({
   const { t } = useTranslate();
 
   const showPanel = () => {
-    setIsOpenPanel((prevState) => !prevState);
+    setIsOpenPanel(!isOpenPanel);
   };
 
   const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {

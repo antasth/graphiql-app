@@ -1,7 +1,7 @@
 import { UserOutlined, BankOutlined, EnvironmentOutlined, EditOutlined } from '@ant-design/icons';
 import { DEVELOPERS_INFO } from './TeamSectionConstants';
 import { Typography, Card, Flex, Divider } from 'antd';
-import styles from './teamSection.module.scss';
+import styles from './TeamSection.module.scss';
 
 export function TeamSection() {
   const { Title, Text } = Typography;

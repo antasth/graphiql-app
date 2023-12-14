@@ -1,0 +1,46 @@
+@import '../../../styles/constants';
+
+.buttonWrapper {
+  margin-top: 2rem;
+}
+
+.welcomeBtn.loginBtn,
+.welcomeBtn.signupBtn {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: $laptop) {
+  .buttonWrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+
+  .welcomeBtn.loginBtn,
+  .welcomeBtn.signupBtn {
+    height: 4.5rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: $tablet) {
+  .buttonWrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: $tablet-540-width) {
+  .welcomeBtn.loginBtn,
+  .welcomeBtn.signupBtn {
+    height: 3.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+}

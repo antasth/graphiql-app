@@ -32,5 +32,10 @@
   "GraphQL.Variables": "Переменные",
   "GraphQL.Variables.Placeholder": "# Введите ваши переменные здесь",
   "GraphQL.Headers": "Заголовки",
-  "GraphQL.Headers.Placeholder": "# Введите ваши заголовки здесь"
+  "GraphQL.Headers.Placeholder": "# Введите ваши заголовки здесь",
+  "Errors.UnexpectedError": "Неожиданная ошибка",
+  "Errors.FailedGetData": "Неудалось получить данные от выбранного API",
+  "Errors.RequestIsNotAvailable": "Запрос недоступен",
+  "Errors.UrlIsEmpty": "URL адрес не может быть пустым",
+  "Errors.QueryIsEmpty": "Запрос не может быть пустым"
 }

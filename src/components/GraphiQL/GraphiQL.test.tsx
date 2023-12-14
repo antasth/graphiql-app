@@ -1,5 +1,14 @@
 import { fireEvent, render } from '@testing-library/react';
+import { Mock } from 'vitest';
 import { GraphiQL } from './GraphiQL';
+
+beforeEach(() => {
+  (fetch as Mock).mockReset();
+});
+
+const createFetchResponse = (data = {}) => {
+  return { json: () => Promise.resolve(data) };
+};
 
 describe('GraphiQL', () => {
   test('renders correctly', () => {
@@ -16,11 +25,20 @@ describe('GraphiQL', () => {
     expect(urlInput).toHaveValue(url);
   });
 
-  test('show documentation', () => {
-    const { getByTestId, getByRole } = render(<GraphiQL />);
-    const btn = getByTestId('btn-show-docs');
-    fireEvent.click(btn);
-    const drawer = getByRole('dialog');
-    expect(drawer).toBeInTheDocument();
+  test('send request', () => {
+    const url = 'https://example.com/graphql';
+    const query = 'exampleQuery';
+    const mockData = { data: 'exampleData' };
+    (fetch as Mock).mockResolvedValue(createFetchResponse(mockData));
+
+    const { getByTestId } = render(<GraphiQL />);
+    const urlInput = getByTestId('url-input');
+    fireEvent.change(urlInput, { target: { value: url } });
+    const editor = getByTestId('request-editor');
+    fireEvent.change(editor, { target: { value: query } });
+    const sendButton = getByTestId('btn-send-request');
+    fireEvent.click(sendButton);
+
+    expect(fetch).toHaveBeenCalled();
   });
 });

@@ -32,5 +32,10 @@
   "GraphQL.Variables": "Variables",
   "GraphQL.Variables.Placeholder": "# Write your variables here",
   "GraphQL.Headers": "Headers",
-  "GraphQL.Headers.Placeholder": "# Write your headers here"
+  "GraphQL.Headers.Placeholder": "# Write your headers here",
+  "Errors.UnexpectedError": "Unexpected error",
+  "Errors.FailedGetData": "Failed to get data from the selected API",
+  "Errors.RequestIsNotAvailable": "Request is not available",
+  "Errors.UrlIsEmpty": "The URL cannot be empty",
+  "Errors.QueryIsEmpty": "The query cannot be empty"
 }

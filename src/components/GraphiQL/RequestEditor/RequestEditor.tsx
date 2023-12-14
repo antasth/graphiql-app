@@ -44,6 +44,7 @@ export function RequestEditor({
         placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
         value={query}
         onChange={onChangeHandler}
+        data-testid="request-editor"
       />
 
       <Tabs

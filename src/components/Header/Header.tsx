@@ -22,7 +22,7 @@ export const Header = () => {
   const menuItems: MenuProps['items'] = [
     {
       label: t('Application.Welcome', 'Welcome'),
-      key: 'welcome',
+      key: '/',
       icon: <HomeOutlined />,
     },
   ];

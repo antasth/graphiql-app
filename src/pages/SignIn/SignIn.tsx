@@ -16,7 +16,7 @@ export function SignIn() {
   const onFinish = async (values: ISignInValues) => {
     const user = await signInWithEmailAndPassword(values.email, values.password);
     if (user) {
-      navigate('/');
+      navigate('/main');
     }
   };
 

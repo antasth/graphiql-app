@@ -1,5 +1,4 @@
 import styles from './ButtonsWrapper.module.scss';
-import { ArrowRightOutlined } from '@ant-design/icons';
 import { Flex, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ export function ButtonsWrapper() {
         onClick={() => {
           navigate('signin');
         }}
-        className={styles.welcomeBtn + ' ' + styles.loginBtn}
+        id={styles.loginBtn}
         type="primary"
       >
         Sign In
@@ -22,7 +21,7 @@ export function ButtonsWrapper() {
         onClick={() => {
           navigate('signup');
         }}
-        className={styles.welcomeBtn + ' ' + styles.signupBtn}
+        id={styles.signupBtn}
         type="default"
       >
         Sign Up
@@ -32,11 +31,10 @@ export function ButtonsWrapper() {
         onClick={() => {
           navigate('main');
         }}
-        className={styles.welcomeBtn + ' ' + styles.signupBtn}
+        id={styles.mainPageBtn}
         type="default"
       >
         Main page
-        <ArrowRightOutlined />
       </Button>
     </Flex>
   );

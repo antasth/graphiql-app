@@ -24,6 +24,7 @@ export function Welcome() {
             <Title
               className={styles.welcomeHeading + ' ' + styles.secondMainHeading}
               style={{ marginTop: '0' }}
+              level={2}
             >
               GraphiQL Playround!
             </Title>
@@ -34,7 +35,7 @@ export function Welcome() {
         <div className={styles.subHeadingWrapper}>
           <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
             {HEADINGS_TEXT.first}
-            <br></br>
+            <br />
             {HEADINGS_TEXT.second}
           </Text>
         </div>

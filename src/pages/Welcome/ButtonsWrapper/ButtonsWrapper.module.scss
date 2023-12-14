@@ -4,14 +4,19 @@
   margin-top: 2rem;
 }
 
-.welcomeBtn.loginBtn,
-.welcomeBtn.signupBtn {
+#loginBtn,
+#signupBtn,
+#mainPageBtn {
   display: flex;
   align-items: center;
   height: 5rem;
   padding: 1rem 1.5rem;
   font-size: 1.5rem;
   text-align: center;
+}
+
+#loginBtn:hover {
+  background-color: #1677ffda;
 }
 
 @media (max-width: $laptop) {
@@ -21,8 +26,9 @@
     margin-top: 0;
   }
 
-  .welcomeBtn.loginBtn,
-  .welcomeBtn.signupBtn {
+  #loginBtn,
+  #signupBtn,
+  #mainPageBtn {
     height: 4.5rem;
     padding: 0.5rem 1rem;
   }
@@ -37,8 +43,9 @@
 }
 
 @media (max-width: $tablet-540-width) {
-  .welcomeBtn.loginBtn,
-  .welcomeBtn.signupBtn {
+  #loginBtn,
+  #signupBtn,
+  #mainPageBtn {
     height: 3.5rem;
     padding: 0.5rem;
     font-size: 1rem;

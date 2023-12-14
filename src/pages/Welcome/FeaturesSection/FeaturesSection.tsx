@@ -8,8 +8,12 @@ export function FeaturesSection() {
   return (
     <section>
       <Flex className={styles.cardsWrapper}>
-        {DATA_FEATURES.map((item, i) => (
-          <Card key={i} bordered={false} className={styles.featureCard + ' ' + styles.card}>
+        {DATA_FEATURES.map((item) => (
+          <Card
+            key={item.title}
+            bordered={false}
+            className={styles.featureCard + ' ' + styles.card}
+          >
             <Title className={styles.featureCardHeading + ' ' + styles.featureHeading} level={4}>
               {item.title}
             </Title>

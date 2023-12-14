@@ -53,7 +53,7 @@ export const Header = () => {
     navigate('/');
   };
 
-  const onClick: MenuProps['onClick'] = async (e) => {
+  const onClick: MenuProps['onClick'] = (e) => {
     navigate(e.key);
   };
 

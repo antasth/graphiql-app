@@ -66,7 +66,7 @@ export const Header = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <Affix target={() => window} onChange={(affixed?: boolean) => handleAffixChange(affixed)}>
+      <Affix target={() => window} onChange={handleAffixChange}>
         <div></div>
       </Affix>
       <AntdHeader className={`${styles.header} ${isAffixed ? styles.affixed : ''}`}>

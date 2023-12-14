@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { CourseSection } from './CourseSection';
 
 describe('Course Section tests', () => {
-  test('Must headings elements', () => {
+  test('Must contain headings elements', () => {
     const { getByText } = render(<CourseSection />, { wrapper: MemoryRouter });
     const courseSectionHeading = getByText('Introducing RSSchool React Course');
     const courseSectionSubheading = getByText(

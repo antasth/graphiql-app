@@ -24,7 +24,7 @@
   "Auth.Signup": "You have successfully created an account!",
   "auth/email-already-exists": "An account with email address already exists",
   "auth/wrong-password": "You have entered an wrong email or password",
-  "auth/weak-password": "Зassword is too weak",
+  "auth/weak-password": "Password is too weak",
   "auth/user-not-found": "You have entered an wrong email or password",
   "auth/too-many-requests": "Too many failed login attempts for this email. Please try again later",
   "auth/invalid-email": "You have entered an invalid email",

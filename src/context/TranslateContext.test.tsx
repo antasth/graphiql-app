@@ -23,7 +23,7 @@ const TestComponent = () => {
       <div data-testid="language">{language}</div>
       <div data-testid="available-languages">{availableLanguages.join(',')}</div>
       <button data-testid="set-language-ru" onClick={() => setLanguage('ru')}>
-        Set Language to ES
+        Set Language to RU
       </button>
     </div>
   );

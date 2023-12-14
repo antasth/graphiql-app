@@ -12,12 +12,16 @@ interface IProps {
 export function Headers({ value, onChange }: IProps) {
   const { t } = useTranslate();
 
+  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(event.target.value);
+  };
+
   return (
     <TextArea
       id={styles.headers}
       placeholder={t('GraphQL.Headers.Placeholder', '')}
       value={value}
-      onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChange(event.target.value)}
+      onChange={onChangeHandler}
     />
   );
 }

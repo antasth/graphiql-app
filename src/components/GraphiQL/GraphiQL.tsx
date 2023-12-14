@@ -22,7 +22,7 @@ export function GraphiQL() {
   const { notification } = App.useApp();
 
   const showDocumentation = () => {
-    setIsOpenDocs((prevState) => !prevState);
+    setIsOpenDocs(!isOpenDocs);
   };
 
   const prettifying = () => {

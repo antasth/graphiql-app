@@ -30,7 +30,11 @@ export function RequestEditor({
   const { t } = useTranslate();
 
   const showPanel = () => {
-    setIsOpenPanel((prevState) => !prevState);
+    setIsOpenPanel(!isOpenPanel);
+  };
+
+  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    onChangeQuery(event.target.value);
   };
 
   return (
@@ -39,7 +43,7 @@ export function RequestEditor({
         id={styles.editor}
         placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
         value={query}
-        onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChangeQuery(event.target.value)}
+        onChange={onChangeHandler}
         data-testid="request-editor"
       />
 

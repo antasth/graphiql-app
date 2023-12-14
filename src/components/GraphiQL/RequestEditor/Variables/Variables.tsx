@@ -12,12 +12,16 @@ interface IProps {
 export function Variables({ value, onChange }: IProps) {
   const { t } = useTranslate();
 
+  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(event.target.value);
+  };
+
   return (
     <TextArea
       id={styles.variables}
       placeholder={t('GraphQL.Variables.Placeholder', '')}
       value={value}
-      onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChange(event.target.value)}
+      onChange={onChangeHandler}
     />
   );
 }

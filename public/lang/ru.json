@@ -23,7 +23,7 @@
   "GraphQL.SendButton": "Отправить запрос",
   "GraphQL.Documentation": "Документация",
   "GraphQL.ShowDocumentation": "Открыть документацию",
-  "GraphQL.Prettify": "Выровнить текст",
+  "GraphQL.Prettify": "Выровнять текст",
   "GraphQL.EnterURL": "Введите URL адрес",
   "GraphQL.RequestEditor.Placeholder": "# Введите ваш запрос здесь",
   "GraphQL.ResponseViewer.Placeholder": "# Результат будет отображаться здесь",

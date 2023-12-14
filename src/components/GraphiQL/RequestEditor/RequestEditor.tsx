@@ -33,13 +33,17 @@ export function RequestEditor({
     setIsOpenPanel((prevState) => !prevState);
   };
 
+  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    onChangeQuery(event.target.value);
+  };
+
   return (
     <Flex vertical className={styles.container}>
       <TextArea
         id={styles.editor}
         placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
         value={query}
-        onChange={(event: ChangeEvent<HTMLTextAreaElement>) => onChangeQuery(event.target.value)}
+        onChange={onChangeHandler}
       />
 
       <Tabs

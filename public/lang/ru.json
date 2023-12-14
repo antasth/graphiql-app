@@ -21,5 +21,16 @@
   "Form.accountMessageSignUp": "Уже зарегистрированы?",
   "Form.accountMessageSignIn": "Не зарегистрированы?",
   "Form.SignUp": "Регистрация",
-  "Form.SignIn": "Вход"
+  "Form.SignIn": "Вход",
+  "GraphQL.SendButton": "Отправить запрос",
+  "GraphQL.Documentation": "Документация",
+  "GraphQL.ShowDocumentation": "Открыть документацию",
+  "GraphQL.Prettify": "Выровнять текст",
+  "GraphQL.EnterURL": "Введите URL адрес",
+  "GraphQL.RequestEditor.Placeholder": "# Введите ваш запрос здесь",
+  "GraphQL.ResponseViewer.Placeholder": "# Результат будет отображаться здесь",
+  "GraphQL.Variables": "Переменные",
+  "GraphQL.Variables.Placeholder": "# Введите ваши переменные здесь",
+  "GraphQL.Headers": "Заголовки",
+  "GraphQL.Headers.Placeholder": "# Введите ваши заголовки здесь"
 }

@@ -43,7 +43,7 @@ export function SignUp() {
         </Form.Item>
 
         <Form.Item
-          label={t('Form.Email', 'Emai')}
+          label={t('Form.Email', 'Email')}
           name="email"
           rules={[
             {
@@ -70,7 +70,7 @@ export function SignUp() {
         >
           <Input.Password
             autoComplete="on"
-            placeholder={t('Form.PasswordPlaceholder', '8+ characters')}
+            placeholder={t('Form.PasswordPlaceholderSignUp', '8+ characters')}
           />
         </Form.Item>
 
@@ -96,7 +96,7 @@ export function SignUp() {
           </Button>
 
           <p>
-            {t('Form.accountMessage', 'Already have an account?')}{' '}
+            {t('Form.accountMessageSignUp', 'Already have an account?')}{' '}
             <Link to={'/signin'}> {t('Form.SignIn', 'Sign in')}</Link>
           </p>
         </Form.Item>

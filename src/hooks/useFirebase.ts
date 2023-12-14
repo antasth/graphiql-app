@@ -28,9 +28,8 @@ export const useFirebase = (auth: Auth) => {
           saveUserToLocalStorage(userData);
         });
         notification.success({
-          message: t('Auth.Signin', 'Something went wrong, try again later'),
+          message: t('Auth.Signin', 'You have successfully logged into your account!'),
         });
-
         return user;
       } catch (error) {
         if (error instanceof FirebaseError) {
@@ -54,7 +53,7 @@ export const useFirebase = (auth: Auth) => {
           saveUserToLocalStorage(userData);
         });
         notification.success({
-          message: t('Auth.Signup', 'Something went wrong, try again later'),
+          message: t('Auth.Signup', 'You have successfully created an account!'),
         });
         return user;
       } catch (error) {
@@ -72,9 +71,11 @@ export const useFirebase = (auth: Auth) => {
     setIsLoading(true);
     try {
       await signOut(auth);
-      notification.success({ message: t('Auth.Signout', 'Something went wrong, try again later') });
       removeUser();
       removeUserFromLocalStorage();
+      notification.success({
+        message: t('Auth.Signout', 'You have successfully logged out of your account!'),
+      });
     } catch (error) {
       if (error instanceof FirebaseError) {
         notification.error({ message: error.message });

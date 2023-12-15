@@ -46,7 +46,7 @@
 
 @media (max-width: $laptop) {
   .topWrapper {
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 0;
   }
 
   .welcomeHeading.mainHeading,
@@ -72,7 +72,7 @@
 
 @media (max-width: $tablet) {
   .topWrapper {
-    padding: 1rem;
+    padding: 1rem 1rem 0;
   }
 
   .welcomeHeading.mainHeading,

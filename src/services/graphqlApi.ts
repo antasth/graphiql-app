@@ -1,5 +1,5 @@
 import { TAB_WIDTH } from '@/constants/formatting';
-import type { IApiResponse, INestedObject } from '@/types';
+import type { IApiResponse, IApiSchemaResponse, ITypeRef } from '@/types';
 import { OPERATION_NAME, QUERY } from './introspectionQuery';
 
 interface IRequestOptions {
@@ -24,11 +24,18 @@ const buildRequestHeaders = (options: IRequestOptions) => {
   return headers === '' ? {} : JSON.parse(headers);
 };
 
-const fetchData = async (
+const isValidTypeName = (type: ITypeRef): boolean => {
+  if (!type.name) {
+    return false;
+  }
+  return /^(?!__).*/.test(type.name);
+};
+
+const fetchData = async <T>(
   url: string,
   body: string,
   headers: Record<string, string> = {}
-): Promise<IApiResponse> => {
+): Promise<T> => {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -37,7 +44,7 @@ const fetchData = async (
     },
     body,
   });
-  const data = (await response.json()) as IApiResponse;
+  const data = (await response.json()) as T;
   return data;
 };
 
@@ -45,12 +52,12 @@ export const getData = async (url: string, options: IRequestOptions): Promise<st
   const requestBody = buildRequestBody(options);
   const headers = buildRequestHeaders(options);
 
-  const responseData = await fetchData(url, requestBody, headers);
+  const responseData = await fetchData<IApiResponse>(url, requestBody, headers);
 
   return JSON.stringify(responseData, null, TAB_WIDTH);
 };
 
-export const getSchema = async (url: string): Promise<INestedObject> => {
+export const getAvailableTypes = async (url: string): Promise<ITypeRef[]> => {
   const options = {
     query: QUERY,
     variables: '',
@@ -58,6 +65,6 @@ export const getSchema = async (url: string): Promise<INestedObject> => {
     operationName: OPERATION_NAME,
   };
   const requestBody = buildRequestBody(options);
-  const { data } = await fetchData(url, requestBody);
-  return data['__schema'];
+  const { data } = await fetchData<IApiSchemaResponse>(url, requestBody);
+  return data.__schema.types.filter(isValidTypeName);
 };

@@ -1,14 +1,17 @@
-import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { ChangeEvent, useState } from 'react';
+
+import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { SiGraphql } from 'react-icons/si';
+
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
+
+import { Documentation } from './Documentation';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
 
 import styles from './GraphiQL.module.scss';
-import { Documentation } from './Documentation';
 
 export function GraphiQL() {
   const [url, setUrl] = useState('');

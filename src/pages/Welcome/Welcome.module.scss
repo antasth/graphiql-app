@@ -3,7 +3,7 @@
 .welcomeSection {
   display: flex;
   flex-direction: column;
-  max-width: 96rem;
+  justify-content: center;
   text-align: left;
   background-color: #4e98ff;
   background-image: url('@/assets/svg/blue-background.svg');

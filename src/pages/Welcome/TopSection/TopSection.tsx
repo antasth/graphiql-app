@@ -1,6 +1,5 @@
 import { ButtonsWrapper } from './ButtonsWrapper';
 import { HEADINGS_TEXT } from './TopSectionConstants';
-import PlaygroundScreenshot from '@/assets/img/screenshot.png';
 import styles from './TopSection.module.scss';
 import { Typography, Flex, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -46,15 +45,6 @@ export function TopSection() {
           Explore GraphiQL Playground
         </Button>
       </Flex>
-
-      <div className={styles.imgWrapper}>
-        {/* TO DO: REPLACE WITH OUR PROJECT SCREENSHOT  */}
-        <img
-          className={styles.welcomeSectionImg}
-          src={PlaygroundScreenshot}
-          alt="playground-screenshot"
-        />
-      </div>
     </section>
   );
 }

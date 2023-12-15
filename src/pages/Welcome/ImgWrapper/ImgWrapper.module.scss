@@ -1,0 +1,25 @@
+@import '@/styles/constants';
+
+.imgWrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 96rem;
+  padding: 0 5rem 5rem;
+}
+
+.welcomeSectionImg {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: $tablet) {
+  .imgWrapper {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: $tablet-540-width) {
+  .imgWrapper {
+    display: none;
+  }
+}

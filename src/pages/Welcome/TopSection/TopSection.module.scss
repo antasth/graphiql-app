@@ -1,9 +1,10 @@
 @import '@/styles/constants';
 
 .topWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 96rem;
+  height: 100vh;
   padding: 2rem;
 }
 
@@ -33,7 +34,7 @@
   display: flex;
   height: 5rem;
   padding: 0;
-  margin-top: 3rem;
+  margin-top: 6rem;
   font-size: 3rem;
   color: #0046b8;
   text-align: center;
@@ -41,17 +42,6 @@
 
 #linkBtn:hover {
   color: #dceefe;
-}
-
-.imgWrapper {
-  display: flex;
-  justify-content: center;
-  padding: 5rem;
-}
-
-.welcomeSectionImg {
-  width: 100%;
-  height: auto;
 }
 
 @media (max-width: $laptop) {
@@ -75,6 +65,7 @@
   #linkBtn {
     height: 4.5rem;
     padding: 0.5rem 1rem;
+    margin-top: 2rem;
     font-size: calc(3vw + 14px);
   }
 }
@@ -92,10 +83,6 @@
   .welcomeHeading.subHeading {
     font-size: calc(2vw + 10px);
   }
-
-  .imgWrapper {
-    padding: 0;
-  }
 }
 
 @media (max-width: $tablet-540-width) {
@@ -105,12 +92,9 @@
   }
 
   #linkBtn {
-    font-size: calc(2vw + 14px);
-  }
-
-  @media (max-width: $mobile) {
-    .imgWrapper {
-      display: none;
-    }
+    max-width: 19rem;
+    margin-top: 2.5rem;
+    font-size: calc(2vw + 24px);
+    white-space: normal;
   }
 }

@@ -47,5 +47,6 @@ export interface ITypeRef {
   description: string | null;
   kind: KindsOfTypes;
   fields: IField[] | null;
+  inputFields: IField[] | null;
   ofType: ITypeRef | null;
 }

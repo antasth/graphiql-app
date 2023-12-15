@@ -1,22 +1,43 @@
+import { List, Typography } from 'antd';
+
 import type { ITypeRef } from '@/types';
+
+import { Field } from './Field';
 
 interface IProps {
   type: ITypeRef;
-  onSelectType: (type: ITypeRef) => void;
+  onSelectType: (name: string | null) => void;
 }
 
-export function TypeDescription({ type }: IProps) {
+export function TypeDescription({ type, onSelectType }: IProps) {
   return (
     <div>
-      <div>{type.name}</div>
-      <div>{type.description}</div>
-      <ul>
-        {type.fields?.map((field) => (
-          <li key={field.name}>
-            {field.name}: {field.type.name}
-          </li>
-        ))}
-      </ul>
+      <Typography.Title level={5}>{type.name}</Typography.Title>
+      <Typography.Text>{type.description}</Typography.Text>
+      {type.fields && (
+        <List
+          size="small"
+          split={false}
+          dataSource={type.fields}
+          renderItem={(field) => (
+            <List.Item style={{ padding: 0 }}>
+              <Field data={field} onSelectType={onSelectType} />
+            </List.Item>
+          )}
+        />
+      )}
+      {type.inputFields && (
+        <List
+          size="small"
+          split={false}
+          dataSource={type.inputFields}
+          renderItem={(field) => (
+            <List.Item style={{ padding: 0 }}>
+              <Field data={field} onSelectType={onSelectType} />
+            </List.Item>
+          )}
+        />
+      )}
     </div>
   );
 }

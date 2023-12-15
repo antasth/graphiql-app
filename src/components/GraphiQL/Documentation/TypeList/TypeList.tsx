@@ -1,21 +1,28 @@
+import { Button, List, Typography } from 'antd';
+
 import type { ITypeRef } from '@/types';
 
 interface IProps {
   list: ITypeRef[];
-  onSelectType: (type: ITypeRef) => void;
+  onSelectType: (name: string | null) => void;
 }
 
 export function TypeList({ list, onSelectType }: IProps) {
   return (
     <div>
-      <h3>All Schema Types:</h3>
-      <ul>
-        {list.map((type) => (
-          <li key={type.name} onClick={() => onSelectType(type)}>
-            {type.name}
-          </li>
-        ))}
-      </ul>
+      <Typography.Title level={5}>All Schema Types:</Typography.Title>
+      <List
+        size="small"
+        split={false}
+        dataSource={list}
+        renderItem={(type) => (
+          <List.Item style={{ padding: 0 }}>
+            <Button type="link" onClick={() => onSelectType(type.name)}>
+              {type.name}
+            </Button>
+          </List.Item>
+        )}
+      />
     </div>
   );
 }

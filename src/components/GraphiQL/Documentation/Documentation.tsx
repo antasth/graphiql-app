@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import { LeftOutlined } from '@ant-design/icons';
+import { Button, Space } from 'antd';
+import { RiHome2Line } from 'react-icons/ri';
+
 import { getAvailableTypes } from '@/services/graphqlApi';
 import type { ITypeRef } from '@/types';
 
@@ -9,6 +13,11 @@ import { TypeList } from './TypeList';
 interface IProps {
   url: string;
 }
+
+const getTypeByName = (availableTypes: ITypeRef[], name: string | null) => {
+  if (!name) return;
+  return availableTypes.find((type) => type.name === name);
+};
 
 export function Documentation({ url }: IProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +39,11 @@ export function Documentation({ url }: IProps) {
     getSchemaFromApi();
   }, [url]);
 
-  const onSelectType = (type: ITypeRef) => {
-    setExplorer([...explorer, type]);
+  const onSelectType = (name: string | null) => {
+    const type = getTypeByName(availableTypes, name);
+    if (type) {
+      setExplorer([...explorer, type]);
+    }
   };
 
   const getCurrentItem = () => {
@@ -42,20 +54,29 @@ export function Documentation({ url }: IProps) {
     setExplorer(explorer.slice(0, -1));
   };
 
+  const goToStart = () => {
+    setExplorer([]);
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
+    <>
       {explorer.length === 0 ? (
         <TypeList list={availableTypes} onSelectType={onSelectType} />
       ) : (
-        <>
-          <button onClick={goStepBack}>Back</button>
+        <Space direction="vertical" size="large">
+          <Space>
+            <Button icon={<LeftOutlined />} onClick={goStepBack}>
+              Back
+            </Button>
+            <Button icon={<RiHome2Line />} onClick={goToStart} />
+          </Space>
           <TypeDescription type={getCurrentItem()} onSelectType={onSelectType} />
-        </>
+        </Space>
       )}
-    </div>
+    </>
   );
 }

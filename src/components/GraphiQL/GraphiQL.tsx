@@ -14,7 +14,7 @@ import { Sidebar } from './Sidebar';
 import styles from './GraphiQL.module.scss';
 
 export function GraphiQL() {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState('https://countries.trevorblades.com/graphql');
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');

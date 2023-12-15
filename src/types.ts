@@ -10,3 +10,13 @@ export interface ISignInValues {
   password: string;
   username: string;
 }
+
+export interface INestedObject {
+  [key: string]: INestedObject | string;
+}
+
+export interface IApiResponse {
+  data: {
+    [key: string]: INestedObject;
+  };
+}

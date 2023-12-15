@@ -8,6 +8,7 @@ import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
 
 import styles from './GraphiQL.module.scss';
+import { Documentation } from './Documentation';
 
 export function GraphiQL() {
   const [url, setUrl] = useState('');
@@ -113,7 +114,7 @@ export function GraphiQL() {
         onClose={showDocumentation}
         open={isOpenDocs}
       >
-        All Schema Types...
+        <Documentation url={url} />
       </Drawer>
     </Flex>
   );

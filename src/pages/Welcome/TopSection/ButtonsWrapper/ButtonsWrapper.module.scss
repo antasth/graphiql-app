@@ -1,7 +1,8 @@
 @import '@/styles/constants';
 
 .buttonWrapper {
-  margin-top: 2rem;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #loginBtn,
@@ -21,8 +22,6 @@
 
 @media (max-width: $laptop) {
   .buttonWrapper {
-    flex-direction: column;
-    justify-content: flex-start;
     margin-top: 0;
   }
 

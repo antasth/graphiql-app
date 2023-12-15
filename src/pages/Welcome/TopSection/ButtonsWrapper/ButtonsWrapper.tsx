@@ -27,7 +27,7 @@ export function ButtonsWrapper() {
         Sign Up
       </Button>
 
-      <Button
+      {/* <Button
         onClick={() => {
           navigate('main');
         }}
@@ -35,7 +35,7 @@ export function ButtonsWrapper() {
         type="default"
       >
         Main page
-      </Button>
+      </Button> */}
     </Flex>
   );
 }

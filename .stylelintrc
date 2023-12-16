@@ -4,6 +4,7 @@
   "rules": {
     "color-hex-length": "long",
     "import-notation": "string",
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "selector-id-pattern": null
   }
 }

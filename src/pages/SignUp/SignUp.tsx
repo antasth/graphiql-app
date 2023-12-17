@@ -1,4 +1,3 @@
-import { Loader } from '@/components/Loader';
 import { useTranslate } from '@/context/TranslateContext';
 import { auth } from '@/firebase';
 import { useFirebase } from '@/hooks/useFirebase';
@@ -10,7 +9,7 @@ import styles from './SignUp.module.scss';
 
 export function SignUp() {
   const { t } = useTranslate();
-  const { isLoading, createUserWithEmailAndPassword } = useFirebase(auth);
+  const { createUserWithEmailAndPassword } = useFirebase(auth);
 
   const onFinish = async (values: ISignInValues) => {
     await createUserWithEmailAndPassword(values.email, values.password);
@@ -22,7 +21,6 @@ export function SignUp() {
 
   return (
     <section className={styles.signUp}>
-      {isLoading && <Loader />}
       <Form
         layout="vertical"
         name="signInForm"

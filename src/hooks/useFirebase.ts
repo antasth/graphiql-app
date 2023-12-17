@@ -8,10 +8,11 @@ import {
   signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
+import { useActions } from './useActions';
 
 export const useFirebase = (auth: Auth) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { setIsLoading } = useActions();
   const { notification } = App.useApp();
   const { t } = useTranslate();
 
@@ -31,7 +32,7 @@ export const useFirebase = (auth: Auth) => {
         setIsLoading(false);
       }
     },
-    [t, auth, notification]
+    [t, auth, notification, setIsLoading]
   );
 
   const createUserWithEmailAndPassword = useCallback(
@@ -50,7 +51,7 @@ export const useFirebase = (auth: Auth) => {
         setIsLoading(false);
       }
     },
-    [t, auth, notification]
+    [t, auth, notification, setIsLoading]
   );
 
   const signOutFromUserAccount = useCallback(async () => {
@@ -68,12 +69,11 @@ export const useFirebase = (auth: Auth) => {
     } finally {
       setIsLoading(false);
     }
-  }, [t, auth, notification]);
+  }, [t, auth, notification, setIsLoading]);
 
   return {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     signOutFromUserAccount,
-    isLoading,
   };
 };

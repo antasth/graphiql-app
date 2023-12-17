@@ -8,7 +8,6 @@ import { Affix, Menu } from 'antd';
 import { Header as AntdHeader } from 'antd/es/layout/layout';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Loader } from '../Loader';
 import styles from './Header.module.scss';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -17,7 +16,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const { t } = useTranslate();
   const { isAuth } = useAuth();
-  const { isLoading, signOutFromUserAccount } = useFirebase(auth);
+  const { signOutFromUserAccount } = useFirebase(auth);
 
   const menuItems: MenuProps['items'] = [
     {
@@ -71,7 +70,6 @@ export const Header = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
       <Affix target={() => window} onChange={handleAffixChange}>
         <div></div>
       </Affix>

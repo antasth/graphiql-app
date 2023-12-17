@@ -42,11 +42,16 @@ export interface IField {
   type: ITypeRef;
 }
 
+export interface IEnum {
+  name: string;
+}
+
 export interface ITypeRef {
   name: string | null;
   description: string | null;
   kind: KindsOfTypes;
   fields: IField[] | null;
   inputFields: IField[] | null;
+  enumValues: IEnum[];
   ofType: ITypeRef | null;
 }

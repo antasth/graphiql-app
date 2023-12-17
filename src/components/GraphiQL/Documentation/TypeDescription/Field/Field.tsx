@@ -44,8 +44,9 @@ export function Field({ data, onSelectType }: IProps) {
   const type = getTypeProps(data.type);
   return (
     <Flex vertical>
-      <Flex align="center" gap="small">
-        <Typography.Text code>{data.name}:</Typography.Text>
+      <Flex align="center" gap="0.2em" wrap="wrap">
+        <Typography.Text code>{data.name}</Typography.Text>
+        <Typography.Text>:</Typography.Text>
         <Flex align="center">
           {type.isList && '['}
           <Button type="link" style={{ padding: 0 }} onClick={() => onSelectType(type.name)}>

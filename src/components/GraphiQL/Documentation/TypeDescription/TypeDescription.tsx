@@ -1,8 +1,9 @@
-import { List, Typography } from 'antd';
+import { List, Space, Typography } from 'antd';
 
 import type { ITypeRef } from '@/types';
 
 import { Field } from './Field';
+import { FieldList } from './FieldList';
 
 interface IProps {
   type: ITypeRef;
@@ -11,13 +12,12 @@ interface IProps {
 
 export function TypeDescription({ type, onSelectType }: IProps) {
   return (
-    <div>
+    <Space direction="vertical">
       <Typography.Title level={5}>{type.name}</Typography.Title>
       <Typography.Text>{type.description}</Typography.Text>
       {type.fields && (
-        <List
-          size="small"
-          split={false}
+        <FieldList
+          title="Fields"
           dataSource={type.fields}
           renderItem={(field) => (
             <List.Item style={{ padding: 0 }}>
@@ -27,9 +27,8 @@ export function TypeDescription({ type, onSelectType }: IProps) {
         />
       )}
       {type.inputFields && (
-        <List
-          size="small"
-          split={false}
+        <FieldList
+          title="Fields"
           dataSource={type.inputFields}
           renderItem={(field) => (
             <List.Item style={{ padding: 0 }}>
@@ -38,6 +37,13 @@ export function TypeDescription({ type, onSelectType }: IProps) {
           )}
         />
       )}
-    </div>
+      {type.enumValues && (
+        <FieldList
+          title="Enum values"
+          dataSource={type.enumValues}
+          renderItem={(item) => <List.Item style={{ padding: 0 }}>{item.name}</List.Item>}
+        />
+      )}
+    </Space>
   );
 }

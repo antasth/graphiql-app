@@ -32,6 +32,7 @@ export default function Documentation({ url }: IProps) {
         setIsLoading(true);
         const types = await getAvailableTypes(url);
         setAvailableTypes(types);
+        setExplorer([]);
       } catch (error) {
       } finally {
         setIsLoading(false);

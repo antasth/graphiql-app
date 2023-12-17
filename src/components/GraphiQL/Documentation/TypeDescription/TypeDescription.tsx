@@ -20,7 +20,7 @@ export function TypeDescription({ type, onSelectType }: IProps) {
           title="Fields"
           dataSource={type.fields}
           renderItem={(field) => (
-            <List.Item style={{ padding: 0 }}>
+            <List.Item style={{ padding: '8px 0' }}>
               <Field data={field} onSelectType={onSelectType} />
             </List.Item>
           )}
@@ -31,7 +31,7 @@ export function TypeDescription({ type, onSelectType }: IProps) {
           title="Fields"
           dataSource={type.inputFields}
           renderItem={(field) => (
-            <List.Item style={{ padding: 0 }}>
+            <List.Item style={{ padding: '8px 0' }}>
               <Field data={field} onSelectType={onSelectType} />
             </List.Item>
           )}
@@ -41,7 +41,7 @@ export function TypeDescription({ type, onSelectType }: IProps) {
         <FieldList
           title="Enum values"
           dataSource={type.enumValues}
-          renderItem={(item) => <List.Item style={{ padding: 0 }}>{item.name}</List.Item>}
+          renderItem={(item) => <List.Item style={{ padding: '8px 0' }}>{item.name}</List.Item>}
         />
       )}
     </Space>

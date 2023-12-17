@@ -12,7 +12,7 @@ import { TypeDescription } from './TypeDescription';
 import { TypeList } from './TypeList';
 
 interface IProps {
-  url: string;
+  readonly url: string;
 }
 
 const getTypeByName = (availableTypes: ITypeRef[], name: string | null) => {

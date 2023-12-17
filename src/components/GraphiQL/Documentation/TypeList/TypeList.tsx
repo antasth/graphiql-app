@@ -3,8 +3,8 @@ import { Button, List, Typography } from 'antd';
 import type { ITypeRef } from '@/types';
 
 interface IProps {
-  list: ITypeRef[];
-  onSelectType: (name: string | null) => void;
+  readonly list: ITypeRef[];
+  readonly onSelectType: (name: string | null) => void;
 }
 
 export function TypeList({ list, onSelectType }: IProps) {

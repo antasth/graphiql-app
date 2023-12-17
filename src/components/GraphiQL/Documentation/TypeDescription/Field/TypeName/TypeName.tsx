@@ -46,7 +46,11 @@ export function TypeName({ type, onSelectType }: IProps) {
   return (
     <Flex align="center">
       {typeProps.isList && '['}
-      <Button type="link" style={{ padding: 0 }} onClick={() => onSelectType(typeProps.name)}>
+      <Button
+        type="link"
+        style={{ height: 'max-content', padding: 0 }}
+        onClick={() => onSelectType(typeProps.name)}
+      >
         {typeProps.name}
       </Button>
       {typeProps.isValueNonNull && '!'}

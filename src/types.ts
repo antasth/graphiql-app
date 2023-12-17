@@ -36,10 +36,16 @@ export interface IApiSchemaResponse {
 
 export type KindsOfTypes = 'OBJECT' | 'SCALAR' | 'NON_NULL' | 'LIST' | 'INPUT_OBJECT' | 'ENUM';
 
+export interface IArgument {
+  name: string;
+  type: ITypeRef;
+}
+
 export interface IField {
   name: string;
   description: string | null;
   type: ITypeRef;
+  args: IArgument[];
 }
 
 export interface IEnum {

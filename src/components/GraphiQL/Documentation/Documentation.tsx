@@ -7,6 +7,7 @@ import { RiHome2Line } from 'react-icons/ri';
 import { getAvailableTypes } from '@/services/graphqlApi';
 import type { ITypeRef } from '@/types';
 
+import { Loader } from '@/components/Loader';
 import { TypeDescription } from './TypeDescription';
 import { TypeList } from './TypeList';
 
@@ -19,8 +20,8 @@ const getTypeByName = (availableTypes: ITypeRef[], name: string | null) => {
   return availableTypes.find((type) => type.name === name);
 };
 
-export function Documentation({ url }: IProps) {
-  const [isLoading, setIsLoading] = useState(false);
+export default function Documentation({ url }: IProps) {
+  const [isLoading, setIsLoading] = useState(true);
   const [explorer, setExplorer] = useState<ITypeRef[]>([]);
   const [availableTypes, setAvailableTypes] = useState<ITypeRef[]>([]);
 
@@ -59,7 +60,7 @@ export function Documentation({ url }: IProps) {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, Suspense, lazy, useState } from 'react';
 
 import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { SiGraphql } from 'react-icons/si';
@@ -6,12 +6,14 @@ import { SiGraphql } from 'react-icons/si';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
 
-import { Documentation } from './Documentation';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
 
+import { Loader } from '../Loader';
 import styles from './GraphiQL.module.scss';
+
+const Documentation = lazy(() => import('./Documentation'));
 
 export function GraphiQL() {
   const [url, setUrl] = useState('https://countries.trevorblades.com/graphql');
@@ -117,7 +119,9 @@ export function GraphiQL() {
         onClose={showDocumentation}
         open={isOpenDocs}
       >
-        <Documentation url={url} />
+        <Suspense fallback={<Loader />}>
+          <Documentation url={url} />
+        </Suspense>
       </Drawer>
     </Flex>
   );

@@ -16,7 +16,7 @@ import styles from './GraphiQL.module.scss';
 const Documentation = lazy(() => import('./Documentation'));
 
 export function GraphiQL() {
-  const [url, setUrl] = useState('https://countries.trevorblades.com/graphql');
+  const [url, setUrl] = useState('');
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');

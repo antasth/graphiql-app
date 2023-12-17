@@ -1,10 +1,10 @@
 import { actions as userActions } from '@/store/user/user.slice';
-import { IUser } from '@/types';
 import {
   ActionCreatorWithPayload,
   ActionCreatorWithoutPayload,
   bindActionCreators,
 } from '@reduxjs/toolkit';
+import { User } from 'firebase/auth';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -13,7 +13,7 @@ const rootActions = {
 };
 
 export const useActions = (): {
-  setUser: ActionCreatorWithPayload<IUser, 'user/setUser'>;
+  setUser: ActionCreatorWithPayload<User | null, 'user/setUser'>;
   removeUser: ActionCreatorWithoutPayload<'user/removeUser'>;
 } => {
   const dispatch = useDispatch();

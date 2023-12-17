@@ -1,5 +1,5 @@
 import { useTranslate } from '@/context/TranslateContext';
-import { removeUserFromLocalStorage, saveUserToLocalStorage } from '@/utils/localStorage';
+import { removeUserFromLocalStorage } from '@/utils/localStorage';
 import { App } from 'antd';
 import { FirebaseError } from 'firebase/app';
 import {
@@ -13,7 +13,7 @@ import { useActions } from './useActions';
 
 export const useFirebase = (auth: Auth) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { setUser, removeUser } = useActions();
+  const { removeUser } = useActions();
   const { notification } = App.useApp();
   const { t } = useTranslate();
 
@@ -21,16 +21,10 @@ export const useFirebase = (auth: Auth) => {
     async (email: string, password: string) => {
       setIsLoading(true);
       try {
-        const { user } = await firebaseSignInWithEmailAndPassword(auth, email, password);
-        user.getIdToken().then((accessToken) => {
-          const userData = { id: user.uid, email: user.email, token: accessToken };
-          setUser(userData);
-          saveUserToLocalStorage(userData);
-        });
+        await firebaseSignInWithEmailAndPassword(auth, email, password);
         notification.success({
           message: t('Auth.Signin', 'You have successfully logged into your account!'),
         });
-        return user;
       } catch (error) {
         if (error instanceof FirebaseError) {
           notification.error({ message: t(error.code, 'Something went wrong, try again later') });
@@ -39,23 +33,17 @@ export const useFirebase = (auth: Auth) => {
         setIsLoading(false);
       }
     },
-    [t, auth, setUser, notification]
+    [t, auth, notification]
   );
 
   const createUserWithEmailAndPassword = useCallback(
     async (email: string, password: string) => {
       setIsLoading(true);
       try {
-        const { user } = await firebaseCreateUserWithEmailAndPassword(auth, email, password);
-        user.getIdToken().then((accessToken) => {
-          const userData = { id: user.uid, email: user.email, token: accessToken };
-          setUser(userData);
-          saveUserToLocalStorage(userData);
-        });
+        await firebaseCreateUserWithEmailAndPassword(auth, email, password);
         notification.success({
           message: t('Auth.Signup', 'You have successfully created an account!'),
         });
-        return user;
       } catch (error) {
         if (error instanceof FirebaseError) {
           notification.error({ message: t(error.code, 'Something went wrong, try again later') });
@@ -64,7 +52,7 @@ export const useFirebase = (auth: Auth) => {
         setIsLoading(false);
       }
     },
-    [t, auth, setUser, notification]
+    [t, auth, notification]
   );
 
   const signOutFromUserAccount = useCallback(async () => {

@@ -5,19 +5,15 @@ import { useFirebase } from '@/hooks/useFirebase';
 import { ISignInValues } from '@/types';
 import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './SignUp.module.scss';
 
 export function SignUp() {
   const { t } = useTranslate();
-  const navigate = useNavigate();
   const { isLoading, createUserWithEmailAndPassword } = useFirebase(auth);
 
   const onFinish = async (values: ISignInValues) => {
-    const user = await createUserWithEmailAndPassword(values.email, values.password);
-    if (user) {
-      navigate('/main');
-    }
+    await createUserWithEmailAndPassword(values.email, values.password);
   };
 
   const onFinishFailed = (errorInfo: ValidateErrorEntity<ISignInValues>) => {

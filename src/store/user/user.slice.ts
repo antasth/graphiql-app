@@ -1,28 +1,22 @@
-import { IUser } from '@/types';
 import { getUserFromLocalStorage, isUserExists } from '@/utils/localStorage';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { User } from 'firebase/auth';
 
-const initialState: IUser = isUserExists()
-  ? getUserFromLocalStorage()
-  : {
-      id: null,
-      email: null,
-      token: null,
-    };
+interface UserState {
+  user: User | null;
+}
+
+const initialState: UserState = { user: isUserExists() ? getUserFromLocalStorage() : null };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, { payload }: PayloadAction<IUser>) => {
-      state.id = payload.id;
-      state.email = payload.email;
-      state.token = payload.token;
+    setUser: (state, { payload }: PayloadAction<User | null>) => {
+      state.user = payload;
     },
     removeUser: (state) => {
-      state.id = null;
-      state.email = null;
-      state.token = null;
+      state.user = null;
     },
   },
 });

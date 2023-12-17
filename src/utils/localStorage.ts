@@ -1,10 +1,10 @@
-import { IUser } from '@/types';
+import { User } from 'firebase/auth';
 
 export const isUserExists = () => {
   return !!localStorage.getItem('user');
 };
 
-export const saveUserToLocalStorage = (user: IUser) => {
+export const saveUserToLocalStorage = (user: User | null) => {
   localStorage.setItem('user', JSON.stringify(user));
 };
 

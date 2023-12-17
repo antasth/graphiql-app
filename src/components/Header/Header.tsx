@@ -57,7 +57,6 @@ export const Header = () => {
 
   const handleLogOut = async () => {
     await signOutFromUserAccount();
-    navigate('/');
   };
 
   const onClick: MenuProps['onClick'] = (e) => {

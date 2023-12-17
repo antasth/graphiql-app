@@ -9,11 +9,9 @@ import {
   signOut,
 } from 'firebase/auth';
 import { useCallback, useState } from 'react';
-import { useActions } from './useActions';
 
 export const useFirebase = (auth: Auth) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { removeUser } = useActions();
   const { notification } = App.useApp();
   const { t } = useTranslate();
 
@@ -59,7 +57,6 @@ export const useFirebase = (auth: Auth) => {
     setIsLoading(true);
     try {
       await signOut(auth);
-      removeUser();
       removeUserFromLocalStorage();
       notification.success({
         message: t('Auth.Signout', 'You have successfully logged out of your account!'),
@@ -71,7 +68,7 @@ export const useFirebase = (auth: Auth) => {
     } finally {
       setIsLoading(false);
     }
-  }, [t, auth, notification, removeUser]);
+  }, [t, auth, notification]);
 
   return {
     signInWithEmailAndPassword,

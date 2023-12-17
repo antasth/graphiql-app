@@ -3,20 +3,20 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { User } from 'firebase/auth';
 
 interface UserState {
-  user: User | null;
+  currentUser: User | null;
 }
 
-const initialState: UserState = { user: isUserExists() ? getUserFromLocalStorage() : null };
+const initialState: UserState = { currentUser: isUserExists() ? getUserFromLocalStorage() : null };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     setUser: (state, { payload }: PayloadAction<User | null>) => {
-      state.user = payload;
+      state.currentUser = payload;
     },
     removeUser: (state) => {
-      state.user = null;
+      state.currentUser = null;
     },
   },
 });

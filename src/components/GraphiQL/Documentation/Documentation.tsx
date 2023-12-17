@@ -4,10 +4,10 @@ import { LeftOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
 import { RiHome2Line } from 'react-icons/ri';
 
+import { Loader } from '@/components/Loader';
 import { getAvailableTypes } from '@/services/graphqlApi';
 import type { ITypeRef } from '@/types';
 
-import { Loader } from '@/components/Loader';
 import { TypeDescription } from './TypeDescription';
 import { TypeList } from './TypeList';
 

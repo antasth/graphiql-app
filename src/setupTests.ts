@@ -36,3 +36,4 @@ vi.mock('@/context/TranslateContext', async () => {
 });
 
 global.fetch = vi.fn();
+

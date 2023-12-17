@@ -1,0 +1,129 @@
+@import '@/styles/constants';
+
+.topWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 96rem;
+  height: 100vh;
+  padding: 4rem 2rem 0;
+  margin: 0 auto;
+}
+
+.topWrapperFlex {
+  justify-content: space-between;
+}
+
+.welcomeHeading.mainHeading {
+  margin: 0;
+  font-size: 4.75rem;
+  color: white;
+  text-align: left;
+}
+
+.welcomeHeading.secondMainHeading {
+  margin-bottom: 3rem;
+  font-size: 4.75rem;
+  color: #0046b8;
+  text-align: left;
+}
+
+.welcomeHeading.subHeading {
+  font-size: 1.625rem;
+  color: white;
+  text-align: left;
+}
+
+#linkBtn {
+  display: flex;
+  height: 5rem;
+  padding: 0;
+  margin-top: 4rem;
+  font-size: 3.5rem;
+  color: #0046b8;
+  text-align: center;
+}
+
+#linkBtn:hover {
+  color: #dceefe;
+}
+
+@media (min-width: $wide-screen) {
+  .topWrapper {
+    height: auto;
+    padding: 4rem 2rem 2rem;
+  }
+
+  #linkBtn {
+    margin-bottom: 1rem;
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: $big-laptop) {
+  #linkBtn {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: $laptop) {
+  .topWrapper {
+    padding: 3.5rem 1.5rem 0;
+  }
+
+  .welcomeHeading.mainHeading,
+  .welcomeHeading.secondMainHeading {
+    font-size: calc(5vw + 20px);
+  }
+
+  .welcomeHeading.secondMainHeading {
+    margin-bottom: 2rem;
+  }
+
+  .subHeadingWrapper {
+    text-align: center;
+  }
+
+  #linkBtn {
+    height: 4.5rem;
+    padding: 0.5rem 1rem;
+    margin-top: 2.5rem;
+    font-size: calc(3vw + 20px);
+  }
+}
+
+@media (max-width: $tablet) {
+  .topWrapper {
+    padding: 3rem 1rem 0;
+  }
+
+  .welcomeHeading.mainHeading,
+  .welcomeHeading.secondMainHeading {
+    font-size: calc(4vw + 16px);
+  }
+
+  .welcomeHeading.subHeading {
+    font-size: calc(2vw + 10px);
+  }
+}
+
+@media (max-width: $tablet-540-width) {
+  .welcomeHeading.mainHeading,
+  .welcomeHeading.secondMainHeading {
+    font-size: calc(4vw + 16px);
+  }
+
+  #linkBtn {
+    max-width: 19rem;
+    margin-top: 4rem;
+    font-size: calc(2vw + 24px);
+    white-space: normal;
+  }
+}
+
+@media (max-width: $mobile) {
+  .topWrapper {
+    height: 90vh;
+  }
+}

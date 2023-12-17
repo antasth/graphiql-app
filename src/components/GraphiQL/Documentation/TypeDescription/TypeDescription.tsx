@@ -6,8 +6,8 @@ import { Field } from './Field';
 import { FieldList } from './FieldList';
 
 interface IProps {
-  type: ITypeRef;
-  onSelectType: (name: string | null) => void;
+  readonly type: ITypeRef;
+  readonly onSelectType: (name: string | null) => void;
 }
 
 export function TypeDescription({ type, onSelectType }: IProps) {

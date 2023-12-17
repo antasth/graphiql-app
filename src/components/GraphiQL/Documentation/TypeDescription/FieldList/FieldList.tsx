@@ -2,7 +2,7 @@ import { Flex, List, ListProps, Typography } from 'antd';
 import { TbSquareRoundedChevronRight } from 'react-icons/tb';
 
 interface IProps<T> extends ListProps<T> {
-  title: string;
+  readonly title: string;
 }
 
 export function FieldList<T>({ title, ...rest }: IProps<T>) {

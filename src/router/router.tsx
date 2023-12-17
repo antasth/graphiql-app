@@ -1,10 +1,10 @@
+import { AnonymousRoutes } from '@/components/AnonymousRoutes';
+import { PrivateRoutes } from '@/components/PrivateRoutes';
 import { RootLayout } from '@/layouts/RootLayout';
 import { SignIn } from '@/pages/SignIn';
 import { SignUp } from '@/pages/SignUp';
 import { Welcome } from '@/pages/Welcome';
 import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import { AnonymousRoutes } from './AnonymousRoutes';
-import { PrivateRoutes } from './PrivateRoutes';
 
 export const routes = (
   <Route path="/" element={<RootLayout />}>

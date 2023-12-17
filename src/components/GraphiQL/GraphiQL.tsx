@@ -3,6 +3,7 @@ import { ChangeEvent, Suspense, lazy, useState } from 'react';
 import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { SiGraphql } from 'react-icons/si';
 
+import { Loader } from '@/components/Loader';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
 
@@ -10,7 +11,6 @@ import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
 
-import { Loader } from '../Loader';
 import styles from './GraphiQL.module.scss';
 
 const Documentation = lazy(() => import('./Documentation'));

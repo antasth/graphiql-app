@@ -36,7 +36,7 @@ export function TopSection() {
           {t('Welcome.Top.Subheading2', HEADINGS_TEXT.second)}
         </Text>
       </div>
-      <Flex justify="center">
+      <Flex justify="center" id={styles.linkBtnWrapper}>
         <Button
           onClick={() => {
             navigate('main');

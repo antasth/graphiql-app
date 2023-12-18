@@ -6,9 +6,10 @@
   flex-direction: column;
   width: 100%;
   max-width: 96rem;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   padding: 4rem 2rem 0;
   margin: 0 auto;
+  white-space: normal;
 }
 
 .topWrapperFlex {
@@ -35,36 +36,24 @@
   text-align: left;
 }
 
+#linkBtnWrapper {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
 #linkBtn {
   display: flex;
   height: 5rem;
   padding: 0;
-  margin-top: 4rem;
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: #0046b8;
   text-align: center;
+  white-space: normal;
 }
 
 #linkBtn:hover {
   color: #dceefe;
-}
-
-@media (min-width: $wide-screen) {
-  .topWrapper {
-    height: auto;
-    padding: 4rem 2rem 2rem;
-  }
-
-  #linkBtn {
-    margin-bottom: 1rem;
-    font-size: 5rem;
-  }
-}
-
-@media (min-width: $big-laptop) {
-  #linkBtn {
-    font-size: 4.5rem;
-  }
 }
 
 @media (max-width: $laptop) {
@@ -74,7 +63,7 @@
 
   .welcomeHeading.mainHeading,
   .welcomeHeading.secondMainHeading {
-    font-size: calc(5vw + 20px);
+    font-size: calc(5vw + 16px);
   }
 
   .welcomeHeading.secondMainHeading {
@@ -88,8 +77,7 @@
   #linkBtn {
     height: 4.5rem;
     padding: 0.5rem 1rem;
-    margin-top: 2.5rem;
-    font-size: calc(3vw + 20px);
+    font-size: calc(3vw + 13px);
   }
 }
 
@@ -116,7 +104,7 @@
 
   #linkBtn {
     max-width: 19rem;
-    margin-top: 4rem;
+    margin-bottom: 3rem;
     font-size: calc(2vw + 24px);
     white-space: normal;
   }
@@ -125,5 +113,22 @@
 @media (max-width: $mobile) {
   .topWrapper {
     height: 90vh;
+  }
+}
+
+@media (min-width: $wide-screen) {
+  .topWrapper {
+    padding: 4rem 2rem 2rem;
+  }
+
+  #linkBtn {
+    margin-bottom: 1rem;
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: $big-laptop) {
+  #linkBtn {
+    font-size: 4.5rem;
   }
 }

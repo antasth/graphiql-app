@@ -73,9 +73,9 @@
   "Welcome.Top.Button.Signin": "Вход",
   "Welcome.Top.Button.Signup": "Регистрация",
   "Welcome.Top.Button.MainPage": "На главную",
-  "Welcome.Top.Heading1": "Добро пожаловать в Setun-70",
-  "Welcome.Top.Heading2": "GraphiQL Playround!",
-  "Welcome.Top.Subheading1": "GraphiQL Playground - это графическая, интерактивная, встраиваемая в браузер среда IDE.",
+  "Welcome.Top.Heading1": "Добро пожаловать",
+  "Welcome.Top.Heading2": " в GraphiQL Playround!",
+  "Welcome.Top.Subheading1": "GraphiQL Playground - это графическая, интерактивная браузерная IDE.",
   "Welcome.Top.Subheading2": " Этот инструмент позволяет разработчикам и клиентам изучать GraphiQL API и взаимодействовать с ними.",
   "Welcome.Top.Link": "Начать работу с GraphiQL Playground"
 }

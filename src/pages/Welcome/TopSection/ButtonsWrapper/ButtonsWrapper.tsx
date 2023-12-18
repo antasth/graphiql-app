@@ -29,7 +29,7 @@ export function ButtonsWrapper() {
         {t('Welcome.Top.Button.Signup', 'Sign Up')}
       </Button>
 
-      <Button
+      {/* <Button
         onClick={() => {
           navigate('main');
         }}
@@ -37,7 +37,7 @@ export function ButtonsWrapper() {
         type="default"
       >
         {t('Welcome.Top.Button.MainPage', 'Main page')}
-      </Button>
+      </Button> */}
     </Flex>
   );
 }

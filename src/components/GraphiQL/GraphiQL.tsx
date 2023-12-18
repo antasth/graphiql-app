@@ -29,6 +29,9 @@ export function GraphiQL() {
   const { notification } = App.useApp();
 
   const showDocumentation = () => {
+    if (!isUrlValid()) {
+      return;
+    }
     setIsOpenDocs(!isOpenDocs);
   };
 
@@ -37,7 +40,7 @@ export function GraphiQL() {
     setQuery('');
   };
 
-  const isQueryValid = () => {
+  const isUrlValid = () => {
     if (!url) {
       notification.error({
         message: t('Errors.RequestIsNotAvailable', 'Request is not available'),
@@ -45,6 +48,10 @@ export function GraphiQL() {
       });
       return false;
     }
+    return true;
+  };
+
+  const isQueryValid = () => {
     if (!query) {
       notification.error({
         message: t('Errors.RequestIsNotAvailable', 'Request is not available'),
@@ -56,7 +63,7 @@ export function GraphiQL() {
   };
 
   const executeQuery = async () => {
-    if (!isQueryValid()) {
+    if (!isUrlValid() || !isQueryValid()) {
       return;
     }
     try {

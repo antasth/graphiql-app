@@ -2,20 +2,23 @@ import { CheckOutlined } from '@ant-design/icons';
 import { DATA_FEATURES } from '../FeaturesSection/FeatureSectionConstants';
 import { Typography, Card, List, Flex } from 'antd';
 import styles from './FeaturesSection.module.scss';
+import { useTranslate } from '@/context/TranslateContext';
 
 export function FeaturesSection() {
   const { Title, Text } = Typography;
+  const { t } = useTranslate();
+
   return (
     <section className={styles.featuresSection}>
       <Flex className={styles.cardsWrapper}>
         {DATA_FEATURES.map((item) => (
           <Card
-            key={item.title}
+            key={item.defaultTitle}
             bordered={false}
             className={styles.featureCard + ' ' + styles.card}
           >
             <Title className={styles.featureCardHeading + ' ' + styles.featureHeading} level={4}>
-              {item.title}
+              {t(item.title, item.defaultTitle)}
             </Title>
             <List
               dataSource={item.features}
@@ -24,7 +27,7 @@ export function FeaturesSection() {
                   <Text>
                     <CheckOutlined />{' '}
                   </Text>
-                  {item}
+                  {t(item)}
                 </List.Item>
               )}
             />

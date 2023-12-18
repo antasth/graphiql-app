@@ -4,16 +4,18 @@ import RssLogo from '@/assets/svg/rss.svg?react';
 import ReactLogo from '@/assets/svg/react.svg?react';
 import styles from './CourseSection.module.scss';
 import { COURSE_HEADINGS_TEXT } from './CourseSectionConstants';
+import { useTranslate } from '@/context/TranslateContext';
 
 export function CourseSection() {
   const { Title } = Typography;
+  const { t } = useTranslate();
   return (
     <section className={styles.courseWrapper}>
       <Title className={styles.courseHeading + ' ' + styles.mainHeading} level={2}>
-        {COURSE_HEADINGS_TEXT.heading}
+        {t('Welcome.Course.Heading', COURSE_HEADINGS_TEXT.heading)}
       </Title>
       <Title level={4} className={styles.courseHeading + ' ' + styles.subHeading}>
-        {COURSE_HEADINGS_TEXT.subheading}
+        {t('Welcome.Course.Subheading', COURSE_HEADINGS_TEXT.subheading)}
       </Title>
       <Flex className={styles.logoWrapper} justify={'space-evenly'}>
         <Link to="https://rs.school/js/">

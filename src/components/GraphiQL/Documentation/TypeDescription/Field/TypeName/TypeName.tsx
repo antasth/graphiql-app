@@ -3,18 +3,18 @@ import { Button, Flex } from 'antd';
 import { ITypeRef } from '@/types';
 
 interface IProps {
-  readonly type: ITypeRef;
+  readonly type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>;
   readonly onSelectType: (name: string | null) => void;
 }
 
-const getTypeName = (type: ITypeRef | null): string => {
+const getTypeName = (type?: Pick<ITypeRef, 'name' | 'ofType'> | null): string => {
   if (!type) {
     return 'null';
   }
   return type.name ?? getTypeName(type.ofType);
 };
 
-const getIsNonNull = (type: ITypeRef): boolean => {
+const getIsNonNull = (type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>): boolean => {
   if (type.name) {
     return false;
   }
@@ -27,7 +27,7 @@ const getIsNonNull = (type: ITypeRef): boolean => {
   return getIsNonNull(type.ofType);
 };
 
-const getTypeProps = (type: ITypeRef) => {
+const getTypeProps = (type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>) => {
   const name = getTypeName(type);
   const isValueNonNull = getIsNonNull(type);
   const isList = type.kind === 'LIST' || type.ofType?.kind === 'LIST';
@@ -44,7 +44,7 @@ export function TypeName({ type, onSelectType }: IProps) {
   const typeProps = getTypeProps(type);
 
   return (
-    <Flex align="center">
+    <Flex align="center" data-testid="type-name">
       {typeProps.isList && '['}
       <Button
         type="link"

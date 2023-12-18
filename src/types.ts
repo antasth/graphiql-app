@@ -38,13 +38,13 @@ export type KindsOfTypes = 'OBJECT' | 'SCALAR' | 'NON_NULL' | 'LIST' | 'INPUT_OB
 
 export interface IArgument {
   name: string;
-  type: ITypeRef;
+  type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>;
 }
 
 export interface IField {
   name: string;
   description: string | null;
-  type: ITypeRef;
+  type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>;
   args: IArgument[];
 }
 
@@ -58,6 +58,6 @@ export interface ITypeRef {
   kind: KindsOfTypes;
   fields: IField[] | null;
   inputFields: IField[] | null;
-  enumValues: IEnum[];
-  ofType: ITypeRef | null;
+  enumValues: IEnum[] | null;
+  ofType?: Pick<ITypeRef, 'name' | 'kind' | 'ofType'> | null;
 }

@@ -12,12 +12,13 @@ interface IProps {
 
 export function TypeDescription({ type, onSelectType }: IProps) {
   return (
-    <Space direction="vertical">
+    <Space direction="vertical" data-testid="type-description">
       <Typography.Title level={5}>{type.name}</Typography.Title>
       <Typography.Text>{type.description}</Typography.Text>
       {type.fields && (
         <FieldList
           title="Fields"
+          data-testid="type-fields"
           dataSource={type.fields}
           renderItem={(field) => (
             <List.Item style={{ padding: '8px 0' }}>
@@ -29,6 +30,7 @@ export function TypeDescription({ type, onSelectType }: IProps) {
       {type.inputFields && (
         <FieldList
           title="Fields"
+          data-testid="type-input-fields"
           dataSource={type.inputFields}
           renderItem={(field) => (
             <List.Item style={{ padding: '8px 0' }}>
@@ -40,6 +42,7 @@ export function TypeDescription({ type, onSelectType }: IProps) {
       {type.enumValues && (
         <FieldList
           title="Enum values"
+          data-testid="type-enum-fields"
           dataSource={type.enumValues}
           renderItem={(item) => <List.Item style={{ padding: '8px 0' }}>{item.name}</List.Item>}
         />

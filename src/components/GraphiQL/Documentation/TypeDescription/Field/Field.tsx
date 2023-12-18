@@ -12,10 +12,10 @@ interface IProps {
 
 export function Field({ data, onSelectType }: IProps) {
   return (
-    <Flex vertical>
+    <Flex vertical data-testid="field">
       <Flex align="center" gap="0.2em" wrap="wrap">
         <Typography.Text code>{data.name}</Typography.Text>
-        {data.args?.length > 0 && <ArgsList field={data} onSelectType={onSelectType} />}
+        {data.args?.length > 0 && <ArgsList args={data.args} onSelectType={onSelectType} />}
         <Typography.Text>:</Typography.Text>
         <TypeName type={data.type} onSelectType={onSelectType} />
       </Flex>

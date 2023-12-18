@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { LeftOutlined } from '@ant-design/icons';
-import { Button, Space } from 'antd';
+import { Button, Flex, Space } from 'antd';
 import { RiHome2Line } from 'react-icons/ri';
 
 import { Loader } from '@/components/Loader';
@@ -65,20 +65,20 @@ export default function Documentation({ url }: IProps) {
   }
 
   return (
-    <>
+    <Flex data-testid="documentation">
       {explorer.length === 0 ? (
         <TypeList list={availableTypes} onSelectType={onSelectType} />
       ) : (
         <Space direction="vertical" size="large">
           <Space>
-            <Button icon={<LeftOutlined />} onClick={goStepBack}>
+            <Button icon={<LeftOutlined />} onClick={goStepBack} data-testid="btn-back">
               Back
             </Button>
-            <Button icon={<RiHome2Line />} onClick={goToStart} />
+            <Button icon={<RiHome2Line />} onClick={goToStart} data-testid="btn-home" />
           </Space>
           <TypeDescription type={getCurrentItem()} onSelectType={onSelectType} />
         </Space>
       )}
-    </>
+    </Flex>
   );
 }

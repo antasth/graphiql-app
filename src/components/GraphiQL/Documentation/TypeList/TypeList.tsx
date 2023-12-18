@@ -1,4 +1,4 @@
-import { Button, List, Typography } from 'antd';
+import { Button, Flex, List, Typography } from 'antd';
 
 import type { ITypeRef } from '@/types';
 
@@ -9,7 +9,7 @@ interface IProps {
 
 export function TypeList({ list, onSelectType }: IProps) {
   return (
-    <div>
+    <Flex vertical data-testid="type-list">
       <Typography.Title level={5}>All Schema Types:</Typography.Title>
       <List
         size="small"
@@ -23,6 +23,6 @@ export function TypeList({ list, onSelectType }: IProps) {
           </List.Item>
         )}
       />
-    </div>
+    </Flex>
   );
 }

@@ -1,9 +1,10 @@
-import { ChangeEvent, Suspense, lazy, useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
 
-import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
+import { App, AutoComplete, Button, Col, Drawer, Flex, Row } from 'antd';
 import { SiGraphql } from 'react-icons/si';
 
 import { Loader } from '@/components/Loader';
+import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
 
@@ -75,12 +76,14 @@ export function GraphiQL() {
   return (
     <Flex vertical className={styles.container} data-testid="graphql-editor">
       <Flex>
-        <Input
+        <AutoComplete
           size="large"
           placeholder={t('GraphQL.EnterURL', 'Enter URL')}
           className={styles.input}
+          options={DEFAULT_ENDPOINTS}
+          filterOption={(inputValue, option) => option!.value.includes(inputValue)}
           value={url}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => setUrl(event.target.value)}
+          onChange={setUrl}
           data-testid="url-input"
         />
         <Button

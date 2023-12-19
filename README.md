@@ -4,6 +4,7 @@
 
 - [General](#general)
 - [Technologies](#technologies)
+- [Workflow](#workflow)
 - [Installation](#installation)
 - [Available Scripts](#available-scripts)
 - [Authors](#authors)
@@ -27,6 +28,18 @@ Project is created with:
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [React Router](https://reactrouter.com/)
 - [GraphQL](https://graphql.org/)
+
+## Workflow
+
+We follow a high standard of code quality:
+
+1. All code changes go through the Code Review process. Before changes are accepted, they must be approved by at least two project participants.
+2. We provide at least 80% test coverage.
+3. We use [Conventional Commits](https://www.conventionalcommits.org/).
+4. We use Git Hooks to automate various processes when working with the repository:
+   - `pre-commit`: Executes before a commit is made. Runs linting and other checks to ensure that only clean and formatted code is committed.
+   - `pre-push`: Executes before a push to a remote repository. Verifies the quality of the pushed code, running tests.
+   - `commit-msg`: Executes after entering a commit message. Enforces Conventional Commits standards for commit messages.
 
 ## Installation
 

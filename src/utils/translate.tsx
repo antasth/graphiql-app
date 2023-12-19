@@ -1,17 +1,12 @@
 import flagEn from '@/assets/svg/EN.svg?react';
 import flagRu from '@/assets/svg/RU.svg?react';
+import en from '@/lang/en.json';
+import ru from '@/lang/ru.json';
 import type { Language, Translations } from '@/types';
 
-export const translations: Translations = {};
-
-export const loadLanguage = async (language: Language) => {
-  if (translations[language]) {
-    return;
-  }
-
-  const res = await fetch(`./lang/${language}.json`);
-  const data = await res.json();
-  translations[language] = data;
+export const translations: Translations = {
+  en: en,
+  ru: ru,
 };
 
 export const translate = (language: Language) => (key: string, defaultValue?: string) => {

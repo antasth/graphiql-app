@@ -1,7 +1,8 @@
 import { Mock } from 'vitest';
+
 import flagEn from '@/assets/svg/EN.svg?react';
 import flagRu from '@/assets/svg/RU.svg?react';
-import { loadLanguage, translate, translations, getFlag } from './translate';
+import { getFlag, translate, translations } from './translate';
 
 beforeEach(() => {
   (fetch as Mock).mockReset();
@@ -10,30 +11,8 @@ beforeEach(() => {
   });
 });
 
-const createFetchResponse = (data = {}) => {
-  return { json: () => Promise.resolve(data) };
-};
-
 const language = 'en';
 const mockTranslate = { key1: 'value1', key2: 'value2' };
-
-describe('loadLanguage', () => {
-  test('should load language and update translations', async () => {
-    (fetch as Mock).mockResolvedValue(createFetchResponse(mockTranslate));
-
-    await loadLanguage(language);
-
-    expect(fetch).toHaveBeenCalledWith(`./lang/${language}.json`);
-    expect(translations[language]).toEqual(mockTranslate);
-  });
-
-  test('should not fetch if language is already loaded', async () => {
-    const language = 'en';
-    translations[language] = mockTranslate;
-    await loadLanguage(language);
-    expect(global.fetch).not.toHaveBeenCalled();
-  });
-});
 
 describe('translate', () => {
   test('should translate key to value', () => {

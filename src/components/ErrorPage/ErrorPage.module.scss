@@ -1,0 +1,14 @@
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  background-color: #ffffff;
+  background-image: url('@/assets/svg/white-background.svg');
+}
+
+.link {
+  font-size: 2rem;
+}

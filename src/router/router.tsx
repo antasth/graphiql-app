@@ -1,11 +1,23 @@
-import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  useRouteError,
+} from 'react-router-dom';
 import { RootLayout } from '@/layouts/RootLayout/RootLayout';
 import { Main } from '@/pages/Main';
 import { Welcome } from '@/pages/Welcome';
 import { NotFound } from '@/pages/NotFound';
+import { ErrorPage } from '@/pages/ErrorPage';
+
+function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return <ErrorPage />;
+}
 
 export const routes = (
-  <Route path="/" element={<RootLayout />}>
+  <Route path="/" element={<RootLayout />} errorElement={<ErrorBoundary />}>
     <Route index element={<Welcome />} />
     <Route path="/main" element={<Main />} />
     <Route path="*" element={<NotFound />} />

@@ -10,10 +10,18 @@ export function CourseSection() {
   const { t } = useTranslate();
   return (
     <section className={styles.courseWrapper}>
-      <Title className={styles.courseHeading + ' ' + styles.mainHeading} level={2}>
+      <Title
+        data-testid="course-section-heading"
+        className={styles.courseHeading + ' ' + styles.mainHeading}
+        level={2}
+      >
         {t('Welcome.Course.Heading')}
       </Title>
-      <Title level={4} className={styles.courseHeading + ' ' + styles.subHeading}>
+      <Title
+        data-testid="course-section-subheading"
+        level={4}
+        className={styles.courseHeading + ' ' + styles.subHeading}
+      >
         {t('Welcome.Course.Subheading')}
       </Title>
       <Flex className={styles.logoWrapper} justify={'space-evenly'}>

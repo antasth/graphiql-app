@@ -9,7 +9,11 @@ export function TeamSection() {
   const { t } = useTranslate();
   return (
     <section className={styles.teamSection}>
-      <Title level={2} className={styles.teamHeading + ' ' + styles.mainHeading}>
+      <Title
+        data-testid="team-section-heading"
+        level={2}
+        className={styles.teamHeading + ' ' + styles.mainHeading}
+      >
         {t('Welcome.Team.Heading')}
       </Title>
       <Flex vertical gap={'2rem'} className={styles.teamWrapper}>

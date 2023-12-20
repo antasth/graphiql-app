@@ -13,6 +13,7 @@ export function FeaturesSection() {
       <Flex className={styles.cardsWrapper}>
         {DATA_FEATURES.map((item) => (
           <Card
+            data-testid={item.dataTestId}
             key={item.title}
             bordered={false}
             className={styles.featureCard + ' ' + styles.card}

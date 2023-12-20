@@ -10,6 +10,7 @@ export function ButtonsWrapper() {
   return (
     <Flex gap="large" className={styles.buttonWrapper}>
       <Button
+        data-testid="sign-in-btn"
         onClick={() => {
           navigate('signin');
         }}
@@ -20,6 +21,7 @@ export function ButtonsWrapper() {
       </Button>
 
       <Button
+        data-testid="sign-up-btn"
         onClick={() => {
           navigate('signup');
         }}

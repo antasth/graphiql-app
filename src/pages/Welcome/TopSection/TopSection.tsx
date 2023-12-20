@@ -13,7 +13,10 @@ export function TopSection() {
     <section className={styles.topWrapper}>
       <Flex className={styles.topWrapperFlex} justify="space-between" gap="1.2rem">
         <div className={styles.titleWrapper}>
-          <Title className={styles.welcomeHeading + ' ' + styles.mainHeading}>
+          <Title
+            data-testid="page-title"
+            className={styles.welcomeHeading + ' ' + styles.mainHeading}
+          >
             {t('Welcome.Top.Heading1')}
           </Title>
 
@@ -37,6 +40,7 @@ export function TopSection() {
       </div>
       <Flex justify="center" id={styles.linkBtnWrapper}>
         <Button
+          data-testid="link-btn"
           onClick={() => {
             navigate('main');
           }}

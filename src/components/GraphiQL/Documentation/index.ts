@@ -1,3 +1,1 @@
-import Documentation from './Documentation';
-
-export default Documentation;
+export * from './Documentation';

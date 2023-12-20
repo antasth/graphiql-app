@@ -20,7 +20,7 @@ const getTypeByName = (availableTypes: IGraphQLType[], name: string | null) => {
   return availableTypes.find((type) => type.name === name);
 };
 
-export default function Documentation({ url }: IProps) {
+export function Documentation({ url }: IProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [explorer, setExplorer] = useState<IGraphQLType[]>([]);
   const [availableTypes, setAvailableTypes] = useState<IGraphQLType[]>([]);

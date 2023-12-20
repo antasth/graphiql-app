@@ -2,7 +2,7 @@ import { act, fireEvent, render } from '@testing-library/react';
 
 import { typeList } from '@/mocks/graphql';
 import * as services from '@/services/graphqlApi';
-import Documentation from './Documentation';
+import { Documentation } from './Documentation';
 
 vi.mock('@/services/graphqlApi', async () => {
   const actual: typeof services = await vi.importActual('@/services/graphqlApi');

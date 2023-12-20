@@ -14,7 +14,11 @@ import { Sidebar } from './Sidebar';
 
 import styles from './GraphiQL.module.scss';
 
-const Documentation = lazy(() => import('./Documentation'));
+const Documentation = lazy(() =>
+  import('./Documentation').then((module) => ({
+    default: module.Documentation,
+  }))
+);
 
 export function GraphiQL() {
   const [url, setUrl] = useState('');

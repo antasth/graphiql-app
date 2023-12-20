@@ -34,8 +34,7 @@
   "Errors.FailedGetData": "Failed to get data from the selected API",
   "Errors.RequestIsNotAvailable": "Request is not available",
   "Errors.UrlIsEmpty": "The URL cannot be empty",
-  "Errors.QueryIsEmpty": "The query cannot be empty"
-  "Form.SignIn": "Sign in",
+  "Errors.QueryIsEmpty": "The query cannot be empty",
   "Auth.Signout": "You have successfully logged out of your account!",
   "Auth.Signin": "You have successfully logged into your account!",
   "Auth.Signup": "You have successfully created an account!",

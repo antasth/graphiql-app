@@ -34,8 +34,7 @@
   "Errors.FailedGetData": "Неудалось получить данные от выбранного API",
   "Errors.RequestIsNotAvailable": "Запрос недоступен",
   "Errors.UrlIsEmpty": "URL адрес не может быть пустым",
-  "Errors.QueryIsEmpty": "Запрос не может быть пустым"
-  "Form.SignIn": "Вход",
+  "Errors.QueryIsEmpty": "Запрос не может быть пустым",
   "Auth.Signout": "Вы успешно вышли из вашего аккаунта!",
   "Auth.Signin": "Вы успешно вошли в аккаунт!",
   "Auth.Signup": "Вы успешно создали новый аккаунт!",

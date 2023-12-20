@@ -50,6 +50,7 @@ export function RequestEditor({
       <Tabs
         type="card"
         style={{ width: '100%' }}
+        onTabClick={() => setIsOpenPanel(true)}
         tabBarExtraContent={
           <Button
             icon={<UpOutlined />}

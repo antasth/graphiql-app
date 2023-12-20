@@ -12,8 +12,11 @@ describe('SignIn page tests', () => {
         <SignIn />
       </MemoryRouter>
     );
+
+    const emailLabel = getByText('Email');
     const passwordLabel = getByText('Password');
     const signInButton = getByText('Sign in');
+    expect(emailLabel).toBeInTheDocument();
     expect(passwordLabel).toBeInTheDocument();
     expect(signInButton).toBeInTheDocument();
   });

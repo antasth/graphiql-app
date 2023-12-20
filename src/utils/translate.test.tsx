@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 const createFetchResponse = (data = {}) => {
-  return { json: () => new Promise((resolve) => resolve(data)) };
+  return { json: () => Promise.resolve(data) };
 };
 
 const language = 'en';

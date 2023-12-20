@@ -16,7 +16,7 @@ export function ButtonsWrapper() {
         id={styles.loginBtn}
         type="primary"
       >
-        {t('Welcome.Top.Button.Signin', 'Sign In')}
+        {t('Welcome.Top.Button.Signin')}
       </Button>
 
       <Button
@@ -26,7 +26,7 @@ export function ButtonsWrapper() {
         id={styles.signupBtn}
         type="default"
       >
-        {t('Welcome.Top.Button.Signup', 'Sign Up')}
+        {t('Welcome.Top.Button.Signup')}
       </Button>
 
       {/* <Button
@@ -36,7 +36,7 @@ export function ButtonsWrapper() {
         id={styles.mainPageBtn}
         type="default"
       >
-        {t('Welcome.Top.Button.MainPage', 'Main page')}
+        {t('Welcome.Top.Button.MainPage')}
       </Button> */}
     </Flex>
   );

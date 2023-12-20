@@ -13,12 +13,12 @@ export function FeaturesSection() {
       <Flex className={styles.cardsWrapper}>
         {DATA_FEATURES.map((item) => (
           <Card
-            key={item.defaultTitle}
+            key={item.title}
             bordered={false}
             className={styles.featureCard + ' ' + styles.card}
           >
             <Title className={styles.featureCardHeading + ' ' + styles.featureHeading} level={4}>
-              {t(item.title, item.defaultTitle)}
+              {t(item.title)}
             </Title>
             <List
               dataSource={item.features}

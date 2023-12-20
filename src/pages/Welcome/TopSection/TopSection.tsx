@@ -1,5 +1,4 @@
 import { ButtonsWrapper } from './ButtonsWrapper';
-import { HEADINGS_TEXT } from './TopSectionConstants';
 import styles from './TopSection.module.scss';
 import { Typography, Flex, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +14,7 @@ export function TopSection() {
       <Flex className={styles.topWrapperFlex} justify="space-between" gap="1.2rem">
         <div className={styles.titleWrapper}>
           <Title className={styles.welcomeHeading + ' ' + styles.mainHeading}>
-            {t('Welcome.Top.Heading1', 'Welcome to Setun-70')}
+            {t('Welcome.Top.Heading1')}
           </Title>
 
           <Title
@@ -23,7 +22,7 @@ export function TopSection() {
             style={{ marginTop: '0' }}
             level={2}
           >
-            {t('Welcome.Top.Heading2', 'GraphiQL Playround!')}
+            {t('Welcome.Top.Heading2')}
           </Title>
         </div>
         <ButtonsWrapper />
@@ -31,9 +30,9 @@ export function TopSection() {
 
       <div className={styles.subHeadingWrapper}>
         <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
-          {t('Welcome.Top.Subheading1', HEADINGS_TEXT.first)}
+          {t('Welcome.Top.Subheading1')}
           <br />
-          {t('Welcome.Top.Subheading2', HEADINGS_TEXT.second)}
+          {t('Welcome.Top.Subheading2')}
         </Text>
       </div>
       <Flex justify="center" id={styles.linkBtnWrapper}>
@@ -44,7 +43,7 @@ export function TopSection() {
           id={styles.linkBtn}
           type="link"
         >
-          {t('Welcome.Top.Link', 'Explore GraphiQL Playground')}
+          {t('Welcome.Top.Link')}
         </Button>
       </Flex>
     </section>

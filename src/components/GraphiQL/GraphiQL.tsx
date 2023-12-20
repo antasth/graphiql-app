@@ -134,7 +134,7 @@ export function GraphiQL() {
         open={isOpenDocs}
       >
         <Suspense fallback={<Loader />}>
-          <Documentation url={url} />
+          <Documentation url={url} isOpen={isOpenDocs} />
         </Suspense>
       </Drawer>
     </Flex>

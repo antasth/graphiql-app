@@ -1,20 +1,20 @@
 import { Button, Flex } from 'antd';
 
-import { ITypeRef } from '@/types';
+import { IGraphQLTypeRef } from '@/types';
 
 interface IProps {
-  readonly type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>;
+  readonly type: IGraphQLTypeRef;
   readonly onSelectType: (name: string | null) => void;
 }
 
-const getTypeName = (type?: Pick<ITypeRef, 'name' | 'ofType'> | null): string => {
+const getTypeName = (type?: IGraphQLTypeRef | null): string => {
   if (!type) {
     return 'null';
   }
   return type.name ?? getTypeName(type.ofType);
 };
 
-const getIsNonNull = (type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>): boolean => {
+const getIsNonNull = (type: IGraphQLTypeRef): boolean => {
   if (type.name) {
     return false;
   }
@@ -27,7 +27,7 @@ const getIsNonNull = (type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>): boolean
   return getIsNonNull(type.ofType);
 };
 
-const getTypeProps = (type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>) => {
+const getTypeProps = (type: IGraphQLTypeRef) => {
   const name = getTypeName(type);
   const isValueNonNull = getIsNonNull(type);
   const isList = type.kind === 'LIST' || type.ofType?.kind === 'LIST';

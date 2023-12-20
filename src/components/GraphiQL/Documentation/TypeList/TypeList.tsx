@@ -1,9 +1,9 @@
 import { Button, Flex, List, Typography } from 'antd';
 
-import type { ITypeRef } from '@/types';
+import type { IGraphQLType } from '@/types';
 
 interface IProps {
-  readonly list: ITypeRef[];
+  readonly list: IGraphQLType[];
   readonly onSelectType: (name: string | null) => void;
 }
 

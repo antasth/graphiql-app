@@ -25,7 +25,7 @@ export interface ISchema {
   queryType: {
     name: string;
   };
-  types: ITypeRef[];
+  types: IGraphQLType[];
 }
 
 export interface IApiSchemaResponse {
@@ -38,13 +38,13 @@ export type KindsOfTypes = 'OBJECT' | 'SCALAR' | 'NON_NULL' | 'LIST' | 'INPUT_OB
 
 export interface IArgument {
   name: string;
-  type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>;
+  type: IGraphQLTypeRef;
 }
 
 export interface IField {
   name: string;
   description: string | null;
-  type: Pick<ITypeRef, 'name' | 'kind' | 'ofType'>;
+  type: IGraphQLTypeRef;
   args: IArgument[];
 }
 
@@ -52,12 +52,14 @@ export interface IEnum {
   name: string;
 }
 
-export interface ITypeRef {
+export interface IGraphQLType {
   name: string | null;
   description: string | null;
   kind: KindsOfTypes;
   fields: IField[] | null;
   inputFields: IField[] | null;
   enumValues: IEnum[] | null;
-  ofType?: Pick<ITypeRef, 'name' | 'kind' | 'ofType'> | null;
+  ofType?: IGraphQLTypeRef | null;
 }
+
+export type IGraphQLTypeRef = Pick<IGraphQLType, 'name' | 'kind' | 'ofType'>;

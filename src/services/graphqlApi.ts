@@ -1,5 +1,5 @@
 import { TAB_WIDTH } from '@/constants/formatting';
-import type { IApiResponse, IApiSchemaResponse, ITypeRef } from '@/types';
+import type { IApiResponse, IApiSchemaResponse, IGraphQLType } from '@/types';
 import { OPERATION_NAME, QUERY } from './introspectionQuery';
 
 interface IRequestOptions {
@@ -14,7 +14,7 @@ const buildRequestBody = (options: IRequestOptions) => {
   const requestBody = {
     query,
     variables: variables === '' ? {} : JSON.parse(variables),
-    operationName: operationName ? operationName : null,
+    operationName: operationName ?? null,
   };
   return JSON.stringify(requestBody);
 };
@@ -24,7 +24,7 @@ const buildRequestHeaders = (options: IRequestOptions) => {
   return headers === '' ? {} : JSON.parse(headers);
 };
 
-const isValidTypeName = (type: ITypeRef): boolean => {
+const isValidTypeName = (type: IGraphQLType): boolean => {
   if (!type.name) {
     return false;
   }
@@ -58,7 +58,7 @@ export const getData = async (url: string, options: IRequestOptions): Promise<st
   return JSON.stringify(responseData, null, TAB_WIDTH);
 };
 
-export const getAvailableTypes = async (url: string): Promise<ITypeRef[]> => {
+export const getAvailableTypes = async (url: string): Promise<IGraphQLType[]> => {
   const options = {
     query: QUERY,
     variables: '',

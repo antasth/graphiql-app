@@ -6,7 +6,7 @@ import { RiHome2Line } from 'react-icons/ri';
 
 import { Loader } from '@/components/Loader';
 import { getAvailableTypes } from '@/services/graphqlApi';
-import type { ITypeRef } from '@/types';
+import type { IGraphQLType } from '@/types';
 
 import { TypeDescription } from './TypeDescription';
 import { TypeList } from './TypeList';
@@ -15,15 +15,15 @@ interface IProps {
   readonly url: string;
 }
 
-const getTypeByName = (availableTypes: ITypeRef[], name: string | null) => {
+const getTypeByName = (availableTypes: IGraphQLType[], name: string | null) => {
   if (!name) return;
   return availableTypes.find((type) => type.name === name);
 };
 
 export default function Documentation({ url }: IProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [explorer, setExplorer] = useState<ITypeRef[]>([]);
-  const [availableTypes, setAvailableTypes] = useState<ITypeRef[]>([]);
+  const [explorer, setExplorer] = useState<IGraphQLType[]>([]);
+  const [availableTypes, setAvailableTypes] = useState<IGraphQLType[]>([]);
 
   useEffect(() => {
     const getSchemaFromApi = async () => {

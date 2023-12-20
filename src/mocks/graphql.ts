@@ -1,4 +1,4 @@
-import { IArgument, IEnum, IField, ITypeRef } from '@/types';
+import type { IArgument, IEnum, IField, IGraphQLType } from '@/types';
 
 export const argList: IArgument[] = [
   {
@@ -102,7 +102,7 @@ export const enumValues: IEnum[] = [
   },
 ];
 
-export const scalarType: ITypeRef = {
+export const scalarType: IGraphQLType = {
   kind: 'SCALAR',
   name: 'Boolean',
   description: 'The `Boolean` scalar type description',
@@ -111,7 +111,7 @@ export const scalarType: ITypeRef = {
   enumValues: null,
 };
 
-export const objectType: ITypeRef = {
+export const objectType: IGraphQLType = {
   kind: 'OBJECT',
   name: 'Continent',
   description: 'Test type description',
@@ -120,4 +120,4 @@ export const objectType: ITypeRef = {
   enumValues: enumValues,
 };
 
-export const typeList: ITypeRef[] = [scalarType, objectType];
+export const typeList: IGraphQLType[] = [scalarType, objectType];

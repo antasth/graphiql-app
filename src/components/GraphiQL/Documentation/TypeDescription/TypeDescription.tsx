@@ -1,12 +1,12 @@
 import { List, Space, Typography } from 'antd';
 
-import type { ITypeRef } from '@/types';
+import type { IGraphQLType } from '@/types';
 
 import { Field } from './Field';
 import { FieldList } from './FieldList';
 
 interface IProps {
-  readonly type: ITypeRef;
+  readonly type: IGraphQLType;
   readonly onSelectType: (name: string | null) => void;
 }
 

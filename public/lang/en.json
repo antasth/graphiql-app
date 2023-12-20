@@ -5,9 +5,6 @@
   "Application.SignOut": "Sign out",
   "Application.Welcome": "Welcome",
   "Footer.About": "© 2023 Setun-70",
-  "Form.UserName": "Username",
-  "Form.UserNamePlaceholder": "Please enter username",
-  "Form.UserNameMessage": "Please enter your username!",
   "Form.Email": "Email",
   "Form.EmailPlaceholder": "Please enter email",
   "Form.EmailMessage": "Please enter your email!",
@@ -37,5 +34,15 @@
   "Errors.FailedGetData": "Failed to get data from the selected API",
   "Errors.RequestIsNotAvailable": "Request is not available",
   "Errors.UrlIsEmpty": "The URL cannot be empty",
-  "Errors.QueryIsEmpty": "The query cannot be empty"
+  "Errors.QueryIsEmpty": "The query cannot be empty",
+  "Auth.Signout": "You have successfully logged out of your account!",
+  "Auth.Signin": "You have successfully logged into your account!",
+  "Auth.Signup": "You have successfully created an account!",
+  "auth/email-already-exists": "An account with email address already exists",
+  "auth/wrong-password": "You have entered an wrong email or password",
+  "auth/weak-password": "Password is too weak",
+  "auth/user-not-found": "You have entered an wrong email or password",
+  "auth/too-many-requests": "Too many failed login attempts for this email. Please try again later",
+  "auth/invalid-email": "You have entered an invalid email",
+  "auth/email-already-in-use": "This email address is already in use"
 }

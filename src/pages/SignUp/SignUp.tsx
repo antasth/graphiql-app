@@ -1,4 +1,6 @@
 import { useTranslate } from '@/context/TranslateContext';
+import { auth } from '@/firebase';
+import { useFirebase } from '@/hooks/useFirebase';
 import { ISignInValues } from '@/types';
 import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
@@ -7,9 +9,10 @@ import styles from './SignUp.module.scss';
 
 export function SignUp() {
   const { t } = useTranslate();
+  const { createUserWithEmailAndPassword } = useFirebase(auth);
 
-  const onFinish = (values: ISignInValues) => {
-    console.log('Success:', values);
+  const onFinish = async (values: ISignInValues) => {
+    await createUserWithEmailAndPassword(values.email, values.password);
   };
 
   const onFinishFailed = (errorInfo: ValidateErrorEntity<ISignInValues>) => {
@@ -29,19 +32,6 @@ export function SignUp() {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item
-          label={t('Form.UserName', 'Username')}
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: t('Form.UserNameMessage', 'Please input your username!'),
-            },
-          ]}
-        >
-          <Input autoComplete="on" placeholder={t('Form.UserNamePlaceholder', 'Username')} />
-        </Form.Item>
-
         <Form.Item
           label={t('Form.Email', 'Email')}
           name="email"

@@ -39,6 +39,7 @@ const fetchData = async <T>(
   const response = await fetch(url, {
     method: 'POST',
     headers: {
+      Accept: 'application/json',
       'Content-type': 'application/json',
       ...headers,
     },

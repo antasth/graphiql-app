@@ -11,11 +11,11 @@ interface IProps {
 export function TypeList({ list, onSelectType }: IProps) {
   const { t } = useTranslate();
   return (
-    <Flex vertical data-testid="type-list" style={{ width: '100%' }}>
+    <Flex vertical style={{ width: '100%' }} data-testid="type-list">
       <Typography.Title level={5}>
         {t('GraphQL.Documentation.AllSchemaTypes', 'All Schema Types')}:
       </Typography.Title>
-      {list.length > 0 && (
+      {list.length > 0 ? (
         <List
           size="small"
           split={false}
@@ -28,14 +28,12 @@ export function TypeList({ list, onSelectType }: IProps) {
             </List.Item>
           )}
         />
-      )}
-      {list.length === 0 && (
-        <Flex style={{ margin: 'auto' }}>
-          <Empty
-            description={t('Application.NoData', 'No data')}
-            image={Empty.PRESENTED_IMAGE_SIMPLE}
-          />
-        </Flex>
+      ) : (
+        <Empty
+          description={t('Application.NoData', 'No data')}
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
+          style={{ margin: 'auto' }}
+        />
       )}
     </Flex>
   );

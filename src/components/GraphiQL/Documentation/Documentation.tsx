@@ -14,7 +14,7 @@ import { TypeList } from './TypeList';
 
 interface IProps {
   readonly url: string;
-  readonly isOpen: boolean;
+  readonly isOpen?: boolean;
 }
 
 const getTypeByName = (availableTypes: IGraphQLType[], name: string | null) => {
@@ -22,18 +22,13 @@ const getTypeByName = (availableTypes: IGraphQLType[], name: string | null) => {
   return availableTypes.find((type) => type.name === name);
 };
 
-export function Documentation({ url, isOpen }: IProps) {
+export function Documentation({ url, isOpen = true }: IProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [explorer, setExplorer] = useState<IGraphQLType[]>([]);
   const [availableTypes, setAvailableTypes] = useState<IGraphQLType[]>([]);
 
   const { notification } = App.useApp();
   const { t } = useTranslate();
-
-  useEffect(() => {
-    console.log('mount Documentation');
-    return () => console.log('unmount Documentation');
-  }, []);
 
   useEffect(() => {
     const getSchemaFromApi = async () => {

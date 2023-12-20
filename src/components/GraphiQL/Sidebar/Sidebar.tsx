@@ -1,6 +1,7 @@
 import { Button, Flex, Tooltip } from 'antd';
-import { LuPaintbrush } from 'react-icons/lu';
 import { GrBook } from 'react-icons/gr';
+import { LuPaintbrush } from 'react-icons/lu';
+
 import { useTranslate } from '@/context/TranslateContext';
 
 import styles from './Sidebar.module.scss';

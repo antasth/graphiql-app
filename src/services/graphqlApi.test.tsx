@@ -1,13 +1,11 @@
 import { Mock } from 'vitest';
-import { getData } from './graphqlApi';
+
+import { createFetchResponse } from '@/mocks/utils';
+import { getAvailableTypes, getData } from './graphqlApi';
 
 beforeEach(() => {
   (fetch as Mock).mockReset();
 });
-
-const createFetchResponse = (data = {}) => {
-  return { json: () => Promise.resolve(data) };
-};
 
 describe('getData', () => {
   test('returns the correct result', async () => {
@@ -23,5 +21,33 @@ describe('getData', () => {
     const result = await getData(url, options);
     expect(fetch).toHaveBeenCalled();
     expect(result).toEqual(JSON.stringify(mockData, null, 2));
+  });
+});
+
+describe('getAvailableTypes', () => {
+  test('returns the correct result', async () => {
+    const url = 'https://example.com/api';
+    const mockData = {
+      data: {
+        __schema: {
+          types: [
+            { name: 'regularType1' },
+            { name: 'regularType2' },
+            { name: 'regularType3' },
+            { name: '__systemType1' },
+            { name: '__systemType2' },
+          ],
+        },
+      },
+    };
+    (fetch as Mock).mockResolvedValue(createFetchResponse(mockData));
+
+    const result = await getAvailableTypes(url);
+    expect(fetch).toHaveBeenCalled();
+    expect(result).toEqual([
+      { name: 'regularType1' },
+      { name: 'regularType2' },
+      { name: 'regularType3' },
+    ]);
   });
 });

@@ -19,7 +19,7 @@ export const UserAuthListener = () => {
   }, [setUser]);
 
   if (loading) {
-    return <Loader />;
+    return <Loader fullscreen />;
   }
 
   return null;

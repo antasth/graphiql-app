@@ -125,9 +125,9 @@ To add a command to a hook or create a new one, use `husky add <file> [cmd]`. Mo
 
 ## Authors
 
-- Anton Astashov
-- Elena Anisimova
-- Iurii Bazhenov
+- [Anton Astashov](https://github.com/antasth)
+- [Elena Anisimova](https://github.com/ElenaAnisimova)
+- [Iurii Bazhenov](https://github.com/BazhenovYN)
 
 ## Gratitude
 

@@ -1,3 +1,4 @@
+import { mockUser } from '@/mocks/user';
 import { SignIn } from '@/pages/SignIn';
 import { SignUp } from '@/pages/SignUp';
 import { fireEvent, waitFor } from '@testing-library/react';
@@ -17,20 +18,20 @@ describe('Tests for localStorage functions', () => {
   });
 
   test('After sign up user must be saved in localStorage', async () => {
-    const { getByLabelText, getByRole, getByPlaceholderText } = renderWithProviders(
+    const { getByTestId, getByRole } = renderWithProviders(
       <MemoryRouter>
         <SignUp />
       </MemoryRouter>
     );
 
-    fireEvent.change(getByLabelText(/Email/i), {
+    fireEvent.change(getByTestId('email'), {
       target: { value: 'user@example.com' },
     });
-    fireEvent.change(getByPlaceholderText(/characters/), {
-      target: { value: 'password123' },
+    fireEvent.change(getByTestId('password'), {
+      target: { value: 'password@123' },
     });
-    fireEvent.change(getByLabelText(/Confirm password/i), {
-      target: { value: 'password123' },
+    fireEvent.change(getByTestId('confirmPassword'), {
+      target: { value: 'password@123' },
     });
 
     fireEvent.click(getByRole('button', { name: /Sign up/i }));
@@ -41,31 +42,13 @@ describe('Tests for localStorage functions', () => {
   });
 
   test('Must read user data from localstorage after page reload', async () => {
-    const { getByLabelText, getByRole, queryByText } = renderWithProviders(
+    localStorage.setItem('user', JSON.stringify(mockUser));
+
+    const { queryByText } = renderWithProviders(
       <MemoryRouter>
         <SignIn />
       </MemoryRouter>
     );
-
-    const reloadFn = () => {
-      window.location.reload();
-    };
-
-    fireEvent.change(getByLabelText(/Email/i), {
-      target: { value: 'user@example.com' },
-    });
-
-    fireEvent.change(getByLabelText(/Password/i), {
-      target: { value: 'password123' },
-    });
-
-    fireEvent.click(getByRole('button', { name: /Sign in/i }));
-
-    waitFor(() => {
-      expect(queryByText('Sign out')).toBeInTheDocument();
-    });
-
-    reloadFn();
 
     waitFor(() => {
       expect(queryByText('Sign out')).toBeInTheDocument();

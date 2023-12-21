@@ -39,6 +39,7 @@ export function SignUp() {
           <Input
             autoComplete="on"
             placeholder={t('Form.EmailPlaceholder', 'Please input your email!')}
+            data-testid="email"
           />
         </FormItem>
 
@@ -46,6 +47,7 @@ export function SignUp() {
           <Input.Password
             autoComplete="on"
             placeholder={t('Form.PasswordPlaceholderSignUp', '8+ characters')}
+            data-testid="password"
           />
         </FormItem>
 
@@ -57,6 +59,7 @@ export function SignUp() {
           <Input.Password
             autoComplete="on"
             placeholder={t('Form.ConfirmPasswordPlaceholder', 'Confirm your password')}
+            data-testid="confirmPassword"
           />
         </FormItem>
 

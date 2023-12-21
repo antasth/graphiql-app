@@ -27,20 +27,20 @@ describe('SignUp page tests', () => {
     expect(signInButton).toBeInTheDocument();
   });
   test('Must create a new user with email and password', async () => {
-    const { getByLabelText, getByRole, getByPlaceholderText } = renderWithProviders(
+    const { getByTestId, getByRole } = renderWithProviders(
       <MemoryRouter>
         <SignUp />
       </MemoryRouter>
     );
 
-    fireEvent.change(getByLabelText(/Email/i), {
+    fireEvent.change(getByTestId('email'), {
       target: { value: 'user@example.com' },
     });
-    fireEvent.change(getByPlaceholderText(/characters/), {
-      target: { value: 'password123' },
+    fireEvent.change(getByTestId('password'), {
+      target: { value: 'password@123' },
     });
-    fireEvent.change(getByLabelText(/Confirm password/i), {
-      target: { value: 'password123' },
+    fireEvent.change(getByTestId('confirmPassword'), {
+      target: { value: 'password@123' },
     });
 
     fireEvent.click(getByRole('button', { name: /Sign up/i }));
@@ -49,7 +49,7 @@ describe('SignUp page tests', () => {
       expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(
         getAuth(),
         'user@example.com',
-        'password123'
+        'password@123'
       );
     });
   });

@@ -1,4 +1,6 @@
 import { useTranslate } from '@/context/TranslateContext';
+import { auth } from '@/firebase';
+import { useFirebase } from '@/hooks/useFirebase';
 import { ISignInValues } from '@/types';
 import { Button, Form, Input } from 'antd';
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
@@ -7,9 +9,10 @@ import styles from './SignIn.module.scss';
 
 export function SignIn() {
   const { t } = useTranslate();
+  const { signInWithEmailAndPassword } = useFirebase(auth);
 
-  const onFinish = (values: ISignInValues) => {
-    console.log('Success:', values);
+  const onFinish = async (values: ISignInValues) => {
+    await signInWithEmailAndPassword(values.email, values.password);
   };
 
   const onFinishFailed = (errorInfo: ValidateErrorEntity<ISignInValues>) => {

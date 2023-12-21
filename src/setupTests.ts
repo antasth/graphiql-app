@@ -22,6 +22,8 @@ afterEach(() => {
   cleanup();
 });
 
+const tMock = vi.fn().mockImplementation((key: string, value?: string) => value ?? key);
+
 vi.mock('@/context/TranslateContext', async () => {
   const actual: typeof context = await vi.importActual('@/context/TranslateContext');
   return {
@@ -29,11 +31,10 @@ vi.mock('@/context/TranslateContext', async () => {
     useTranslate: () => ({
       language: DEFAULT_LANGUAGE,
       availableLanguages: AVAILABLE_LANGUAGES,
-      t: (key: string, value?: string) => value ?? key,
+      t: tMock,
       setLanguage: vi.fn(),
     }),
   };
 });
 
 global.fetch = vi.fn();
-

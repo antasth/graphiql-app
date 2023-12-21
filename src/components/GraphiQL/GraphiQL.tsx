@@ -1,8 +1,11 @@
-import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { ChangeEvent, useState } from 'react';
+
+import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
 import { SiGraphql } from 'react-icons/si';
+
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
+import { formatJson } from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
@@ -26,8 +29,12 @@ export function GraphiQL() {
   };
 
   const prettifying = () => {
-    console.log('Prettifying...');
-    setQuery('');
+    if (variables) {
+      setVariables(formatJson(variables));
+    }
+    if (headers) {
+      setHeaders(formatJson(headers));
+    }
   };
 
   const isQueryValid = () => {

@@ -27,6 +27,7 @@ Project is created with:
 - [Ant Design](https://ant.design/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [React Router](https://reactrouter.com/)
+- [Firebase](https://firebase.google.com/)
 - [GraphQL](https://graphql.org/)
 
 ## Workflow

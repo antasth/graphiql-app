@@ -1,24 +1,21 @@
 export const DATA_FEATURES = [
   {
-    title: 'Request editor',
+    title: 'Welcome.Features.Title1',
     features: [
-      `Write and test GraphiQL queries, mutations, and subscriptions`,
-      'Query editor view / JSON view',
-      'Syntax highlighting',
+      'Welcome.Features.Requests.Feature1',
+      'Welcome.Features.Requests.Feature2',
+      'Welcome.Features.Requests.Feature3',
     ],
+    dataTestId: 'feature-card1',
   },
   {
-    title: 'Headers editor',
-    features: [
-      'Easily add custom headers to your GraphiQL requests',
-      'Use it to define authentication tokens or API keys',
-    ],
+    title: 'Welcome.Features.Title2',
+    features: ['Welcome.Features.Headers.Feature1', 'Welcome.Features.Headers.Feature2'],
+    dataTestId: 'feature-card2',
   },
   {
-    title: 'Documentation explorer',
-    features: [
-      'View and navigate through the schema of a GraphiQL API',
-      'Explore the available types, fields, and relationships',
-    ],
+    title: 'Welcome.Features.Title3',
+    features: ['Welcome.Features.Docs.Feature1', 'Welcome.Features.Docs.Feature2'],
+    dataTestId: 'feature-card3',
   },
 ];

@@ -1,6 +1,8 @@
-import { Button, Flex, Tabs } from 'antd';
-import { UpOutlined } from '@ant-design/icons';
 import { ChangeEvent, useState } from 'react';
+
+import { UpOutlined } from '@ant-design/icons';
+import { Button, Flex, Tabs } from 'antd';
+
 import { TextArea } from '@/components/GraphiQL/TextArea';
 import { useTranslate } from '@/context/TranslateContext';
 import { Headers } from './Headers';
@@ -54,7 +56,10 @@ export function RequestEditor({
         tabBarExtraContent={
           <Button
             icon={<UpOutlined />}
-            style={{ transform: isOpenPanel ? 'rotate(-180deg)' : '' }}
+            style={{
+              transform: isOpenPanel ? 'rotate(-180deg)' : '',
+              color: 'rgba(0, 0, 0, 0.25)',
+            }}
             shape="circle"
             size="small"
             type="text"

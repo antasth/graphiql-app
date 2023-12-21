@@ -1,4 +1,4 @@
-import { signInFormValidationSchema } from '@/constants/validation';
+import { useSignInValidationSchema } from '@/constants/validation';
 import { useTranslate } from '@/context/TranslateContext';
 import { auth } from '@/firebase';
 import { useFirebase } from '@/hooks/useFirebase';
@@ -15,7 +15,7 @@ export function SignIn() {
   const { signInWithEmailAndPassword } = useFirebase(auth);
 
   const { control, handleSubmit } = useForm({
-    resolver: yupResolver(signInFormValidationSchema),
+    resolver: yupResolver(useSignInValidationSchema()),
     mode: 'onChange',
   });
 

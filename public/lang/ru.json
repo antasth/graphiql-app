@@ -37,5 +37,7 @@
   "Errors.FailedGetData": "Неудалось получить данные от выбранного API",
   "Errors.RequestIsNotAvailable": "Запрос недоступен",
   "Errors.UrlIsEmpty": "URL адрес не может быть пустым",
-  "Errors.QueryIsEmpty": "Запрос не может быть пустым"
+  "Errors.QueryIsEmpty": "Запрос не может быть пустым",
+  "ErrorPage.Title": "ПРОИЗОШЛА ОШИБКА",
+  "ErrorPage.Link": "На главную"
 }

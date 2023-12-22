@@ -7,6 +7,7 @@ import { COURSE_HEADINGS_TEXT } from './CourseSectionConstants';
 
 export function CourseSection() {
   const { Title } = Typography;
+
   return (
     <section className={styles.courseWrapper}>
       <Title className={styles.courseHeading + ' ' + styles.mainHeading} level={2}>

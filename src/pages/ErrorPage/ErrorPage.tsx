@@ -1,6 +1,13 @@
 import { Typography, Button } from 'antd';
 import styles from './ErrorPage.module.scss';
 import { Link } from 'react-router-dom';
+import { useRouteError } from 'react-router-dom';
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return <ErrorPage />;
+}
 
 export function ErrorPage() {
   const { Title } = Typography;

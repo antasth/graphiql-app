@@ -6,9 +6,9 @@ import { NotFound } from '@/pages/NotFound';
 import { ErrorBoundary } from '@/pages/ErrorPage';
 
 export const routes = (
-  <Route path="/" element={<RootLayout />} errorElement={<ErrorBoundary />}>
-    <Route index element={<Welcome />} />
-    <Route path="/main" element={<Main />} />
+  <Route path="/" element={<RootLayout />}>
+    <Route index element={<Welcome />} errorElement={<ErrorBoundary />} />
+    <Route path="/main" element={<Main />} errorElement={<ErrorBoundary />} />
     <Route path="*" element={<NotFound />} />
   </Route>
 );

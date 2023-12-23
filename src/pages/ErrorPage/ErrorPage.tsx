@@ -22,5 +22,3 @@ export function ErrorBoundary() {
     </Flex>
   );
 }
-
-// export function ErrorPage() {}

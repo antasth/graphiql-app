@@ -39,5 +39,5 @@
   "Errors.UrlIsEmpty": "URL адрес не может быть пустым",
   "Errors.QueryIsEmpty": "Запрос не может быть пустым",
   "ErrorPage.Title": "ПРОИЗОШЛА ОШИБКА",
-  "ErrorPage.Link": "На главную"
+  "ErrorPage.Link": "На страницу приветствия"
 }

@@ -1,18 +1,13 @@
 import { render } from '@testing-library/react';
-import { createMemoryRouter, useRouteError, RouterProvider } from 'react-router-dom';
-import { ErrorPage } from './ErrorPage';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+import { ErrorBoundary } from './ErrorPage';
 
 const Child = () => {
   throw new Error();
 };
 
-describe('Error Boundary loads Error Page', () => {
-  test(`should render error page when error occurs`, () => {
-    function ErrorBoundary() {
-      const error = useRouteError();
-      console.error(error);
-      return <ErrorPage />;
-    }
+describe('Error Boundary loads Error Page Component', () => {
+  test(`should render error page component when error occurs`, () => {
     const routes = [
       {
         path: '/',

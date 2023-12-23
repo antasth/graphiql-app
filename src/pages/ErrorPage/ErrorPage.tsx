@@ -6,18 +6,14 @@ import { useTranslate } from '@/context/TranslateContext';
 
 export function ErrorBoundary() {
   const error = useRouteError();
-  console.error(error);
-  return <ErrorPage />;
-}
-
-export function ErrorPage() {
   const { Title } = Typography;
   const { t } = useTranslate();
+  console.error(error);
   return (
     <Flex>
       <div className={styles.errorWrapper} data-testid="error-page">
         <Title id={styles.title}>{t('ErrorPage.Title')}</Title>
-        <Link to={'/main'}>
+        <Link to={'/'}>
           <Button type="link" className={styles.link}>
             {t('ErrorPage.Link')}
           </Button>
@@ -26,3 +22,5 @@ export function ErrorPage() {
     </Flex>
   );
 }
+
+// export function ErrorPage() {}

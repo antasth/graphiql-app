@@ -3,11 +3,11 @@ import { RootLayout } from '@/layouts/RootLayout/RootLayout';
 import { Main } from '@/pages/Main';
 import { Welcome } from '@/pages/Welcome';
 import { NotFound } from '@/pages/NotFound';
-import { ErrorBoundary } from '@/pages/ErrorPage';
+import { ErrorPage } from '@/pages/ErrorPage';
 
 export const routes = (
   <Route path="/" element={<RootLayout />}>
-    <Route path="" errorElement={<ErrorBoundary />}>
+    <Route path="" errorElement={<ErrorPage />}>
       <Route index element={<Welcome />} />
       <Route path="/main" element={<Main />} />
       <Route path="*" element={<NotFound />} />

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { ErrorBoundary } from './ErrorPage';
+import { ErrorPage } from './ErrorPage';
 
 const Child = () => {
   throw new Error();
@@ -12,7 +12,7 @@ describe('Error Boundary loads Error Page Component', () => {
       {
         path: '/',
         element: <Child />,
-        errorElement: <ErrorBoundary />,
+        errorElement: <ErrorPage />,
       },
     ];
     const router = createMemoryRouter(routes);

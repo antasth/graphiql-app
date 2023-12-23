@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useRouteError } from 'react-router-dom';
 import { useTranslate } from '@/context/TranslateContext';
 
-export function ErrorBoundary() {
+export function ErrorPage() {
   const error = useRouteError();
   const { Title } = Typography;
   const { t } = useTranslate();

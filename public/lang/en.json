@@ -38,6 +38,6 @@
   "Errors.RequestIsNotAvailable": "Request is not available",
   "Errors.UrlIsEmpty": "The URL cannot be empty",
   "Errors.QueryIsEmpty": "The query cannot be empty",
-  "ErrorPage.Title": "AN ERROR HAS OCCURED",
-  "ErrorPage.Link": "Go to the Welcome Page"
+  "ErrorComponent.Title": "AN ERROR HAS OCCURED",
+  "ErrorComponent.Link": "Go to the Welcome Page"
 }

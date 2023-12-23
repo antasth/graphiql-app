@@ -3,15 +3,13 @@ import { RootLayout } from '@/layouts/RootLayout/RootLayout';
 import { Main } from '@/pages/Main';
 import { Welcome } from '@/pages/Welcome';
 import { NotFound } from '@/pages/NotFound';
-import { ErrorPage } from '@/pages/ErrorPage';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export const routes = (
-  <Route path="/" element={<RootLayout />}>
-    <Route path="" errorElement={<ErrorPage />}>
-      <Route index element={<Welcome />} />
-      <Route path="/main" element={<Main />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
+  <Route path="/" element={<RootLayout />} errorElement={<ErrorBoundary />}>
+    <Route index element={<Welcome />} />
+    <Route path="/main" element={<Main />} />
+    <Route path="*" element={<NotFound />} />
   </Route>
 );
 

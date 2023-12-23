@@ -38,6 +38,6 @@
   "Errors.RequestIsNotAvailable": "Запрос недоступен",
   "Errors.UrlIsEmpty": "URL адрес не может быть пустым",
   "Errors.QueryIsEmpty": "Запрос не может быть пустым",
-  "ErrorPage.Title": "ПРОИЗОШЛА ОШИБКА",
-  "ErrorPage.Link": "На страницу приветствия"
+  "ErrorComponent.Title": "ПРОИЗОШЛА ОШИБКА",
+  "ErrorComponent.Link": "На страницу приветствия"
 }

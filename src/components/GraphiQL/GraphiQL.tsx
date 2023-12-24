@@ -7,7 +7,7 @@ import { Loader } from '@/components/Loader';
 import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
-
+import { formatJson } from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
@@ -40,8 +40,9 @@ export function GraphiQL() {
   };
 
   const prettifying = () => {
-    console.log('Prettifying...');
-    setQuery('');
+    if (variables) {
+      setVariables(formatJson(variables));
+    }
   };
 
   const isUrlValid = () => {

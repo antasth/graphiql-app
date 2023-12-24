@@ -53,10 +53,14 @@ export function RequestEditor({
       <Tabs
         type="card"
         style={{ width: '100%' }}
+        onTabClick={() => setIsOpenPanel(true)}
         tabBarExtraContent={
           <Button
             icon={<UpOutlined />}
-            style={{ transform: isOpenPanel ? 'rotate(-180deg)' : '' }}
+            style={{
+              transform: isOpenPanel ? 'rotate(-180deg)' : '',
+              color: 'rgba(0, 0, 0, 0.25)',
+            }}
             shape="circle"
             size="small"
             type="text"

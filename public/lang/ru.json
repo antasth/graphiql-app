@@ -77,7 +77,7 @@
   "Welcome.Top.Heading2": " в GraphiQL Playround!",
   "Welcome.Top.Subheading1": "GraphiQL Playground - это графическая, интерактивная браузерная IDE.",
   "Welcome.Top.Subheading2": " Этот инструмент позволяет разработчикам и клиентам изучать GraphiQL API и взаимодействовать с ними.",
-  "Welcome.Top.Link": "Начать работу с GraphiQL Playground"
+  "Welcome.Top.Link": "Начать работу с GraphiQL Playground",
   "Auth.Signout": "Вы успешно вышли из вашего аккаунта!",
   "Auth.Signin": "Вы успешно вошли в аккаунт!",
   "Auth.Signup": "Вы успешно создали новый аккаунт!",

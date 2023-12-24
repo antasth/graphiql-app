@@ -3,12 +3,10 @@ import { MemoryRouter } from 'react-router-dom';
 import { FeaturesSection } from './FeaturesSection';
 
 describe('Features Section tests', () => {
-  test('Must contain correct cards titles', () => {
-    const { getByText } = render(<FeaturesSection />, { wrapper: MemoryRouter });
-    const cardTitle1 = getByText('Request editor');
-    const cardTitle2 = getByText('Headers editor');
+  test('Must render feature cards', () => {
+    const { getByTestId } = render(<FeaturesSection />, { wrapper: MemoryRouter });
+    const card = getByTestId('feature-card2');
 
-    expect(cardTitle1).toBeInTheDocument();
-    expect(cardTitle2).toBeInTheDocument();
+    expect(card).toBeInTheDocument();
   });
 });

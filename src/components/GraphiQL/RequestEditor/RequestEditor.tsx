@@ -5,6 +5,7 @@ import { Button, Flex, Tabs } from 'antd';
 
 import { TextArea } from '@/components/GraphiQL/TextArea';
 import { useTranslate } from '@/context/TranslateContext';
+
 import { Headers } from './Headers';
 import { Variables } from './Variables';
 

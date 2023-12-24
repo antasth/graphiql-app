@@ -1,8 +1,10 @@
-import { ChangeEvent, useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
 
-import { App, Button, Col, Drawer, Flex, Input, Row } from 'antd';
+import { App, AutoComplete, Button, Col, Drawer, Flex, Row } from 'antd';
 import { SiGraphql } from 'react-icons/si';
 
+import { Loader } from '@/components/Loader';
+import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
 import { formatJson } from '@/utils/textFormatting';
@@ -11,6 +13,12 @@ import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
 
 import styles from './GraphiQL.module.scss';
+
+const Documentation = lazy(() =>
+  import('./Documentation').then((module) => ({
+    default: module.Documentation,
+  }))
+);
 
 export function GraphiQL() {
   const [url, setUrl] = useState('');
@@ -25,6 +33,9 @@ export function GraphiQL() {
   const { notification } = App.useApp();
 
   const showDocumentation = () => {
+    if (!isUrlValid()) {
+      return;
+    }
     setIsOpenDocs(!isOpenDocs);
   };
 
@@ -37,7 +48,7 @@ export function GraphiQL() {
     }
   };
 
-  const isQueryValid = () => {
+  const isUrlValid = () => {
     if (!url) {
       notification.error({
         message: t('Errors.RequestIsNotAvailable', 'Request is not available'),
@@ -45,6 +56,10 @@ export function GraphiQL() {
       });
       return false;
     }
+    return true;
+  };
+
+  const isQueryValid = () => {
     if (!query) {
       notification.error({
         message: t('Errors.RequestIsNotAvailable', 'Request is not available'),
@@ -56,7 +71,7 @@ export function GraphiQL() {
   };
 
   const executeQuery = async () => {
-    if (!isQueryValid()) {
+    if (!isUrlValid() || !isQueryValid()) {
       return;
     }
     try {
@@ -76,12 +91,14 @@ export function GraphiQL() {
   return (
     <Flex vertical className={styles.container} data-testid="graphql-editor">
       <Flex>
-        <Input
+        <AutoComplete
           size="large"
           placeholder={t('GraphQL.EnterURL', 'Enter URL')}
           className={styles.input}
+          options={DEFAULT_ENDPOINTS}
+          filterOption={(inputValue, option) => option!.value.includes(inputValue)}
           value={url}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => setUrl(event.target.value)}
+          onChange={setUrl}
           data-testid="url-input"
         />
         <Button
@@ -120,7 +137,9 @@ export function GraphiQL() {
         onClose={showDocumentation}
         open={isOpenDocs}
       >
-        All Schema Types...
+        <Suspense fallback={<Loader />}>
+          <Documentation url={url} isOpen={isOpenDocs} />
+        </Suspense>
       </Drawer>
     </Flex>
   );

@@ -11,12 +11,16 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --fix --ext ts,tsx",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
+    "style": "stylelint \"./src/**/*.{css,scss}\"",
+    "style:fix": "stylelint --fix \"./src/**/*.{css,scss}\"",
     "prepare": "husky install"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
+    "*.{css,scss}": "stylelint",
     "*.{js,jsx,ts,tsx,json}": "eslint"
   },
   "dependencies": {

@@ -43,6 +43,9 @@ export function GraphiQL() {
     if (variables) {
       setVariables(formatJson(variables));
     }
+    if (headers) {
+      setHeaders(formatJson(headers));
+    }
   };
 
   const isUrlValid = () => {

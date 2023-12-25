@@ -9,6 +9,7 @@ export function MainPageBtn() {
 
   return (
     <Button
+      data-testid="main-page-btn"
       onClick={() => {
         navigate('main');
       }}

@@ -35,7 +35,10 @@ export function TopSection() {
       </Flex>
 
       <div className={styles.subHeadingWrapper}>
-        <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
+        <Text
+          data-testid="page-subheading"
+          className={styles.welcomeHeading + ' ' + styles.subHeading}
+        >
           {t('Welcome.Top.Subheading1')}
           <br />
           {t('Welcome.Top.Subheading2')}

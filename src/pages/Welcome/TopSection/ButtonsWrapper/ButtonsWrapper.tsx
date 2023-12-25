@@ -1,45 +1,20 @@
 import styles from './ButtonsWrapper.module.scss';
-import { Flex, Button } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { useTranslate } from '@/context/TranslateContext';
+import { Flex } from 'antd';
+import { SignInBtn } from './Buttons/SignInBtn';
+import { SignUpBtn } from './Buttons/SignUpBtn';
+import { MainPageBtn } from './Buttons/MainPageBtn';
+import { useAuth } from '@/hooks/useAuth';
 
 export function ButtonsWrapper() {
-  const navigate = useNavigate();
-  const { t } = useTranslate();
-
-  return (
-    <Flex gap="large" className={styles.buttonWrapper}>
-      <Button
-        data-testid="sign-in-btn"
-        onClick={() => {
-          navigate('signin');
-        }}
-        id={styles.loginBtn}
-        type="primary"
-      >
-        {t('Welcome.Top.Button.Signin')}
-      </Button>
-
-      <Button
-        data-testid="sign-up-btn"
-        onClick={() => {
-          navigate('signup');
-        }}
-        id={styles.signupBtn}
-        type="default"
-      >
-        {t('Welcome.Top.Button.Signup')}
-      </Button>
-
-      {/* <Button
-        onClick={() => {
-          navigate('main');
-        }}
-        id={styles.mainPageBtn}
-        type="default"
-      >
-        {t('Welcome.Top.Button.MainPage')}
-      </Button> */}
+  const { isAuth } = useAuth();
+  return isAuth ? (
+    <Flex className={styles.buttonWrapper}>
+      <MainPageBtn />
+    </Flex>
+  ) : (
+    <Flex className={styles.buttonWrapper}>
+      <SignInBtn />
+      <SignUpBtn />
     </Flex>
   );
 }

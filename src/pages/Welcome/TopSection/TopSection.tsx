@@ -3,11 +3,14 @@ import styles from './TopSection.module.scss';
 import { Typography, Flex, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useTranslate } from '@/context/TranslateContext';
+import { useAuth } from '@/hooks/useAuth';
 
 export function TopSection() {
   const { Title, Text } = Typography;
   const navigate = useNavigate();
   const { t } = useTranslate();
+  const { isAuth } = useAuth();
+  const link = isAuth ? 'main' : 'signin';
 
   return (
     <section className={styles.topWrapper}>
@@ -42,12 +45,12 @@ export function TopSection() {
         <Button
           data-testid="link-btn"
           onClick={() => {
-            navigate('main');
+            navigate(link);
           }}
           id={styles.linkBtn}
           type="link"
         >
-          {t('Welcome.Top.Link')}
+          {isAuth ? t('Welcome.Top.Link.Auth') : t('Welcome.Top.Link.NoAuth')}
         </Button>
       </Flex>
     </section>

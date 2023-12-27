@@ -42,6 +42,7 @@
   "Auth.Signin": "You have successfully logged into your account!",
   "Auth.Signup": "You have successfully created an account!",
   "Validation.email": "Must be valid email",
+  "Validation.email.required": "Please enter your email",
   "Validation.password.required": "Please enter a password",
   "Validation.password.digit": "Your password must have at least 1 digit",
   "Validation.password.letter": "Your password must have at least 1 letter",

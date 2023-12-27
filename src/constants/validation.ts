@@ -8,13 +8,10 @@ export const useSignInValidationSchema = () => {
   const { t } = useTranslate();
 
   return object({
-    email: string().required().matches(EMAIL_REGEXP, t('Validation.email', 'not valid email')),
-    password: string()
-      .required(t('Validation.password.required', 'password required'))
-      .matches(/[0-9]/, t('Validation.password.digit', 'digit required'))
-      .matches(/[a-z,A-Z]/, t('Validation.password.letter', 'letter required'))
-      .matches(/[^(A-Za-z0-9 )]/, t('Validation.password.special', 'special character required'))
-      .min(8, t('Validation.password.length', 'min length 8 characters')),
+    email: string()
+      .required(t('Validation.email.required', 'email is a required field'))
+      .matches(EMAIL_REGEXP, t('Validation.email', 'not valid email')),
+    password: string().required(t('Validation.password.required', 'password is a required field')),
   });
 };
 
@@ -22,9 +19,11 @@ export const useSignUpValidationSchema = () => {
   const { t } = useTranslate();
 
   return object({
-    email: string().required().matches(EMAIL_REGEXP, t('Validation.email', 'not valid email')),
+    email: string()
+      .required(t('Validation.email.required', 'email is a required field'))
+      .matches(EMAIL_REGEXP, t('Validation.email', 'not valid email')),
     password: string()
-      .required(t('Validation.password.required', 'password required'))
+      .required(t('Validation.password.required', 'password is a required field'))
       .matches(/[0-9]/, t('Validation.password.digit', 'digit required'))
       .matches(/[a-z,A-Z]/, t('Validation.password.letter', 'letter required'))
       .matches(/[^(A-Za-z0-9 )]/, t('Validation.password.special', 'special character required'))

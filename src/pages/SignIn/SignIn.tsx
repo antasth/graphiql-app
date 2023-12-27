@@ -1,9 +1,12 @@
+import { useSignInValidationSchema } from '@/constants/validation';
 import { useTranslate } from '@/context/TranslateContext';
 import { auth } from '@/firebase';
 import { useFirebase } from '@/hooks/useFirebase';
 import { ISignInValues } from '@/types';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input } from 'antd';
-import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
+import { useForm } from 'react-hook-form';
+import { FormItem } from 'react-hook-form-antd';
 import { Link } from 'react-router-dom';
 import styles from './SignIn.module.scss';
 
@@ -11,12 +14,13 @@ export function SignIn() {
   const { t } = useTranslate();
   const { signInWithEmailAndPassword } = useFirebase(auth);
 
-  const onFinish = async (values: ISignInValues) => {
-    await signInWithEmailAndPassword(values.email, values.password);
-  };
+  const { control, handleSubmit } = useForm({
+    resolver: yupResolver(useSignInValidationSchema()),
+    mode: 'onChange',
+  });
 
-  const onFinishFailed = (errorInfo: ValidateErrorEntity<ISignInValues>) => {
-    console.log('Failed:', errorInfo);
+  const onFormSubmit = async ({ email, password }: ISignInValues) => {
+    await signInWithEmailAndPassword(email, password);
   };
 
   return (
@@ -28,41 +32,24 @@ export function SignIn() {
         initialValues={{
           remember: true,
         }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
+        onFinish={handleSubmit(onFormSubmit)}
         autoComplete="off"
       >
-        <Form.Item
-          label={t('Form.Email', 'Email')}
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: t('Form.EmailMessage', 'Please input your email!'),
-            },
-          ]}
-        >
+        <FormItem control={control} label={t('Form.Email', 'Email')} name="email">
           <Input
             autoComplete="on"
             placeholder={t('Form.EmailPlaceholder', 'Please input your email!')}
+            data-testid="email"
           />
-        </Form.Item>
+        </FormItem>
 
-        <Form.Item
-          label={t('Form.Password', 'Password')}
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: t('Form.PasswordMessage', 'Please input your password!'),
-            },
-          ]}
-        >
+        <FormItem control={control} label={t('Form.Password', 'Password')} name="password">
           <Input.Password
             autoComplete="on"
             placeholder={t('Form.PasswordPlaceholderSignIn', 'Please enter password')}
+            data-testid="password"
           />
-        </Form.Item>
+        </FormItem>
 
         <Form.Item className={styles.submit}>
           <Button type="primary" htmlType="submit" block>

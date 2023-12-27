@@ -21,16 +21,16 @@ describe('SignIn page tests', () => {
     expect(signInButton).toBeInTheDocument();
   });
   test('Must sign in with email and password', async () => {
-    const { getByLabelText, getByRole } = renderWithProviders(
+    const { getByRole, getByTestId } = renderWithProviders(
       <MemoryRouter>
         <SignIn />
       </MemoryRouter>
     );
-    fireEvent.change(getByLabelText(/Email/i), {
+    fireEvent.change(getByTestId('email'), {
       target: { value: 'user@example.com' },
     });
-    fireEvent.change(getByLabelText(/Password/i), {
-      target: { value: 'password123' },
+    fireEvent.change(getByTestId('password'), {
+      target: { value: 'password@123' },
     });
 
     fireEvent.click(getByRole('button', { name: /Sign in/i }));
@@ -39,7 +39,7 @@ describe('SignIn page tests', () => {
       expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
         getAuth(),
         'user@example.com',
-        'password123'
+        'password@123'
       );
     });
   });

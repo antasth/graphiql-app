@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { LeftOutlined } from '@ant-design/icons';
-import { App, Button, Flex, Space } from 'antd';
+import { Button, Flex, Space } from 'antd';
 import { RiHome2Line } from 'react-icons/ri';
 
-import { Loader } from '@/components/Loader';
 import { useTranslate } from '@/context/TranslateContext';
-import { getAvailableTypes } from '@/services/graphqlApi';
 import type { IGraphQLType } from '@/types';
-
 import { TypeDescription } from './TypeDescription';
 import { TypeList } from './TypeList';
 
 interface IProps {
-  readonly url: string;
-  readonly isOpen?: boolean;
+  readonly availableTypes: IGraphQLType[];
 }
 
 const getTypeByName = (availableTypes: IGraphQLType[], name: string | null) => {
@@ -22,36 +18,10 @@ const getTypeByName = (availableTypes: IGraphQLType[], name: string | null) => {
   return availableTypes.find((type) => type.name === name);
 };
 
-export function Documentation({ url, isOpen = true }: IProps) {
-  const [isLoading, setIsLoading] = useState(true);
+export function Documentation({ availableTypes }: IProps) {
   const [explorer, setExplorer] = useState<IGraphQLType[]>([]);
-  const [availableTypes, setAvailableTypes] = useState<IGraphQLType[]>([]);
 
-  const { notification } = App.useApp();
   const { t } = useTranslate();
-
-  useEffect(() => {
-    const getSchemaFromApi = async () => {
-      if (!url) return;
-      try {
-        setIsLoading(true);
-        setExplorer([]);
-        setAvailableTypes([]);
-        const types = await getAvailableTypes(url);
-        setAvailableTypes(types);
-      } catch (error) {
-        notification.error({
-          message: t('Errors.UnexpectedError', 'Unexpected error'),
-          description: t('Errors.FailedGetData', 'Failed to get data from the selected API'),
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    if (isOpen) {
-      getSchemaFromApi();
-    }
-  }, [isOpen, notification, t, url]);
 
   const onSelectType = (name: string | null) => {
     const type = getTypeByName(availableTypes, name);
@@ -71,10 +41,6 @@ export function Documentation({ url, isOpen = true }: IProps) {
   const goToStart = () => {
     setExplorer([]);
   };
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <Flex data-testid="documentation" style={{ width: '100%', height: '100%' }}>

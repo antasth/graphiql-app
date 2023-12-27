@@ -6,6 +6,7 @@ import { SiGraphql } from 'react-icons/si';
 import { Loader } from '@/components/Loader';
 import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
+import { useGetAvailableTypes } from '@/hooks/useGetAvailableTypes';
 import { getData } from '@/services/graphqlApi';
 import { formatJson } from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
@@ -32,11 +33,16 @@ export function GraphiQL() {
   const { t } = useTranslate();
   const { notification } = App.useApp();
 
-  const showDocumentation = () => {
+  const { availableTypes, isTypesLoading, getTypes } = useGetAvailableTypes();
+
+  const showDocumentation = async () => {
     if (!isUrlValid()) {
       return;
     }
-    setIsOpenDocs(!isOpenDocs);
+    const isSuccess = await getTypes(url);
+    if (isSuccess) {
+      setIsOpenDocs(true);
+    }
   };
 
   const prettifying = () => {
@@ -115,7 +121,11 @@ export function GraphiQL() {
       <Row style={{ height: '100%' }} gutter={[8, 8]}>
         <Col xs={24} sm={12}>
           <Flex style={{ height: '100%', position: 'relative' }}>
-            <Sidebar onShowDocumentation={showDocumentation} onPrettifying={prettifying} />
+            <Sidebar
+              onShowDocumentation={showDocumentation}
+              onPrettifying={prettifying}
+              isDocLoading={isTypesLoading}
+            />
             <RequestEditor
               query={query}
               onChangeQuery={setQuery}
@@ -134,11 +144,11 @@ export function GraphiQL() {
       <Drawer
         title={t('GraphQL.Documentation', 'Documentation')}
         placement="right"
-        onClose={showDocumentation}
+        onClose={() => setIsOpenDocs(false)}
         open={isOpenDocs}
       >
         <Suspense fallback={<Loader />}>
-          <Documentation url={url} isOpen={isOpenDocs} />
+          <Documentation availableTypes={availableTypes} />
         </Suspense>
       </Drawer>
     </Flex>

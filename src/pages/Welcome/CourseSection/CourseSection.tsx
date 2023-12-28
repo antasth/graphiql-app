@@ -8,6 +8,7 @@ import { useTranslate } from '@/context/TranslateContext';
 export function CourseSection() {
   const { Title } = Typography;
   const { t } = useTranslate();
+
   return (
     <section className={styles.courseWrapper}>
       <Title

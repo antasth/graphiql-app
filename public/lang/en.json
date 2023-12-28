@@ -38,6 +38,8 @@
   "Errors.RequestIsNotAvailable": "Request is not available",
   "Errors.UrlIsEmpty": "The URL cannot be empty",
   "Errors.QueryIsEmpty": "The query cannot be empty",
+  "ErrorComponent.Title": "AN ERROR HAS OCCURED",
+  "ErrorComponent.Link": "Go to the Welcome Page",
   "Welcome.Course.Heading": "Introducing RSSchool React Course",
   "Welcome.Course.Subheading": "This project was completed as a part of RSSchool React Course",
   "Welcome.Features.Title1": "Request editor",

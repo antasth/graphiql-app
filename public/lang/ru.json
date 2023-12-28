@@ -38,6 +38,8 @@
   "Errors.RequestIsNotAvailable": "Запрос недоступен",
   "Errors.UrlIsEmpty": "URL адрес не может быть пустым",
   "Errors.QueryIsEmpty": "Запрос не может быть пустым",
+  "ErrorComponent.Title": "ПРОИЗОШЛА ОШИБКА",
+  "ErrorComponent.Link": "На страницу приветствия",
   "Welcome.Course.Heading": "Представляем курс по React школы RS School",
   "Welcome.Course.Subheading": "Этот сайт - финальный проект курса RS School по фреймворку React",
   "Welcome.Features.Title1": "Редактор запросов",

@@ -7,7 +7,12 @@ import { Loader } from '@/components/Loader';
 import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
-import { formatJson, getQueryArray, prettifyQuery } from '@/utils/textFormatting';
+import {
+  isQueryBracesBalanced,
+  formatJson,
+  getQueryArray,
+  prettifyQuery,
+} from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
@@ -42,6 +47,7 @@ export function GraphiQL() {
   const prettifying = () => {
     if (query) {
       const queryArray = getQueryArray(query);
+      console.log(isQueryBracesBalanced(queryArray));
 
       console.log(queryArray);
       console.log(prettifyQuery(queryArray));

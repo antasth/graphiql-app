@@ -9,7 +9,7 @@ export const formatJson = (text: string): string => {
   }
 };
 
-export const prettifyQuery = (query: string[], tab = TAB_WIDTH) => {
+export const prettifyQuery = (query: string[], tab = TAB_WIDTH): string => {
   let level = 0;
   let parenthesesIsOpen = false;
   let bracesIsOpen = false;
@@ -61,4 +61,35 @@ export const getQueryArray = (query: string): string[] => {
     .replace(/[{}():,!$]/g, (match) => ` ${match} `)
     .split(' ')
     .filter((s) => s !== '');
+};
+
+export const isQueryBracesBalanced = (query: string[]): boolean => {
+  const stack: string[] = [];
+
+  if (!query.includes('{')) return false;
+
+  for (let i = 0; i < query.length; i++) {
+    const currentElement = query[i];
+
+    if (/[{(]/.test(currentElement)) {
+      stack.push(currentElement);
+    }
+
+    if (/[})]/.test(currentElement)) {
+      if (stack.length === 0) {
+        return false;
+      }
+
+      const lastElement = stack.pop();
+
+      if (
+        (lastElement === '(' && currentElement !== ')') ||
+        (lastElement === '{' && currentElement !== '}')
+      ) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
 };

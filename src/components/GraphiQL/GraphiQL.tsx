@@ -7,7 +7,7 @@ import { Loader } from '@/components/Loader';
 import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
-import { formatJson } from '@/utils/textFormatting';
+import { formatJson, getQueryArray, prettifyQuery } from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
@@ -40,6 +40,14 @@ export function GraphiQL() {
   };
 
   const prettifying = () => {
+    if (query) {
+      const queryArray = getQueryArray(query);
+
+      console.log(queryArray);
+      console.log(prettifyQuery(queryArray));
+
+      setQuery(prettifyQuery(queryArray));
+    }
     if (variables) {
       setVariables(formatJson(variables));
     }

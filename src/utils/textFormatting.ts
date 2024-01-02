@@ -23,8 +23,12 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH) => {
     if (queryElement === '(') parenthesesIsOpen = true;
     if (queryElement === ')') parenthesesIsOpen = false;
 
-    if (/\(|\)/.test(queryElement)) {
+    if (/[()$!]/.test(queryElement)) {
       return queryElement;
+    }
+
+    if (/[:,]/.test(queryElement)) {
+      return `${queryElement} `;
     }
 
     if (queryElement === '{') {
@@ -40,10 +44,9 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH) => {
         : `\n${padding}${queryElement}\n${padding}`;
     }
 
-    if (!/[:,{}\(\)]/.test(nextElement)) {
+    if (!/[:,!${}()]/.test(nextElement)) {
       if (!bracesIsOpen) return `${queryElement} `;
-
-      return !parenthesesIsOpen ? `${queryElement}\n${getCurrentPadding()}` : `${queryElement} `;
+      if (!parenthesesIsOpen) return `${queryElement}\n${getCurrentPadding()}`;
     }
 
     return queryElement;
@@ -55,7 +58,7 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH) => {
 export const getQueryArray = (query: string): string[] => {
   return query
     .replace(/[\r\n\s]+/g, ' ')
-    .replace(/[{}():,]/g, (match) => ` ${match} `)
+    .replace(/[{}():,!$]/g, (match) => ` ${match} `)
     .split(' ')
     .filter((s) => s !== '');
 };

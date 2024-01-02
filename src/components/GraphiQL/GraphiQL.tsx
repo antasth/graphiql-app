@@ -8,9 +8,9 @@ import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
 import { getData } from '@/services/graphqlApi';
 import {
-  isQueryBracesBalanced,
   formatJson,
   getQueryArray,
+  isQueryBracesBalanced,
   prettifyQuery,
 } from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
@@ -47,12 +47,14 @@ export function GraphiQL() {
   const prettifying = () => {
     if (query) {
       const queryArray = getQueryArray(query);
-      console.log(isQueryBracesBalanced(queryArray));
-
-      console.log(queryArray);
-      console.log(prettifyQuery(queryArray));
-
-      setQuery(prettifyQuery(queryArray));
+      if (isQueryBracesBalanced(queryArray)) {
+        setQuery(prettifyQuery(queryArray));
+      } else {
+        notification.error({
+          message: t('Errors.QueryIsIncorrect', 'Query is incorrect'),
+          description: t('Errors.QueryIncorrectBrackets', 'Brackets are missing or not closed'),
+        });
+      }
     }
     if (variables) {
       setVariables(formatJson(variables));

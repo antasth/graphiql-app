@@ -10,7 +10,7 @@ import { getData } from '@/services/graphqlApi';
 import {
   formatJson,
   getQueryArray,
-  isQueryBracesBalanced,
+  isQueryBracketsBalanced,
   prettifyQuery,
 } from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
@@ -47,7 +47,7 @@ export function GraphiQL() {
   const prettifying = () => {
     if (query) {
       const queryArray = getQueryArray(query);
-      if (isQueryBracesBalanced(queryArray)) {
+      if (isQueryBracketsBalanced(queryArray)) {
         setQuery(prettifyQuery(queryArray));
       } else {
         notification.error({

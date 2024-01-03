@@ -63,7 +63,7 @@ export const getQueryArray = (query: string): string[] => {
     .filter((s) => s !== '');
 };
 
-export const isQueryBracesBalanced = (query: string[]): boolean => {
+export const isQueryBracketsBalanced = (query: string[]): boolean => {
   const stack: string[] = [];
 
   if (!query.includes('{')) return false;

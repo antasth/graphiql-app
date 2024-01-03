@@ -9,7 +9,10 @@ describe('404 page tests', () => {
       {
         path: '/',
         element: <Main />,
-        errorElement: <NotFound />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ];
 

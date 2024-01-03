@@ -13,6 +13,7 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH): string => {
   let level = 0;
   let parenthesesIsOpen = false;
   let bracesIsOpen = false;
+  let writeInLine = false;
 
   const getCurrentPadding = () => ' '.repeat(level * tab);
 
@@ -20,24 +21,37 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH): string => {
     const nextElement = queryArray[i + 1];
 
     if (queryElement === '{') bracesIsOpen = true;
+    if (queryElement === '}') bracesIsOpen = false;
     if (queryElement === '(') parenthesesIsOpen = true;
     if (queryElement === ')') parenthesesIsOpen = false;
+    if (queryElement === '...' || nextElement === '@') writeInLine = true;
 
-    if (/[()$!]/.test(queryElement)) {
+    if (/[()$!@]/.test(queryElement)) {
       return queryElement;
+    }
+
+    if (queryElement === ',' && !parenthesesIsOpen) {
+      return `\n${getCurrentPadding()}`;
     }
 
     if (/[:,]/.test(queryElement)) {
       return `${queryElement} `;
     }
 
-    if (queryElement === '{') {
+    if (i === 0 && queryElement === '{') {
+      level++;
+      return `${queryElement}\n${getCurrentPadding()}`;
+    } else if (queryElement === '{') {
+      writeInLine = false;
       level++;
       return ` ${queryElement}\n${getCurrentPadding()}`;
     }
 
     if (queryElement === '}') {
       level--;
+
+      if (level === 0 && nextElement) return `\n${queryElement}\n\n`;
+
       const padding = getCurrentPadding();
       return nextElement === '}'
         ? `\n${padding}${queryElement}`
@@ -45,7 +59,7 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH): string => {
     }
 
     if (!/[:,!${}()]/.test(nextElement)) {
-      if (!bracesIsOpen) return `${queryElement} `;
+      if (!bracesIsOpen || writeInLine) return `${queryElement} `;
       if (!parenthesesIsOpen) return `${queryElement}\n${getCurrentPadding()}`;
     }
 
@@ -57,8 +71,8 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH): string => {
 
 export const getQueryArray = (query: string): string[] => {
   return query
-    .replace(/[\r\n\s]+/g, ' ')
-    .replace(/[{}():,!$]/g, (match) => ` ${match} `)
+    .replace(/#.*(?=\n|$)|[\r\n\s]+/g, ' ')
+    .replace(/[{}():,!$@]/g, (match) => ` ${match} `)
     .split(' ')
     .filter((s) => s !== '');
 };

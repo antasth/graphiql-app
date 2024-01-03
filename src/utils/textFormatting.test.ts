@@ -27,6 +27,13 @@ describe('formatJson', () => {
     expect(queryArray).toStrictEqual(['auth', '{', 'secure', '{', 'public_key', '}', '}']);
   });
 
+  test('getQueryArray function should remove comments', () => {
+    const query = `auth{#comment\n secure #comment\n { public_key } }`;
+    const queryArray = getQueryArray(query);
+
+    expect(queryArray).toStrictEqual(['auth', '{', 'secure', '{', 'public_key', '}', '}']);
+  });
+
   test('getQueryArray function should remove line breaks and multiple spaces', () => {
     const query = `auth     {\n \n \n   secure {\n    public_key    }\n }`;
     const queryArray = getQueryArray(query);

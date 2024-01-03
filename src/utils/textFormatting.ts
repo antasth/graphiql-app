@@ -30,11 +30,12 @@ export const prettifyQuery = (query: string[], tab = TAB_WIDTH): string => {
       return queryElement;
     }
 
-    if (queryElement === ',' && !parenthesesIsOpen) {
-      return `\n${getCurrentPadding()}`;
+    if (queryElement === ',') {
+      if (nextElement === ',') return '';
+      return parenthesesIsOpen ? `${queryElement} ` : `\n${getCurrentPadding()}`;
     }
 
-    if (/[:,]/.test(queryElement)) {
+    if (/[:]/.test(queryElement)) {
       return `${queryElement} `;
     }
 

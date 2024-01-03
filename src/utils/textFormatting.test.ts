@@ -100,4 +100,18 @@ describe('formatJson', () => {
 
     expect(prettifyQuery(query)).toBe(expected);
   });
+
+  test('prettifyQuery function should remove duplicate commas', () => {
+    const query = ['query', 'myQuery', '{', 'name', ',', ',', ',', 'age', '}'];
+    const expected = `query myQuery {\n  name\n  age\n}\n`;
+
+    expect(prettifyQuery(query)).toBe(expected);
+  });
+
+  test('prettifyQuery function should remove duplicate commas without line break inside () brackets', () => {
+    const query = ['query', 'myQuery', '(', 'name', ',', ',', ',', ',', 'age', ')'];
+    const expected = `query myQuery(name, age)`;
+
+    expect(prettifyQuery(query)).toBe(expected);
+  });
 });

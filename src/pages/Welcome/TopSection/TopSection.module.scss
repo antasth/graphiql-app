@@ -42,7 +42,8 @@
   justify-content: center;
 }
 
-#linkBtn {
+#signInLinkBtn,
+#mainPageLinkBtn {
   display: flex;
   height: 5rem;
   padding: 0;
@@ -52,7 +53,8 @@
   white-space: normal;
 }
 
-#linkBtn:hover {
+#signInLinkBtn:hover,
+#mainPageLinkBtn:hover {
   color: #dceefe;
 }
 
@@ -74,7 +76,8 @@
     text-align: center;
   }
 
-  #linkBtn {
+  #signInLinkBtn,
+  #mainPageLinkBtn {
     height: 4.5rem;
     padding: 0.5rem;
     font-size: calc(3vw + 5px);
@@ -95,7 +98,8 @@
     font-size: calc(2vw + 10px);
   }
 
-  #linkBtn {
+  #signInLinkBtn,
+  #mainPageLinkBtn {
     font-size: calc(3vw + 5px);
   }
 }
@@ -110,7 +114,8 @@
     font-size: calc(3vw + 16px);
   }
 
-  #linkBtn {
+  #signInLinkBtn,
+  #mainPageLinkBtn {
     max-width: 19rem;
     margin-bottom: 3rem;
     font-size: calc(2vw + 17px);
@@ -124,19 +129,21 @@
   }
 }
 
-@media (min-width: $wide-screen) {
-  .topWrapper {
-    padding: 4rem 2rem 2rem;
-  }
-
-  #linkBtn {
-    margin-bottom: 1rem;
-    font-size: 5rem;
-  }
-}
-
 @media (min-width: $big-laptop) {
-  #linkBtn {
+  #signInLinkBtn,
+  #mainPageLinkBtn {
     font-size: 3.5rem;
+  }
+
+  @media (min-width: $wide-screen) {
+    .topWrapper {
+      padding: 4rem 2rem 2rem;
+    }
+
+    #signInLinkBtn,
+    #mainPageLinkBtn {
+      margin-bottom: 1rem;
+      font-size: 5rem;
+    }
   }
 }

@@ -44,7 +44,7 @@ export function TopSection() {
       </div>
       <Flex justify="center" id={styles.linkBtnWrapper}>
         {isAuth ? (
-          <Link data-testid="link-btn" to={'/main'} id={styles.mainPageLinkBtn}>
+          <Link to={'/main'} id={styles.mainPageLinkBtn}>
             {t('Welcome.Top.Link.Auth')}
           </Link>
         ) : (

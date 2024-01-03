@@ -3,13 +3,13 @@ import { TopSection } from './TopSection';
 import { renderWithProviders } from '@/utils/test-utils';
 
 describe('Welcome page top section tests', () => {
-  test('Must render link button', () => {
+  test('Must render top section subheading', () => {
     const { getByTestId } = renderWithProviders(
       <MemoryRouter>
         <TopSection />
       </MemoryRouter>
     );
-    const linkBtn = getByTestId('link-btn');
-    expect(linkBtn).toBeInTheDocument();
+    const subHeading = getByTestId('page-subheading');
+    expect(subHeading).toBeInTheDocument();
   });
 });

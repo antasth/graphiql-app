@@ -1,13 +1,14 @@
 import { ButtonsWrapper } from './ButtonsWrapper';
 import styles from './TopSection.module.scss';
-import { Typography, Flex, Button } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Typography, Flex } from 'antd';
+import { Link } from 'react-router-dom';
 import { useTranslate } from '@/context/TranslateContext';
+import { useAuth } from '@/hooks/useAuth';
 
 export function TopSection() {
   const { Title, Text } = Typography;
-  const navigate = useNavigate();
   const { t } = useTranslate();
+  const { isAuth } = useAuth();
 
   return (
     <section className={styles.topWrapper}>
@@ -32,23 +33,25 @@ export function TopSection() {
       </Flex>
 
       <div className={styles.subHeadingWrapper}>
-        <Text className={styles.welcomeHeading + ' ' + styles.subHeading}>
+        <Text
+          data-testid="page-subheading"
+          className={styles.welcomeHeading + ' ' + styles.subHeading}
+        >
           {t('Welcome.Top.Subheading1')}
           <br />
           {t('Welcome.Top.Subheading2')}
         </Text>
       </div>
       <Flex justify="center" id={styles.linkBtnWrapper}>
-        <Button
-          data-testid="link-btn"
-          onClick={() => {
-            navigate('main');
-          }}
-          id={styles.linkBtn}
-          type="link"
-        >
-          {t('Welcome.Top.Link')}
-        </Button>
+        {isAuth ? (
+          <Link to={'/main'} id={styles.mainPageLinkBtn}>
+            {t('Welcome.Top.Link.Auth')}
+          </Link>
+        ) : (
+          <Link to={'/signin'} id={styles.signInLinkBtn}>
+            {t('Welcome.Top.Link.NoAuth')}
+          </Link>
+        )}
       </Flex>
     </section>
   );

@@ -1,18 +1,10 @@
-import { render, fireEvent, act } from '@testing-library/react';
-import { TranslateProvider, useTranslate } from './TranslateContext';
+import { act, fireEvent, render } from '@testing-library/react';
+
 import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/languages';
-import * as utils from '@/utils/translate';
+import { TranslateProvider, useTranslate } from './TranslateContext';
 
 vi.mock('@/context/TranslateContext', async () => {
   return vi.importActual('@/context/TranslateContext');
-});
-
-vi.mock('@/utils/translate', async () => {
-  const actual: typeof utils = await vi.importActual('@/utils/translate');
-  return {
-    ...actual,
-    loadLanguage: () => vi.fn(),
-  };
 });
 
 const TestComponent = () => {

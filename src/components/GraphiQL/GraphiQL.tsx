@@ -8,7 +8,12 @@ import { DEFAULT_ENDPOINTS } from '@/constants/endpoints';
 import { useTranslate } from '@/context/TranslateContext';
 import { useGetAvailableTypes } from '@/hooks/useGetAvailableTypes';
 import { getData } from '@/services/graphqlApi';
-import { formatJson } from '@/utils/textFormatting';
+import {
+  formatJson,
+  getQueryArray,
+  isQueryBracketsBalanced,
+  prettifyQuery,
+} from '@/utils/textFormatting';
 import { RequestEditor } from './RequestEditor';
 import { ResponseViewer } from './ResponseViewer';
 import { Sidebar } from './Sidebar';
@@ -46,6 +51,17 @@ export function GraphiQL() {
   };
 
   const prettifying = () => {
+    if (query) {
+      const queryArray = getQueryArray(query);
+      if (isQueryBracketsBalanced(queryArray)) {
+        setQuery(prettifyQuery(queryArray));
+      } else {
+        notification.error({
+          message: t('Errors.QueryIsIncorrect', 'Query is incorrect'),
+          description: t('Errors.QueryIncorrectBrackets', 'Brackets are missing or not closed'),
+        });
+      }
+    }
     if (variables) {
       setVariables(formatJson(variables));
     }

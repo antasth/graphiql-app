@@ -1,11 +1,15 @@
-import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { TopSection } from './TopSection';
+import { renderWithProviders } from '@/utils/test-utils';
 
 describe('Welcome page top section tests', () => {
-  test('Must contain correct link', () => {
-    const { getByText } = render(<TopSection />, { wrapper: MemoryRouter });
-    const heading = getByText('Explore GraphiQL Playground');
-    expect(heading).toBeInTheDocument();
+  test('Must render top section subheading', () => {
+    const { getByTestId } = renderWithProviders(
+      <MemoryRouter>
+        <TopSection />
+      </MemoryRouter>
+    );
+    const subHeading = getByTestId('page-subheading');
+    expect(subHeading).toBeInTheDocument();
   });
 });

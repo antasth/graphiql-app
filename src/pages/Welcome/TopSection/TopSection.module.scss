@@ -6,9 +6,10 @@
   flex-direction: column;
   width: 100%;
   max-width: 96rem;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   padding: 4rem 2rem 0;
   margin: 0 auto;
+  white-space: normal;
 }
 
 .topWrapperFlex {
@@ -17,14 +18,14 @@
 
 .welcomeHeading.mainHeading {
   margin: 0;
-  font-size: 4.75rem;
+  font-size: 4.5rem;
   color: white;
   text-align: left;
 }
 
 .welcomeHeading.secondMainHeading {
   margin-bottom: 3rem;
-  font-size: 4.75rem;
+  font-size: 4.5rem;
   color: #0046b8;
   text-align: left;
 }
@@ -35,36 +36,26 @@
   text-align: left;
 }
 
-#linkBtn {
+#linkBtnWrapper {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+#signInLinkBtn,
+#mainPageLinkBtn {
   display: flex;
   height: 5rem;
   padding: 0;
-  margin-top: 4rem;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color: #0046b8;
   text-align: center;
+  white-space: normal;
 }
 
-#linkBtn:hover {
+#signInLinkBtn:hover,
+#mainPageLinkBtn:hover {
   color: #dceefe;
-}
-
-@media (min-width: $wide-screen) {
-  .topWrapper {
-    height: auto;
-    padding: 4rem 2rem 2rem;
-  }
-
-  #linkBtn {
-    margin-bottom: 1rem;
-    font-size: 5rem;
-  }
-}
-
-@media (min-width: $big-laptop) {
-  #linkBtn {
-    font-size: 4.5rem;
-  }
 }
 
 @media (max-width: $laptop) {
@@ -74,7 +65,7 @@
 
   .welcomeHeading.mainHeading,
   .welcomeHeading.secondMainHeading {
-    font-size: calc(5vw + 20px);
+    font-size: calc(5vw + 16px);
   }
 
   .welcomeHeading.secondMainHeading {
@@ -85,11 +76,11 @@
     text-align: center;
   }
 
-  #linkBtn {
+  #signInLinkBtn,
+  #mainPageLinkBtn {
     height: 4.5rem;
-    padding: 0.5rem 1rem;
-    margin-top: 2.5rem;
-    font-size: calc(3vw + 20px);
+    padding: 0.5rem;
+    font-size: calc(3vw + 5px);
   }
 }
 
@@ -106,18 +97,28 @@
   .welcomeHeading.subHeading {
     font-size: calc(2vw + 10px);
   }
+
+  #signInLinkBtn,
+  #mainPageLinkBtn {
+    font-size: calc(3vw + 5px);
+  }
 }
 
 @media (max-width: $tablet-540-width) {
-  .welcomeHeading.mainHeading,
-  .welcomeHeading.secondMainHeading {
-    font-size: calc(4vw + 16px);
+  .topWrapper {
+    padding: 3rem 0.5rem 0;
   }
 
-  #linkBtn {
+  .welcomeHeading.mainHeading,
+  .welcomeHeading.secondMainHeading {
+    font-size: calc(3vw + 16px);
+  }
+
+  #signInLinkBtn,
+  #mainPageLinkBtn {
     max-width: 19rem;
-    margin-top: 4rem;
-    font-size: calc(2vw + 24px);
+    margin-bottom: 3rem;
+    font-size: calc(2vw + 17px);
     white-space: normal;
   }
 }
@@ -125,5 +126,24 @@
 @media (max-width: $mobile) {
   .topWrapper {
     height: 90vh;
+  }
+}
+
+@media (min-width: $big-laptop) {
+  #signInLinkBtn,
+  #mainPageLinkBtn {
+    font-size: 3.5rem;
+  }
+
+  @media (min-width: $wide-screen) {
+    .topWrapper {
+      padding: 4rem 2rem 2rem;
+    }
+
+    #signInLinkBtn,
+    #mainPageLinkBtn {
+      margin-bottom: 1rem;
+      font-size: 5rem;
+    }
   }
 }

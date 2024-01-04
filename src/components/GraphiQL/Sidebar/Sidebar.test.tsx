@@ -4,7 +4,7 @@ import { Sidebar } from './Sidebar';
 describe('Sidebar', () => {
   test('renders correctly', () => {
     const { getByTestId } = render(
-      <Sidebar onShowDocumentation={vi.fn()} onPrettifying={vi.fn()} />
+      <Sidebar onShowDocumentation={vi.fn()} onPrettifying={vi.fn()} isDocLoading={false} />
     );
     const sidebar = getByTestId('sidebar');
     expect(sidebar).toBeInTheDocument();
@@ -12,7 +12,9 @@ describe('Sidebar', () => {
 
   test('show documentation', () => {
     const show = vi.fn();
-    const { getByTestId } = render(<Sidebar onShowDocumentation={show} onPrettifying={vi.fn()} />);
+    const { getByTestId } = render(
+      <Sidebar onShowDocumentation={show} onPrettifying={vi.fn()} isDocLoading={false} />
+    );
     const btn = getByTestId('btn-show-docs');
     fireEvent.click(btn);
     expect(show).toHaveBeenCalledTimes(1);
@@ -21,7 +23,7 @@ describe('Sidebar', () => {
   test('run code prettifying', () => {
     const prettify = vi.fn();
     const { getByTestId } = render(
-      <Sidebar onShowDocumentation={vi.fn()} onPrettifying={prettify} />
+      <Sidebar onShowDocumentation={vi.fn()} onPrettifying={prettify} isDocLoading={false} />
     );
     const btn = getByTestId('btn-prettify');
     fireEvent.click(btn);

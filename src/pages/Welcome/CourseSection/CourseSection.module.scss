@@ -7,17 +7,24 @@
   background-image: url('@/assets/svg/white-background.svg');
 }
 
-.courseHeading.mainHeading {
-  margin-bottom: 0;
-  font-size: 3rem;
+.courseHeading.mainHeading,
+.courseHeading.subHeading,
+.courseHeading.info {
   color: black;
   text-align: center;
 }
 
+.courseHeading.mainHeading {
+  margin-bottom: 0;
+  font-size: 3rem;
+}
+
 .courseHeading.subHeading {
   font-size: 1.5rem;
-  color: black;
-  text-align: center;
+}
+
+.courseHeading.info {
+  font-size: 1.3rem;
 }
 
 .link {
@@ -33,7 +40,8 @@
     font-size: calc(3vw + 14px);
   }
 
-  .courseHeading.subHeading {
+  .courseHeading.subHeading,
+  .courseHeading.info {
     font-size: calc(3vw + 7px);
   }
 }

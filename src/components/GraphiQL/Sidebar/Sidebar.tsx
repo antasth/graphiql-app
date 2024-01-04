@@ -1,6 +1,7 @@
 import { Button, Flex, Tooltip } from 'antd';
-import { LuPaintbrush } from 'react-icons/lu';
 import { GrBook } from 'react-icons/gr';
+import { LuPaintbrush } from 'react-icons/lu';
+
 import { useTranslate } from '@/context/TranslateContext';
 
 import styles from './Sidebar.module.scss';
@@ -8,9 +9,10 @@ import styles from './Sidebar.module.scss';
 interface IProps {
   readonly onShowDocumentation: () => void;
   readonly onPrettifying: () => void;
+  readonly isDocLoading: boolean;
 }
 
-export function Sidebar({ onShowDocumentation, onPrettifying }: IProps) {
+export function Sidebar({ onShowDocumentation, onPrettifying, isDocLoading }: IProps) {
   const { t } = useTranslate();
 
   return (
@@ -21,6 +23,7 @@ export function Sidebar({ onShowDocumentation, onPrettifying }: IProps) {
           size="large"
           icon={<GrBook />}
           onClick={onShowDocumentation}
+          loading={isDocLoading}
           data-testid="btn-show-docs"
         />
       </Tooltip>

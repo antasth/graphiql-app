@@ -46,8 +46,8 @@ We follow a high standard of code quality:
 
 1. Clone this repository to local computer.
 2. Install all dependencies use `npm install`.
-3. Create the project in [Firebase](https://firebase.google.com/).
-4. Save your API environment variables file (.env) in the project directory. Read more [here](https://vitejs.dev/guide/env-and-mode.html).
+3. Create the project in [Firebase](https://firebase.google.com/). This is required to implement the authentication mechanism.
+4. Save your API environment variables file (.env) in the project directory (check out `.env.template` file). Read more [here](https://vitejs.dev/guide/env-and-mode.html).
 
 ## Available Scripts
 

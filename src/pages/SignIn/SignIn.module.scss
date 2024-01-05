@@ -3,6 +3,8 @@
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+  background-color: #ffffff6d;
+  background-image: url('@/assets/svg/white-background-opacity0.03.svg');
 }
 
 .form {
@@ -14,4 +16,8 @@
 .submit {
   margin-top: 2rem;
   text-align: center;
+}
+
+.paragraph {
+  margin-top: 0.3rem;
 }

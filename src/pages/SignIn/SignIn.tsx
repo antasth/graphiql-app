@@ -56,7 +56,7 @@ export function SignIn() {
             {t('Form.SignIn', 'Sign in')}
           </Button>
 
-          <p>
+          <p className={styles.paragraph}>
             {t('Form.accountMessageSignIn', "Don't have an account?")}
             <Link to={'/signup'}> {t('Form.SignUp', 'Sign up')}</Link>
           </p>

@@ -1,27 +1,40 @@
-import { useSignInValidationSchema } from '@/constants/validation';
 import { useTranslate } from '@/context/TranslateContext';
 import { auth } from '@/firebase';
 import { useFirebase } from '@/hooks/useFirebase';
 import { ISignInValues } from '@/types';
+import { useSignInValidationSchema } from '@/hooks/useSignInValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Form, Input } from 'antd';
 import { useForm } from 'react-hook-form';
 import { FormItem } from 'react-hook-form-antd';
 import { Link } from 'react-router-dom';
 import styles from './SignIn.module.scss';
+import { useEffect } from 'react';
 
 export function SignIn() {
   const { t } = useTranslate();
   const { signInWithEmailAndPassword } = useFirebase(auth);
+  const { validationSchema } = useSignInValidationSchema();
 
-  const { control, handleSubmit } = useForm({
-    resolver: yupResolver(useSignInValidationSchema()),
+  const {
+    control,
+    handleSubmit,
+    trigger,
+    formState: { touchedFields },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
     mode: 'onChange',
   });
 
   const onFormSubmit = async ({ email, password }: ISignInValues) => {
     await signInWithEmailAndPassword(email, password);
   };
+
+  useEffect(() => {
+    if (touchedFields.email || touchedFields.password) {
+      trigger();
+    }
+  }, [validationSchema, touchedFields, trigger]);
 
   return (
     <section className={styles.signIn}>

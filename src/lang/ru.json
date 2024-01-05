@@ -79,7 +79,7 @@
   "Welcome.Top.Button.Signup": "Регистрация",
   "Welcome.Top.Button.MainPage": "На главную",
   "Welcome.Top.Heading1": "Добро пожаловать",
-  "Welcome.Top.Heading2": " в GraphiQL Playround!",
+  "Welcome.Top.Heading2": " в GraphiQL Playground!",
   "Welcome.Top.Subheading1": "GraphiQL Playground - это графическая, интерактивная браузерная IDE.",
   "Welcome.Top.Subheading2": " Этот инструмент позволяет разработчикам и клиентам изучать GraphiQL API и взаимодействовать с ними.",
   "Welcome.Top.Link.Auth": "Начать работу с GraphiQL Playground",

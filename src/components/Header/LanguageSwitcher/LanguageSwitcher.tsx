@@ -4,6 +4,7 @@ import type { SelectProps } from 'antd';
 import { useTranslate } from '@/context/TranslateContext';
 import { Language } from '@/types';
 import { getFlag } from '@/utils/translate';
+import styles from './LanguageSwitcher.module.scss';
 
 export function LanguageSwitcher() {
   const { language, availableLanguages, setLanguage } = useTranslate();
@@ -22,6 +23,7 @@ export function LanguageSwitcher() {
 
   return (
     <Select
+      className={styles.switcher + ' ' + styles.languageSwitcher + ' ' + styles.overwrite}
       defaultValue={language}
       onChange={handleChange}
       dropdownStyle={{ width: 'min-content' }}

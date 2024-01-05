@@ -82,7 +82,7 @@ export function SignUp() {
             {t('Form.SignUp', 'Sign up')}
           </Button>
 
-          <p>
+          <p className={styles.paragraph}>
             {t('Form.accountMessageSignUp', 'Already have an account?')}{' '}
             <Link to={'/signin'}> {t('Form.SignIn', 'Sign in')}</Link>
           </p>

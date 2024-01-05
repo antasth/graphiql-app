@@ -1,3 +1,5 @@
+@import '@/styles/constants';
+
 .header {
   position: sticky;
   top: 0;
@@ -22,5 +24,6 @@
 }
 
 .affixed {
-  background: #d1eefc;
+  background: $header-color;
+  backdrop-filter: blur(9px);
 }

@@ -20,8 +20,8 @@
 }
 
 .featureCard.card {
-  border: 2px solid #4e98ff;
-  box-shadow: 15px 17px #4e98ff;
+  border: 2px solid $main-color;
+  box-shadow: 15px 17px $main-color;
 }
 
 @media (max-width: $laptop) {

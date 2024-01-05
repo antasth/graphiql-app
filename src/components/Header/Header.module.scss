@@ -25,4 +25,5 @@
 
 .affixed {
   background: $header-color;
+  backdrop-filter: blur(9px);
 }

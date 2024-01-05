@@ -8,4 +8,8 @@ $mobile: 380px;
 
 // COLORS
 $main-color: #4e98ff;
-$header-color: #adc8eb;
+$header-color: radial-gradient(
+  267.72% 139.47% at 0% 2.78%,
+  rgb(255 255 255 / 60%) 0%,
+  rgb(255 255 255 / 0%) 100%
+);

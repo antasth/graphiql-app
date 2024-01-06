@@ -1,7 +1,6 @@
 import { useAuth } from '@/hooks/useAuth';
-import { screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { MockedFunction } from 'vitest';
 import { AnonymousRoutes } from './AnonymousRoutes';
 
@@ -18,14 +17,38 @@ describe('AnonymousRoutes', () => {
 
   test('renders main page if user is authenticated and try go to signin page', async () => {
     setup(true);
-    await act(async () => (
+    const OutletComponent = () => <div>Outlet Component</div>;
+
+    render(
       <MemoryRouter initialEntries={['/signin']}>
-        <AnonymousRoutes />
+        <Routes>
+          <Route path="/" element={<AnonymousRoutes />}>
+            <Route path="signin" element={<OutletComponent />} />
+          </Route>
+        </Routes>
       </MemoryRouter>
-    ));
+    );
 
     waitFor(() => {
       expect(screen.getByText('Send Request')).toBeInTheDocument();
     });
+  });
+
+  test('should redirect to outlet for unauthenticated users', async () => {
+    setup(false);
+
+    const OutletComponent = () => <div>Outlet Component</div>;
+
+    render(
+      <MemoryRouter initialEntries={['/signin']}>
+        <Routes>
+          <Route path="/" element={<AnonymousRoutes />}>
+            <Route path="signin" element={<OutletComponent />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText('Outlet Component')).toBeInTheDocument();
   });
 });

@@ -1,7 +1,6 @@
 import { useAuth } from '@/hooks/useAuth';
-import { screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { MockedFunction } from 'vitest';
 import { PrivateRoutes } from './PrivateRoutes';
 
@@ -16,16 +15,42 @@ describe('PrivateRoutes', () => {
     mockedUseAuth.mockReturnValue({ isAuth });
   };
 
-  test("don't renders main page if user is not authenticated", async () => {
-    setup(true);
-    await act(async () => (
+  test('should redirect from main page if user is not authenticated', async () => {
+    setup(false);
+    const MainComponent = () => <div>Main Component</div>;
+
+    render(
       <MemoryRouter initialEntries={['/main']}>
-        <PrivateRoutes />
+        <Routes>
+          <Route path="/" element={<PrivateRoutes />}>
+            <Route path="main" element={<MainComponent />} />
+          </Route>
+        </Routes>
       </MemoryRouter>
-    ));
+    );
 
     waitFor(() => {
       expect(screen.getByText('Send Request')).not.toBeInTheDocument();
+    });
+  });
+
+  test('should not redirect from main page for authenticated users', async () => {
+    setup(true);
+
+    const MainComponent = () => <div>Main Component</div>;
+
+    render(
+      <MemoryRouter initialEntries={['/main']}>
+        <Routes>
+          <Route path="/" element={<PrivateRoutes />}>
+            <Route path="main" element={<MainComponent />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
+
+    waitFor(() => {
+      expect(screen.getByText('Main Component')).not.toBeInTheDocument();
     });
   });
 });

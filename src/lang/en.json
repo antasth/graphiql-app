@@ -84,6 +84,7 @@
   "Welcome.Top.Subheading2": " This tool allows developers and clients to explore and interact with GraphiQL APIs.",
   "Welcome.Top.Link.Auth": "Explore GraphiQL Playground",
   "Welcome.Top.Link.NoAuth": "Sign in to explore GraphiQL Playground",
+  "Welcome.Top.YoutubeLink": "Project features review Youtube video",
   "Auth.Signout": "You have successfully logged out of your account!",
   "Auth.Signin": "You have successfully logged into your account!",
   "Auth.Signup": "You have successfully created an account!",

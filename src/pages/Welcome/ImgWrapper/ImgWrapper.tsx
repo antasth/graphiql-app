@@ -14,7 +14,11 @@ export function ImgWrapper() {
         alt="playground-screenshot"
       />
       <Flex justify="center" id={styles.linkBtnWrapper}>
-        <Link to={'https://www.youtube.com/watch?v=UnYo3C_sJmc'} id={styles.youtubeLink}>
+        <Link
+          to={'https://www.youtube.com/watch?v=UnYo3C_sJmc'}
+          target="_blank"
+          id={styles.youtubeLink}
+        >
           {t('Welcome.Top.YoutubeLink')}
         </Link>
       </Flex>

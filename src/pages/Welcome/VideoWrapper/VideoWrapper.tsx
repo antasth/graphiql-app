@@ -1,8 +1,8 @@
-import styles from './ImgWrapper.module.scss';
+import styles from './VideoWrapper.module.scss';
 
-export function ImgWrapper() {
+export function VideoWrapper() {
   return (
-    <div className={styles.imgWrapper}>
+    <div className={styles.videoWrapper}>
       <div className={styles.iframeСontainer}>
         <iframe
           width="100%"

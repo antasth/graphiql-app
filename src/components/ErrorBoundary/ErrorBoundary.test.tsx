@@ -8,6 +8,7 @@ const Child = () => {
 
 describe('Error Boundary loads Error Component', () => {
   test(`should render error component when error occurs`, () => {
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn());
     const routes = [
       {
         path: '/',

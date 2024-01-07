@@ -45,8 +45,6 @@
   "Welcome.Course.Info": " Free | Online | in English",
   "Errors.QueryIsIncorrect": "Query is incorrect",
   "Errors.QueryIncorrectBrackets": "You entered an incorrect query, brackets are missing or not closed",
-  "Welcome.Course.Heading": "Introducing RSSchool React Course",
-  "Welcome.Course.Subheading": "This project was completed as a part of RSSchool React Course",
   "Welcome.Features.Title1": "Request editor",
   "Welcome.Features.Title2": "Headers editor",
   "Welcome.Features.Title3": "Documentation explorer",

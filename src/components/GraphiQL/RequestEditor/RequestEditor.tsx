@@ -1,13 +1,16 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { UpOutlined } from '@ant-design/icons';
 import { Button, Flex, Tabs } from 'antd';
 
-import { TextArea } from '@/components/GraphiQL/TextArea';
 import { useTranslate } from '@/context/TranslateContext';
 
 import { Headers } from './Headers';
 import { Variables } from './Variables';
+
+import { noctisLilacInit } from '@uiw/codemirror-theme-noctis-lilac';
+import ReactCodeMirror from '@uiw/react-codemirror';
+import { graphqlLanguage } from 'cm6-graphql';
 
 import styles from './RequestEditor.module.scss';
 
@@ -19,6 +22,13 @@ interface IProps {
   readonly headers: string;
   readonly onChangeHeaders: (value: string) => void;
 }
+const theme = noctisLilacInit({
+  settings: {
+    background: '#fff',
+    gutterBackground: '#fff',
+    lineHighlight: '#8a91991a',
+  },
+});
 
 export function RequestEditor({
   query,
@@ -36,18 +46,19 @@ export function RequestEditor({
     setIsOpenPanel(!isOpenPanel);
   };
 
-  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    onChangeQuery(event.target.value);
+  const onChangeHandler = (query: string) => {
+    onChangeQuery(query);
   };
 
   return (
     <Flex vertical className={styles.container}>
-      <TextArea
-        id={styles.editor}
-        placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
+      <ReactCodeMirror
         value={query}
+        theme={theme}
         onChange={onChangeHandler}
-        data-testid="request-editor"
+        className={styles.editor}
+        extensions={[graphqlLanguage]}
+        placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
       />
 
       <Tabs

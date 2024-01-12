@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import { TextArea } from './TextArea';
+import { CodeMirrorTextArea } from './CodeMirrorTextArea';
 
 describe('TextArea', () => {
   test('renders correctly', () => {
-    const { getByRole } = render(<TextArea />);
+    const { getByRole } = render(<CodeMirrorTextArea value="text" language="json" />);
     const textbox = getByRole('textbox');
     expect(textbox).toBeInTheDocument();
   });

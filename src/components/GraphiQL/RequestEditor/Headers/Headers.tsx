@@ -1,6 +1,4 @@
-import { ChangeEvent } from 'react';
-
-import { TextArea } from '@/components/GraphiQL/TextArea';
+import { CodeMirrorTextArea } from '@/components/GraphiQL/CodeMirrorTextArea';
 import { useTranslate } from '@/context/TranslateContext';
 
 import styles from './Headers.module.scss';
@@ -13,16 +11,13 @@ interface IProps {
 export function Headers({ value, onChange }: IProps) {
   const { t } = useTranslate();
 
-  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    onChange(event.target.value);
-  };
-
   return (
-    <TextArea
-      id={styles.headers}
+    <CodeMirrorTextArea
+      className={styles.headers}
       placeholder={t('GraphQL.Headers.Placeholder', '')}
       value={value}
-      onChange={onChangeHandler}
+      onChange={onChange}
+      language="json"
     />
   );
 }

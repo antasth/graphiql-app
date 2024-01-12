@@ -8,10 +8,7 @@ import { useTranslate } from '@/context/TranslateContext';
 import { Headers } from './Headers';
 import { Variables } from './Variables';
 
-import { noctisLilacInit } from '@uiw/codemirror-theme-noctis-lilac';
-import ReactCodeMirror from '@uiw/react-codemirror';
-import { graphqlLanguage } from 'cm6-graphql';
-
+import { CodeMirrorTextArea } from '../CodeMirrorTextArea';
 import styles from './RequestEditor.module.scss';
 
 interface IProps {
@@ -22,13 +19,6 @@ interface IProps {
   readonly headers: string;
   readonly onChangeHeaders: (value: string) => void;
 }
-const theme = noctisLilacInit({
-  settings: {
-    background: '#fff',
-    gutterBackground: '#fff',
-    lineHighlight: '#8a91991a',
-  },
-});
 
 export function RequestEditor({
   query,
@@ -46,19 +36,14 @@ export function RequestEditor({
     setIsOpenPanel(!isOpenPanel);
   };
 
-  const onChangeHandler = (query: string) => {
-    onChangeQuery(query);
-  };
-
   return (
     <Flex vertical className={styles.container}>
-      <ReactCodeMirror
+      <CodeMirrorTextArea
         value={query}
-        theme={theme}
-        onChange={onChangeHandler}
         className={styles.editor}
-        extensions={[graphqlLanguage]}
+        onChange={onChangeQuery}
         placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
+        language="graphq"
       />
 
       <Tabs

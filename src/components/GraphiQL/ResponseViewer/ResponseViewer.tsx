@@ -1,12 +1,12 @@
 import { Flex } from 'antd';
+import { CodeMirrorTextArea } from '../CodeMirrorTextArea';
 
-import { TextArea } from '@/components/GraphiQL/TextArea';
 import { useTranslate } from '@/context/TranslateContext';
 
 import styles from './ResponseViewer.module.scss';
 
 interface IProps {
-  readonly value?: string;
+  readonly value: string;
 }
 
 export function ResponseViewer({ value }: IProps) {
@@ -14,10 +14,12 @@ export function ResponseViewer({ value }: IProps) {
 
   return (
     <Flex vertical className={styles.container}>
-      <TextArea
-        id={styles.viewer}
-        placeholder={t('GraphQL.ResponseViewer.Placeholder', '')}
+      <CodeMirrorTextArea
         value={value}
+        className={styles.viewer}
+        placeholder={t('GraphQL.ResponseViewer.Placeholder', '')}
+        language="json"
+        readOnly
       />
     </Flex>
   );

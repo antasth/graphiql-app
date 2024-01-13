@@ -24,8 +24,12 @@
     "*.{js,jsx,ts,tsx,json}": "eslint"
   },
   "dependencies": {
+    "@codemirror/state": "^6.4.0",
     "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^2.0.1",
+    "@uiw/codemirror-extensions-langs": "^4.21.21",
+    "@uiw/codemirror-theme-noctis-lilac": "^4.21.21",
+    "@uiw/react-codemirror": "^4.21.21",
     "antd": "^5.12.1",
     "firebase": "^10.7.1",
     "react": "^18.2.0",

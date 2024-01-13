@@ -1,14 +1,14 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { UpOutlined } from '@ant-design/icons';
 import { Button, Flex, Tabs } from 'antd';
 
-import { TextArea } from '@/components/GraphiQL/TextArea';
 import { useTranslate } from '@/context/TranslateContext';
 
 import { Headers } from './Headers';
 import { Variables } from './Variables';
 
+import { CodeMirrorTextArea } from '../CodeMirrorTextArea';
 import styles from './RequestEditor.module.scss';
 
 interface IProps {
@@ -36,18 +36,14 @@ export function RequestEditor({
     setIsOpenPanel(!isOpenPanel);
   };
 
-  const onChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    onChangeQuery(event.target.value);
-  };
-
   return (
     <Flex vertical className={styles.container}>
-      <TextArea
-        id={styles.editor}
-        placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
+      <CodeMirrorTextArea
         value={query}
-        onChange={onChangeHandler}
-        data-testid="request-editor"
+        className={styles.editor}
+        onChange={onChangeQuery}
+        placeholder={t('GraphQL.RequestEditor.Placeholder', '')}
+        language="graphq"
       />
 
       <Tabs

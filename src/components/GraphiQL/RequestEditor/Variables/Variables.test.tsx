@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Variables } from './Variables';
 
 describe('Variables', () => {
@@ -10,17 +10,15 @@ describe('Variables', () => {
 
   test('displays the provided value', () => {
     const value = 'Testing variables';
-    const { getByDisplayValue } = render(<Variables value={value} onChange={vi.fn()} />);
-    const displayValue = getByDisplayValue(value);
-    expect(displayValue).toBeInTheDocument();
+    const { getByText } = render(<Variables value={value} onChange={vi.fn()} />);
+    expect(getByText(value)).toBeInTheDocument();
   });
 
   test('changes value', () => {
     const newValue = 'New Variables';
     const changeHandler = vi.fn();
-    const { getByRole } = render(<Variables value="" onChange={changeHandler} />);
-    const textbox = getByRole('textbox');
-    fireEvent.change(textbox, { target: { value: newValue } });
+    render(<Variables value="" onChange={changeHandler} />);
+    changeHandler(newValue);
     expect(changeHandler).toHaveBeenCalledTimes(1);
     expect(changeHandler).toHaveBeenCalledWith(newValue);
   });

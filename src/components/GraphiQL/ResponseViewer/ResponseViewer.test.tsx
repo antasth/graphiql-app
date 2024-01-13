@@ -3,15 +3,16 @@ import { ResponseViewer } from './ResponseViewer';
 
 describe('ResponseViewer', () => {
   test('renders correctly', () => {
-    const { getByRole } = render(<ResponseViewer />);
+    const value = 'Testing response';
+    const { getByRole } = render(<ResponseViewer value={value} />);
     const textbox = getByRole('textbox');
     expect(textbox).toBeInTheDocument();
   });
 
   test('displays the provided value', () => {
     const value = 'Testing response';
-    const { getByDisplayValue } = render(<ResponseViewer value={value} />);
-    const displayValue = getByDisplayValue(value);
+    const { getByText } = render(<ResponseViewer value={value} />);
+    const displayValue = getByText('Testing response');
     expect(displayValue).toBeInTheDocument();
   });
 });

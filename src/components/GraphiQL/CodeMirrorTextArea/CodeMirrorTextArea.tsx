@@ -1,8 +1,7 @@
+import { langs } from '@uiw/codemirror-extensions-langs';
 import { noctisLilacInit } from '@uiw/codemirror-theme-noctis-lilac';
 import CodeMirror from '@uiw/react-codemirror';
 import { CSSProperties } from 'react';
-import { langs } from '@uiw/codemirror-extensions-langs';
-import { graphqlLanguage } from 'cm6-graphql';
 
 const theme = noctisLilacInit({
   settings: {
@@ -24,7 +23,7 @@ interface ICodeMirrorTextArea {
 }
 
 export function CodeMirrorTextArea({ style, language, ...rest }: ICodeMirrorTextArea) {
-  const editorLanguage = language === 'json' ? langs.json() : graphqlLanguage;
+  const editorLanguage = language === 'json' ? langs.json() : langs.lezer();
   const mergedStyle = {
     fontFamily: 'monospace',
     ...style,

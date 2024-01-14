@@ -4,8 +4,20 @@
   margin: auto;
 }
 
-.input {
+.urlContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   width: 100%;
-  margin-right: 8px;
-  margin-bottom: 16px;
+  padding-bottom: 1rem;
+}
+
+.input {
+  flex-basis: 70%;
+  flex-grow: 1;
+}
+
+.button {
+  flex-basis: 25%;
+  flex-grow: 1;
 }

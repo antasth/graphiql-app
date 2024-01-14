@@ -1,8 +1,10 @@
-import { UserOutlined, BankOutlined, EnvironmentOutlined, EditOutlined } from '@ant-design/icons';
-import { DEVELOPERS_INFO } from './TeamSectionConstants';
-import { Typography, Card, Flex, Divider } from 'antd';
-import styles from './TeamSection.module.scss';
+import GitHubLogo from '@/assets/svg/github.svg?react';
 import { useTranslate } from '@/context/TranslateContext';
+import { BankOutlined, EditOutlined, EnvironmentOutlined, UserOutlined } from '@ant-design/icons';
+import { Card, Divider, Flex, Typography } from 'antd';
+import { Link } from 'react-router-dom';
+import styles from './TeamSection.module.scss';
+import { DEVELOPERS_INFO } from './TeamSectionConstants';
 
 export function TeamSection() {
   const { Title, Text } = Typography;
@@ -20,6 +22,9 @@ export function TeamSection() {
         {DEVELOPERS_INFO.map((item) => (
           <Card key={item.name} bordered={false}>
             <Title className={styles.teamCardTitle + ' ' + styles.cardTitle} level={4}>
+              <Link to={item.github} target="_blank">
+                <GitHubLogo className={styles.logo} />
+              </Link>
               {t(item.name)}
             </Title>
             <Divider className={styles.divider}></Divider>

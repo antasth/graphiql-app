@@ -20,12 +20,23 @@
 }
 
 .teamCardTitle.cardTitle {
+  display: flex;
+  column-gap: 1rem;
+  align-items: center;
   font-size: 1.75rem;
 }
 
 .cardText {
   margin-left: 1rem;
   font-size: 1.125rem;
+}
+
+.logo {
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 @media (max-width: $laptop) {

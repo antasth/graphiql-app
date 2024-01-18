@@ -15,11 +15,8 @@ export const useSignUpValidationSchema = () => {
         password: string()
           .required(t('Validation.password.required', 'password is a required field'))
           .matches(/[0-9]/, t('Validation.password.digit', 'digit required'))
-          .matches(/[a-z,A-Z]/, t('Validation.password.letter', 'letter required'))
-          .matches(
-            /[^(A-Za-z0-9 )]/,
-            t('Validation.password.special', 'special character required')
-          )
+          .matches(/\p{L}/u, t('Validation.password.letter', 'letter required'))
+          .matches(/[\p{P}\p{S}]/u, t('Validation.password.special', 'special character required'))
           .min(8, t('Validation.password.length', 'min length 8 characters')),
         confirmPassword: string()
           .required(t('Validation.password.confirm', 'confirm password'))

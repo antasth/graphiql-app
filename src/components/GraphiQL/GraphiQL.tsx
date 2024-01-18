@@ -112,7 +112,7 @@ export function GraphiQL() {
 
   return (
     <Flex vertical className={styles.container} data-testid="graphql-editor">
-      <Flex>
+      <Flex className={styles.urlContainer}>
         <AutoComplete
           size="large"
           placeholder={t('GraphQL.EnterURL', 'Enter URL')}
@@ -126,6 +126,7 @@ export function GraphiQL() {
         <Button
           size="large"
           icon={<SiGraphql />}
+          className={styles.button}
           onClick={executeQuery}
           loading={isLoading}
           data-testid="btn-send-request"
